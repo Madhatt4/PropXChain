@@ -1,0 +1,25 @@
+{
+  "name": "propchain-website",
+  "version": "1.0.0",
+  "description": "PropChain - Blockchain solution for property transactions",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --public-url ./"
+  },
+  "keywords": [
+    "propchain",
+    "blockchain",
+    "property",
+    "real-estate"
+  ],
+  "author": "PropChain",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
