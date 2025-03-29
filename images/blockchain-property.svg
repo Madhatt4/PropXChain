@@ -1,0 +1,224 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Dark background -->
+  <rect width="800" height="600" fill="#1e293b" />
+  
+  <!-- Abstract blockchain network background -->
+  <g opacity="0.15">
+    <!-- Network nodes -->
+    <circle cx="100" cy="100" r="3" fill="#ffffff" />
+    <circle cx="200" cy="150" r="3" fill="#ffffff" />
+    <circle cx="300" cy="80" r="3" fill="#ffffff" />
+    <circle cx="400" cy="120" r="3" fill="#ffffff" />
+    <circle cx="500" cy="90" r="3" fill="#ffffff" />
+    <circle cx="600" cy="140" r="3" fill="#ffffff" />
+    <circle cx="700" cy="110" r="3" fill="#ffffff" />
+    
+    <circle cx="150" cy="200" r="3" fill="#ffffff" />
+    <circle cx="250" cy="250" r="3" fill="#ffffff" />
+    <circle cx="350" cy="220" r="3" fill="#ffffff" />
+    <circle cx="450" cy="260" r="3" fill="#ffffff" />
+    <circle cx="550" cy="230" r="3" fill="#ffffff" />
+    <circle cx="650" cy="270" r="3" fill="#ffffff" />
+    
+    <circle cx="100" cy="300" r="3" fill="#ffffff" />
+    <circle cx="200" cy="350" r="3" fill="#ffffff" />
+    <circle cx="300" cy="330" r="3" fill="#ffffff" />
+    <circle cx="400" cy="370" r="3" fill="#ffffff" />
+    <circle cx="500" cy="340" r="3" fill="#ffffff" />
+    <circle cx="600" cy="380" r="3" fill="#ffffff" />
+    <circle cx="700" cy="350" r="3" fill="#ffffff" />
+    
+    <circle cx="150" cy="400" r="3" fill="#ffffff" />
+    <circle cx="250" cy="450" r="3" fill="#ffffff" />
+    <circle cx="350" cy="430" r="3" fill="#ffffff" />
+    <circle cx="450" cy="470" r="3" fill="#ffffff" />
+    <circle cx="550" cy="440" r="3" fill="#ffffff" />
+    <circle cx="650" cy="480" r="3" fill="#ffffff" />
+    
+    <circle cx="100" cy="500" r="3" fill="#ffffff" />
+    <circle cx="200" cy="550" r="3" fill="#ffffff" />
+    <circle cx="300" cy="520" r="3" fill="#ffffff" />
+    <circle cx="400" cy="560" r="3" fill="#ffffff" />
+    <circle cx="500" cy="530" r="3" fill="#ffffff" />
+    <circle cx="600" cy="570" r="3" fill="#ffffff" />
+    <circle cx="700" cy="540" r="3" fill="#ffffff" />
+    
+    <!-- Network connections -->
+    <line x1="100" y1="100" x2="200" y2="150" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    <line x1="200" y1="150" x2="300" y2="80" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    <line x1="300" y1="80" x2="400" y2="120" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    <line x1="400" y1="120" x2="500" y2="90" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    <line x1="500" y1="90" x2="600" y2="140" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    <line x1="600" y1="140" x2="700" y2="110" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    
+    <line x1="100" y1="100" x2="150" y2="200" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    <line x1="200" y1="150" x2="250" y2="250" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    <line x1="300" y1="80" x2="350" y2="220" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    <line x1="400" y1="120" x2="450" y2="260" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    <line x1="500" y1="90" x2="550" y2="230" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    <line x1="600" y1="140" x2="650" y2="270" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    
+    <line x1="150" y1="200" x2="250" y2="250" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    <line x1="250" y1="250" x2="350" y2="220" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    <line x1="350" y1="220" x2="450" y2="260" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    <line x1="450" y1="260" x2="550" y2="230" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    <line x1="550" y1="230" x2="650" y2="270" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    
+    <line x1="150" y1="200" x2="100" y2="300" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    <line x1="250" y1="250" x2="200" y2="350" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    <line x1="350" y1="220" x2="300" y2="330" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    <line x1="450" y1="260" x2="400" y2="370" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    <line x1="550" y1="230" x2="500" y2="340" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+    <line x1="650" y1="270" x2="600" y2="380" stroke="#60a5fa" stroke-width="1" opacity="0.3" />
+  </g>
+  
+  <!-- Main blockchain visualization -->
+  <!-- Block 1 (oldest) -->
+  <g transform="translate(100, 200)">
+    <rect x="0" y="0" width="120" height="160" rx="10" fill="#334155" stroke="#3b82f6" stroke-width="2" />
+    <rect x="10" y="10" width="100" height="25" rx="5" fill="#1e293b" />
+    <text x="60" y="27" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">BLOCK #1</text>
+    
+    <!-- Block content -->
+    <rect x="10" y="45" width="100" height="70" rx="5" fill="#1e293b" />
+    <!-- House mini icon -->
+    <rect x="20" y="55" width="20" height="15" fill="none" stroke="#10b981" stroke-width="1.5" />
+    <path d="M20,55 L30,45 L40,55" fill="none" stroke="#10b981" stroke-width="1.5" />
+    
+    <text x="55" y="60" font-family="Arial, sans-serif" font-size="8" fill="#ffffff">Property Deed</text>
+    <text x="55" y="75" font-family="Arial, sans-serif" font-size="6" fill="#60a5fa">12 Woodland Heights</text>
+    <text x="55" y="85" font-family="Arial, sans-serif" font-size="6" fill="#60a5fa">Owner: J. Smith</text>
+    <text x="55" y="95" font-family="Arial, sans-serif" font-size="6" fill="#60a5fa">Value: £450,000</text>
+    <text x="55" y="105" font-family="Arial, sans-serif" font-size="6" fill="#60a5fa">Date: 02/01/2023</text>
+    
+    <!-- Hash representation -->
+    <rect x="10" y="125" width="100" height="25" rx="5" fill="#1e293b" />
+    <text x="60" y="142" font-family="Arial, sans-serif" font-size="8" fill="#60a5fa" text-anchor="middle">0xf731a9b03f...</text>
+  </g>
+  
+  <!-- Block 2 -->
+  <g transform="translate(250, 180)">
+    <rect x="0" y="0" width="120" height="160" rx="10" fill="#334155" stroke="#3b82f6" stroke-width="2" />
+    <rect x="10" y="10" width="100" height="25" rx="5" fill="#1e293b" />
+    <text x="60" y="27" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">BLOCK #2</text>
+    
+    <!-- Block content -->
+    <rect x="10" y="45" width="100" height="70" rx="5" fill="#1e293b" />
+    <!-- Document mini icon -->
+    <rect x="20" y="55" width="15" height="20" fill="none" stroke="#34d399" stroke-width="1.5" />
+    <line x1="25" y1="60" x2="35" y2="60" stroke="#34d399" stroke-width="1" />
+    <line x1="25" y1="65" x2="35" y2="65" stroke="#34d399" stroke-width="1" />
+    <line x1="25" y1="70" x2="30" y2="70" stroke="#34d399" stroke-width="1" />
+    
+    <text x="55" y="60" font-family="Arial, sans-serif" font-size="8" fill="#ffffff">Survey Report</text>
+    <text x="55" y="75" font-family="Arial, sans-serif" font-size="6" fill="#60a5fa">12 Woodland Heights</text>
+    <text x="55" y="85" font-family="Arial, sans-serif" font-size="6" fill="#60a5fa">Surveyor: A. Brown</text>
+    <text x="55" y="95" font-family="Arial, sans-serif" font-size="6" fill="#60a5fa">Status: Approved</text>
+    <text x="55" y="105" font-family="Arial, sans-serif" font-size="6" fill="#60a5fa">Date: 15/01/2023</text>
+    
+    <!-- Hash representation -->
+    <rect x="10" y="125" width="100" height="25" rx="5" fill="#1e293b" />
+    <text x="60" y="142" font-family="Arial, sans-serif" font-size="8" fill="#60a5fa" text-anchor="middle">0x8d47c6b129...</text>
+  </g>
+  
+  <!-- Block 3 -->
+  <g transform="translate(400, 150)">
+    <rect x="0" y="0" width="120" height="160" rx="10" fill="#334155" stroke="#3b82f6" stroke-width="2" />
+    <rect x="10" y="10" width="100" height="25" rx="5" fill="#1e293b" />
+    <text x="60" y="27" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">BLOCK #3</text>
+    
+    <!-- Block content -->
+    <rect x="10" y="45" width="100" height="70" rx="5" fill="#1e293b" />
+    <!-- Legal document mini icon -->
+    <rect x="20" y="55" width="15" height="20" fill="none" stroke="#2563eb" stroke-width="1.5" />
+    <path d="M20,55 L35,55 L35,75 L20,75 Z" fill="none" stroke="#2563eb" stroke-width="1.5" />
+    <line x1="23" y1="60" x2="32" y2="60" stroke="#2563eb" stroke-width="1" />
+    <line x1="23" y1="65" x2="32" y2="65" stroke="#2563eb" stroke-width="1" />
+    <line x1="23" y1="70" x2="28" y2="70" stroke="#2563eb" stroke-width="1" />
+    
+    <text x="55" y="60" font-family="Arial, sans-serif" font-size="8" fill="#ffffff">Legal Check</text>
+    <text x="55" y="75" font-family="Arial, sans-serif" font-size="6" fill="#60a5fa">12 Woodland Heights</text>
+    <text x="55" y="85" font-family="Arial, sans-serif" font-size="6" fill="#60a5fa">Solicitor: R. Davis</text>
+    <text x="55" y="95" font-family="Arial, sans-serif" font-size="6" fill="#60a5fa">Status: Clear</text>
+    <text x="55" y="105" font-family="Arial, sans-serif" font-size="6" fill="#60a5fa">Date: 28/01/2023</text>
+    
+    <!-- Hash representation -->
+    <rect x="10" y="125" width="100" height="25" rx="5" fill="#1e293b" />
+    <text x="60" y="142" font-family="Arial, sans-serif" font-size="8" fill="#60a5fa" text-anchor="middle">0x3ac68f2e7b...</text>
+  </g>
+  
+  <!-- Block 4 (newest) -->
+  <g transform="translate(550, 200)">
+    <rect x="0" y="0" width="120" height="160" rx="10" fill="#334155" stroke="#3b82f6" stroke-width="2" />
+    <rect x="10" y="10" width="100" height="25" rx="5" fill="#1e293b" />
+    <text x="60" y="27" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">BLOCK #4</text>
+    
+    <!-- Block content - actively being processed -->
+    <rect x="10" y="45" width="100" height="70" rx="5" fill="#1e293b" />
+    <!-- Contract mini icon -->
+    <rect x="20" y="55" width="18" height="22" fill="none" stroke="#10b981" stroke-width="1.5" />
+    <line x1="25" y1="55" x2="25" y2="60" stroke="#10b981" stroke-width="1.5" />
+    <line x1="33" y1="55" x2="33" y2="60" stroke="#10b981" stroke-width="1.5" />
+    
+    <text x="55" y="60" font-family="Arial, sans-serif" font-size="8" fill="#ffffff">Contract Exchange</text>
+    <text x="55" y="75" font-family="Arial, sans-serif" font-size="6" fill="#60a5fa">12 Woodland Heights</text>
+    <text x="55" y="85" font-family="Arial, sans-serif" font-size="6" fill="#60a5fa">Buyer: J. Smith</text>
+    <text x="55" y="95" font-family="Arial, sans-serif" font-size="6" fill="#60a5fa">Seller: A. Johnson</text>
+    <text x="55" y="105" font-family="Arial, sans-serif" font-size="6" fill="#60a5fa">Date: Processing...</text>
+    
+    <!-- Hash being calculated -->
+    <rect x="10" y="125" width="100" height="25" rx="5" fill="#1e293b" />
+    <text x="60" y="142" font-family="Arial, sans-serif" font-size="8" fill="#60a5fa" text-anchor="middle">Computing...</text>
+    
+    <!-- Animated calculation effect -->
+    <circle cx="30" cy="142" r="2" fill="#34d399">
+      <animate attributeName="opacity" values="0;1;0" dur="1.5s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="40" cy="142" r="2" fill="#34d399">
+      <animate attributeName="opacity" values="0;1;0" dur="1.5s" begin="0.3s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="50" cy="142" r="2" fill="#34d399">
+      <animate attributeName="opacity" values="0;1;0" dur="1.5s" begin="0.6s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Blockchain connections -->
+  <line x1="220" y1="280" x2="250" y2="260" stroke="#3b82f6" stroke-width="3" />
+  <line x1="370" y1="260" x2="400" y2="230" stroke="#3b82f6" stroke-width="3" />
+  <line x1="520" y1="230" x2="550" y2="280" stroke="#3b82f6" stroke-width="3" />
+  
+  <!-- Hash connections -->
+  <line x1="210" y1="325" x2="250" y2="305" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="5,3" />
+  <line x1="360" y1="305" x2="400" y2="275" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="5,3" />
+  <line x1="510" y1="275" x2="550" y2="325" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="5,3" />
+  
+  <!-- Smart contract visualization -->
+  <g transform="translate(275, 370)">
+    <rect x="0" y="0" width="250" height="140" rx="10" fill="#334155" stroke="#10b981" stroke-width="2" />
+    <text x="125" y="25" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">SMART CONTRACT</text>
+    
+    <rect x="20" y="40" width="210" height="80" rx="5" fill="#1e293b" />
+    <text x="30" y="60" font-family="Arial, sans-serif" font-size="10" fill="#60a5fa">function transferProperty() {</text>
+    <text x="45" y="75" font-family="Arial, sans-serif" font-size="10" fill="#34d399">if (verifyDocuments() &amp;&amp; </text>
+    <text x="45" y="90" font-family="Arial, sans-serif" font-size="10" fill="#34d399">    paymentConfirmed()) {</text>
+    <text x="60" y="105" font-family="Arial, sans-serif" font-size="10" fill="#ffffff">executeTransfer();</text>
+    <text x="30" y="120" font-family="Arial, sans-serif" font-size="10" fill="#60a5fa">}}</text>
+  </g>
+  
+  <!-- Connection lines from blocks to smart contract -->
+  <line x1="160" y1="360" x2="275" y2="400" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4,2" />
+  <line x1="310" y1="340" x2="310" y2="370" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4,2" />
+  <line x1="460" y1="310" x2="400" y2="370" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4,2" />
+  <line x1="550" y1="360" x2="400" y2="400" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4,2" />
+  
+  <!-- Document flow animation -->
+  <circle cx="275" cy="400" r="3" fill="#ffffff">
+    <animate attributeName="cx" values="275;310;400;525" dur="3s" repeatCount="indefinite" />
+    <animate attributeName="cy" values="400;370;400;360" dur="3s" repeatCount="indefinite" />
+    <animate attributeName="r" values="3;4;3;4;3" dur="3s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Title -->
+  <text x="400" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">BLOCKCHAIN PROPERTY TECHNOLOGY</text>
+  <text x="400" y="80" font-family="Arial, sans-serif" font-size="16" fill="#60a5fa" text-anchor="middle">Secure, Transparent, Efficient Transaction Processing</text>
+</svg>

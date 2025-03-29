@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#1e293b" />
+  
+  <!-- Subtle gradient overlay -->
+  <defs>
+    <radialGradient id="backgroundGradient" cx="200" cy="200" r="300" fx="200" fy="200">
+      <stop offset="0%" stop-color="#334155" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.8" />
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#backgroundGradient)" />
+  
+  <!-- Subtle edge lighting -->
+  <rect x="0" y="0" width="400" height="400" fill="none" stroke="#3b82f6" stroke-width="1" stroke-opacity="0.3" />
+  
+  <!-- Person -->
+  <g transform="translate(200, 200)">
+    <!-- Casual Tech Blazer -->
+    <path d="M-60,-20 L-90,150 L90,150 L60,-20 z" fill="#0f172a" />
+    <path d="M-40,-20 L-45,150 L45,150 L40,-20 z" fill="#1e293b" />
+    
+    <!-- Tech casual shirt - no tie -->
+    <path d="M-25,-20 L-15,40 L0,50 L15,40 L25,-20 z" fill="#60a5fa" />
+    
+    <!-- Neck -->
+    <path d="M-15,-50 L-20,-20 L20,-20 L15,-50 z" fill="#f8fafc" />
+    
+    <!-- Head -->
+    <ellipse cx="0" cy="-90" rx="50" ry="60" fill="#f8fafc" />
+    
+    <!-- Tech-oriented glasses -->
+    <rect x="-35" y="-95" width="25" height="10" rx="2" fill="none" stroke="#334155" stroke-width="2" />
+    <rect x="10" y="-95" width="25" height="10" rx="2" fill="none" stroke="#334155" stroke-width="2" />
+    <line x1="-10" y1="-90" x2="10" y2="-90" stroke="#334155" stroke-width="2" />
+    
+    <!-- Hair - modern tech style -->
+    <path d="M-45,-100 C-50,-140 -20,-150 0,-150 C20,-150 45,-140 45,-100 L30,-95 L0,-100 L-30,-95 z" fill="#64748b" />
+    <path d="M-40,-95 C-45,-130 -15,-140 0,-140 C15,-140 40,-130 40,-95 L30,-95 L0,-100 L-30,-95 z" fill="#475569" />
+    
+    <!-- Ears -->
+    <ellipse cx="-50" cy="-90" rx="8" ry="15" fill="#f8fafc" />
+    <ellipse cx="50" cy="-90" rx="8" ry="15" fill="#f8fafc" />
+    
+    <!-- Eyes behind glasses -->
+    <ellipse cx="-22" cy="-90" rx="6" ry="3" fill="#1e293b" />
+    <ellipse cx="22" cy="-90" rx="6" ry="3" fill="#1e293b" />
+    
+    <!-- Eyebrows -->
+    <path d="M-30,-106 C-25,-108 -15,-108 -10,-106" fill="none" stroke="#475569" stroke-width="2" />
+    <path d="M30,-106 C25,-108 15,-108 10,-106" fill="none" stroke="#475569" stroke-width="2" />
+    
+    <!-- Nose -->
+    <path d="M0,-90 L5,-75 L0,-70 L-5,-75 z" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5" />
+    
+    <!-- Mouth - slight tech-savvy smile -->
+    <path d="M-15,-60 C-10,-56 10,-56 15,-60" fill="none" stroke="#334155" stroke-width="2" />
+    
+    <!-- Tech-appropriate facial hair - neat, subtle beard -->
+    <path d="M-30,-60 C-20,-40 20,-40 30,-60" fill="#64748b" fill-opacity="0.3" />
+    <path d="M-10,-60 L-5,-40 L0,-35 L5,-40 L10,-60" fill="#64748b" fill-opacity="0.3" />
+  </g>
+  
+  <!-- Professional subtle lighting effect -->
+  <circle cx="150" cy="150" r="180" fill="url(#lighting)" />
+  <defs>
+    <radialGradient id="lighting" cx="150" cy="150" r="180" fx="120" fy="120">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- PropChain branding element - subtle -->
+  <g transform="translate(350, 350) scale(0.15)">
+    <!-- Chain link -->
+    <path d="M30,30 C30,22 25,15 18,15 C11,15 5,22 5,30 C5,38 11,45 18,45 L30,45" 
+          fill="none" stroke="#3b82f6" stroke-width="4" stroke-linecap="round" />
+    <path d="M28,45 L40,45 C47,45 53,38 53,30 C53,22 47,15 40,15 C33,15 28,22 28,30" 
+          fill="none" stroke="#60a5fa" stroke-width="4" stroke-linecap="round" />
+    
+    <!-- House roof -->
+    <path d="M15,15 L40,0 L65,15" fill="none" stroke="#10b981" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <!-- House body -->
+    <rect x="25" y="15" width="30" height="30" fill="none" stroke="#34d399" stroke-width="4" stroke-linejoin="round" />
+  </g>
+</svg>

@@ -1,62 +1,73 @@
-# PropXchain
+# PropXchain Website
 
-Blockchain property exchange portal
+A professional, modern website for PropXchain, a blockchain-based property transaction system that reduces UK property transaction times from 12-16 weeks to 3-4 weeks while cutting costs by approximately 48%.
 
-PropXchain is a blockchain-based solution for property transactions designed to streamline the property buying and selling process.
+## Website Structure
 
-## Project Structure
+The website consists of the following pages:
 
-This repository contains:
+1. **Homepage (index.html)** - Main landing page with clear value proposition, key benefits, and call-to-action
+2. **Our Solution (our-solution.html)** - Detailed explanation of the PropXchain system, comparison with conventional methods
+3. **For Developers (for-developers.html)** - Specific benefits for property developers, ROI calculator, implementation process
+4. **For Solicitors (for-solicitors.html)** - Benefits for conveyancing professionals, streamlined legal processes
+5. **Technology (technology.html)** - Explanation of blockchain technology, security, compliance, and technical architecture
+6. **About Us (about-us.html)** - Company story, mission, team, and approach to property innovation
+7. **Contact (contact.html)** - Contact form, office location, and contact information
+8. **Blog (blog.html)** - Industry insights, PropChain news, and educational content
 
-- **propchain-website**: A static website showcasing the PropXchain solution
-- **Documentation**: Various business plans and implementation documents
+## Technical Implementation
 
-## Website
+The website is built with:
 
-The PropXchain website is a static HTML/CSS/JavaScript site with the following features:
+- HTML5 for structure
+- CSS3 for styling (in the css/styles.css file)
+- JavaScript for interactivity (in the js/main.js file)
+- Font Awesome for icons
+- Google Fonts (Inter and Montserrat) for typography
 
-- Responsive design
-- Interactive ROI calculator
-- Contact form with validation
-- Smooth scrolling and animations
-- FAQ accordion
-- Testimonial slider
+## Features
 
-### Development
+1. **Responsive Design** - The website is fully responsive and works on all device sizes
+2. **ROI Calculator** - Interactive tool showing potential time and cost savings for property developers
+3. **Modern UI** - Clean, professional design with blues and greens suggesting trust, technology, and efficiency
+4. **Interactive Elements** - FAQ accordions, testimonial sliders, and form validation
+5. **Clear Navigation** - Intuitive menu structure with prominent call-to-action buttons
 
-To run the website locally:
+## Images
 
-1. Navigate to the propchain-website directory
-2. Install dependencies:
-   ```
-   npm install
-   ```
-3. Start the development server:
-   ```
-   npm start
-   ```
+The website requires the following images (to be added):
 
-### Building for Production
+- propXchain-logo.svg - Company logo for the header
+- hero-dashboard.png - Dashboard screenshot for the homepage hero section
+- developer-benefits.jpg - Image for the developer benefits section
+- new-builds.jpg - Image for the new builds section
+- blockchain-technology.jpg - Image for the blockchain technology section
+- technical-architecture.png - Diagram of the technical architecture
+- property-passport.jpg - Image for the property passport section
+- developer-dashboard.jpg - Image for the developer dashboard section
+- developer-dashboard-full.png - Full screenshot of the developer dashboard
+- solicitor-interface.jpg - Image for the solicitor interface section
+- solicitor-dashboard.png - Screenshot of the solicitor dashboard
+- about-us.jpg - Team photo for the about us page
+- north-wales.jpg - Image of North Wales for the location section
+- Various team member photos and blog post images
 
-To build the website for production:
+## Next Steps
 
-```
-cd propchain-website
-npm install
-npm run build
-```
+1. Add the missing images to the images directory
+2. Test the website on different devices and browsers
+3. Implement SEO optimizations
+4. Set up analytics tracking
+5. Deploy the website to a hosting provider
 
-The built files will be in the `dist` directory.
+## Contact
 
-## Documentation
+For any questions or support, please contact:
 
-The repository includes several documentation files:
+PropXchain Innovation Centre  
+Technology Park  
+North Wales, UK  
+LL12 8XY
 
-- Business plans
-- Implementation strategies
-- Patent applications
-- Pros and cons analysis
-
-## License
-
-This project is proprietary and confidential. All rights reserved.
+Email: info@propXchain.co.uk  
+Phone: +44 (0) 1234 567890
