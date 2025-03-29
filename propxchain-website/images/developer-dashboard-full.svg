@@ -1,0 +1,290 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <!-- Main Background -->
+  <rect width="1200" height="900" fill="#1e293b" />
+  
+  <!-- Left Sidebar -->
+  <rect x="0" y="0" width="220" height="900" fill="#0f172a" />
+  
+  <!-- PropChain Logo -->
+  <g transform="translate(30, 40)">
+    <!-- Chain link -->
+    <path d="M30,30 C30,22 25,15 18,15 C11,15 5,22 5,30 C5,38 11,45 18,45 L30,45" 
+          fill="none" stroke="#3b82f6" stroke-width="4" stroke-linecap="round" />
+    <path d="M28,45 L40,45 C47,45 53,38 53,30 C53,22 47,15 40,15 C33,15 28,22 28,30" 
+          fill="none" stroke="#60a5fa" stroke-width="4" stroke-linecap="round" />
+    
+    <!-- House roof -->
+    <path d="M15,15 L40,0 L65,15" fill="none" stroke="#10b981" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <!-- House body -->
+    <rect x="25" y="15" width="30" height="30" fill="none" stroke="#34d399" stroke-width="4" stroke-linejoin="round" />
+  </g>
+  <text x="110" y="75" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff" text-anchor="middle">PropChain</text>
+  <text x="110" y="95" font-family="Arial, sans-serif" font-size="12" fill="#60a5fa" text-anchor="middle">Developer Portal</text>
+  
+  <!-- Navigation Menu -->
+  <rect x="20" y="140" width="180" height="45" rx="5" fill="#3b82f6" />
+  <text x="65" y="168" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Dashboard</text>
+  <rect x="25" y="152" width="20" height="20" fill="#60a5fa" rx="3" />
+  <rect x="30" y="157" width="10" height="10" fill="#ffffff" rx="1" />
+  
+  <rect x="20" y="195" width="180" height="45" rx="5" fill="#0f172a" />
+  <text x="65" y="223" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Projects</text>
+  <rect x="25" y="207" width="20" height="20" fill="#60a5fa" rx="3" />
+  <rect x="30" y="212" width="10" height="10" fill="#ffffff" rx="1" />
+  
+  <rect x="20" y="250" width="180" height="45" rx="5" fill="#0f172a" />
+  <text x="65" y="278" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Transactions</text>
+  <rect x="25" y="262" width="20" height="20" fill="#60a5fa" rx="3" />
+  <rect x="30" y="267" width="10" height="10" fill="#ffffff" rx="1" />
+  
+  <rect x="20" y="305" width="180" height="45" rx="5" fill="#0f172a" />
+  <text x="65" y="333" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Documents</text>
+  <rect x="25" y="317" width="20" height="20" fill="#60a5fa" rx="3" />
+  <rect x="30" y="322" width="10" height="10" fill="#ffffff" rx="1" />
+  
+  <rect x="20" y="360" width="180" height="45" rx="5" fill="#0f172a" />
+  <text x="65" y="388" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Client Communications</text>
+  <rect x="25" y="372" width="20" height="20" fill="#60a5fa" rx="3" />
+  <rect x="30" y="377" width="10" height="10" fill="#ffffff" rx="1" />
+  
+  <rect x="20" y="415" width="180" height="45" rx="5" fill="#0f172a" />
+  <text x="65" y="443" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Analytics</text>
+  <rect x="25" y="427" width="20" height="20" fill="#60a5fa" rx="3" />
+  <rect x="30" y="432" width="10" height="10" fill="#ffffff" rx="1" />
+  
+  <rect x="20" y="470" width="180" height="45" rx="5" fill="#0f172a" />
+  <text x="65" y="498" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Integration</text>
+  <rect x="25" y="482" width="20" height="20" fill="#60a5fa" rx="3" />
+  <rect x="30" y="487" width="10" height="10" fill="#ffffff" rx="1" />
+  
+  <rect x="20" y="525" width="180" height="45" rx="5" fill="#0f172a" />
+  <text x="65" y="553" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Settings</text>
+  <rect x="25" y="537" width="20" height="20" fill="#60a5fa" rx="3" />
+  <rect x="30" y="542" width="10" height="10" fill="#ffffff" rx="1" />
+  
+  <!-- User Profile -->
+  <circle cx="55" cy="620" r="25" fill="#60a5fa" />
+  <text x="55" y="625" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">JS</text>
+  <text x="110" y="615" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">James Smith</text>
+  <text x="110" y="635" font-family="Arial, sans-serif" font-size="12" fill="#60a5fa">Woodland Developments</text>
+  
+  <!-- Blockchain Status -->
+  <rect x="20" y="670" width="180" height="80" rx="5" fill="#1e293b" />
+  <text x="110" y="690" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">BLOCKCHAIN STATUS</text>
+  <text x="110" y="710" font-family="Arial, sans-serif" font-size="12" fill="#10b981" text-anchor="middle">All Systems Operational</text>
+  <rect x="40" y="725" width="140" height="15" rx="7" fill="#0f172a" />
+  <rect x="40" y="725" width="140" height="15" rx="7" fill="#10b981" opacity="0.3" />
+  <rect x="40" y="725" width="120" height="15" rx="7" fill="#10b981" />
+  <text x="110" y="736" font-family="Arial, sans-serif" font-size="9" fill="#ffffff" text-anchor="middle">Last Block: 2 minutes ago</text>
+  
+  <!-- Main Content Area -->
+  <!-- Top Bar -->
+  <rect x="220" y="0" width="980" height="70" fill="#0f172a" />
+  <text x="260" y="40" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#ffffff">Developer Dashboard</text>
+  
+  <!-- Property Selection -->
+  <rect x="500" y="15" width="300" height="40" rx="5" fill="#1e293b" stroke="#334155" stroke-width="1" />
+  <text x="520" y="40" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Woodland Heights Development</text>
+  <path d="M780,35 L790,25 L800,35" stroke="#60a5fa" stroke-width="2" fill="none" />
+  
+  <!-- Notification Icons -->
+  <circle cx="1100" cy="35" r="18" fill="#1e293b" />
+  <text x="1100" y="40" font-family="Arial, sans-serif" font-size="12" fill="#60a5fa" text-anchor="middle">3</text>
+  
+  <circle cx="1150" cy="35" r="18" fill="#1e293b" />
+  <path d="M1145,35 L1150,40 L1155,35" stroke="#60a5fa" stroke-width="2" fill="none" />
+  
+  <!-- Dashboard Content -->
+  <!-- Summary Cards Row 1 -->
+  <rect x="240" y="90" width="280" height="120" rx="5" fill="#334155" />
+  <text x="260" y="120" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Active Properties</text>
+  <text x="260" y="160" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#3b82f6">24</text>
+  <text x="310" y="160" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Units</text>
+  <path d="M380,140 L400,120 L420,130 L440,110" stroke="#3b82f6" stroke-width="2" fill="none" />
+  <text x="440" y="105" font-family="Arial, sans-serif" font-size="12" fill="#3b82f6">+8%</text>
+  
+  <rect x="540" y="90" width="280" height="120" rx="5" fill="#334155" />
+  <text x="560" y="120" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Avg. Transaction Time</text>
+  <text x="560" y="160" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#10b981">3.4</text>
+  <text x="620" y="160" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Weeks</text>
+  <path d="M680,140 L700,150 L720,125 L740,115" stroke="#10b981" stroke-width="2" fill="none" />
+  <text x="740" y="110" font-family="Arial, sans-serif" font-size="12" fill="#10b981">-32%</text>
+  
+  <rect x="840" y="90" width="280" height="120" rx="5" fill="#334155" />
+  <text x="860" y="120" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Completion Rate</text>
+  <text x="860" y="160" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#60a5fa">96%</text>
+  <circle cx="1000" cy="140" r="40" fill="none" stroke="#334155" stroke-width="5" />
+  <path d="M1000,140 m0,-40 a40,40 0 1,1 0,80 a40,40 0 1,1 0,-80" stroke="#60a5fa" stroke-width="5" stroke-dasharray="226 25" fill="none" />
+  
+  <!-- Document Verification Section -->
+  <rect x="240" y="230" width="580" height="320" rx="5" fill="#334155" />
+  <text x="260" y="260" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">Document Verification</text>
+  <text x="260" y="285" font-family="Arial, sans-serif" font-size="14" fill="#60a5fa">Woodland Heights - Block 4</text>
+  
+  <!-- Document Table Header -->
+  <rect x="260" y="300" width="540" height="30" rx="3" fill="#1e293b" />
+  <text x="280" y="320" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" font-weight="bold">Document Type</text>
+  <text x="460" y="320" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" font-weight="bold">Status</text>
+  <text x="580" y="320" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" font-weight="bold">Verification</text>
+  <text x="700" y="320" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" font-weight="bold">Last Updated</text>
+  
+  <!-- Document Items -->
+  <rect x="260" y="340" width="540" height="40" rx="3" fill="#0f172a" />
+  <text x="280" y="365" font-family="Arial, sans-serif" font-size="12" fill="#ffffff">Planning Permission</text>
+  <rect x="460" y="350" width="80" height="20" rx="10" fill="#10b981" opacity="0.2" />
+  <text x="500" y="365" font-family="Arial, sans-serif" font-size="10" fill="#10b981" text-anchor="middle">VERIFIED</text>
+  <rect x="580" y="350" width="25" height="20" rx="3" fill="#10b981" />
+  <path d="M585,360 L590,365 L600,355" stroke="#ffffff" stroke-width="1.5" fill="none" />
+  <text x="700" y="365" font-family="Arial, sans-serif" font-size="12" fill="#60a5fa">Mar 15, 2025</text>
+  
+  <rect x="260" y="390" width="540" height="40" rx="3" fill="#0f172a" />
+  <text x="280" y="415" font-family="Arial, sans-serif" font-size="12" fill="#ffffff">Building Regulations</text>
+  <rect x="460" y="400" width="80" height="20" rx="10" fill="#10b981" opacity="0.2" />
+  <text x="500" y="415" font-family="Arial, sans-serif" font-size="10" fill="#10b981" text-anchor="middle">VERIFIED</text>
+  <rect x="580" y="400" width="25" height="20" rx="3" fill="#10b981" />
+  <path d="M585,410 L590,415 L600,405" stroke="#ffffff" stroke-width="1.5" fill="none" />
+  <text x="700" y="415" font-family="Arial, sans-serif" font-size="12" fill="#60a5fa">Mar 10, 2025</text>
+  
+  <rect x="260" y="440" width="540" height="40" rx="3" fill="#0f172a" />
+  <text x="280" y="465" font-family="Arial, sans-serif" font-size="12" fill="#ffffff">Title Deeds</text>
+  <rect x="460" y="450" width="80" height="20" rx="10" fill="#10b981" opacity="0.2" />
+  <text x="500" y="465" font-family="Arial, sans-serif" font-size="10" fill="#10b981" text-anchor="middle">VERIFIED</text>
+  <rect x="580" y="450" width="25" height="20" rx="3" fill="#10b981" />
+  <path d="M585,460 L590,465 L600,455" stroke="#ffffff" stroke-width="1.5" fill="none" />
+  <text x="700" y="465" font-family="Arial, sans-serif" font-size="12" fill="#60a5fa">Mar 18, 2025</text>
+  
+  <rect x="260" y="490" width="540" height="40" rx="3" fill="#0f172a" />
+  <text x="280" y="515" font-family="Arial, sans-serif" font-size="12" fill="#ffffff">Environmental Assessment</text>
+  <rect x="460" y="500" width="80" height="20" rx="10" fill="#3b82f6" opacity="0.2" />
+  <text x="500" y="515" font-family="Arial, sans-serif" font-size="10" fill="#3b82f6" text-anchor="middle">PROCESSING</text>
+  <rect x="580" y="500" width="25" height="20" rx="3" fill="#3b82f6" />
+  <text x="593" y="515" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">...</text>
+  <text x="700" y="515" font-family="Arial, sans-serif" font-size="12" fill="#60a5fa">In Progress</text>
+  
+  <!-- Data visualization with animated elements -->
+  <circle cx="300" y="530" r="3" fill="#3b82f6">
+    <animate attributeName="opacity" values="0;1;0" dur="1.5s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="315" y="530" r="3" fill="#3b82f6">
+    <animate attributeName="opacity" values="0;1;0" dur="1.5s" begin="0.3s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="330" y="530" r="3" fill="#3b82f6">
+    <animate attributeName="opacity" values="0;1;0" dur="1.5s" begin="0.6s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Buyer Communication Section -->
+  <rect x="840" y="230" width="280" height="320" rx="5" fill="#334155" />
+  <text x="860" y="260" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">Buyer Communication</text>
+  
+  <!-- Communication Stats -->
+  <rect x="860" y="280" width="120" height="70" rx="5" fill="#1e293b" />
+  <text x="920" y="305" font-family="Arial, sans-serif" font-size="10" fill="#ffffff" text-anchor="middle">OPEN INQUIRIES</text>
+  <text x="920" y="330" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#3b82f6" text-anchor="middle">12</text>
+  
+  <rect x="990" y="280" width="120" height="70" rx="5" fill="#1e293b" />
+  <text x="1050" y="305" font-family="Arial, sans-serif" font-size="10" fill="#ffffff" text-anchor="middle">RESPONSE RATE</text>
+  <text x="1050" y="330" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#10b981" text-anchor="middle">98%</text>
+  
+  <!-- Recent Messages -->
+  <rect x="860" y="360" width="240" height="180" rx="5" fill="#1e293b" />
+  <text x="880" y="380" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" font-weight="bold">Recent Messages</text>
+  
+  <!-- Message 1 -->
+  <rect x="870" y="395" width="220" height="60" rx="5" fill="#0f172a" />
+  <circle cx="890" cy="415" r="10" fill="#3b82f6" />
+  <text x="890" y="418" font-family="Arial, sans-serif" font-size="10" fill="#ffffff" text-anchor="middle">SM</text>
+  <text x="910" y="410" font-family="Arial, sans-serif" font-size="12" fill="#ffffff">Sarah Miller</text>
+  <text x="910" y="425" font-family="Arial, sans-serif" font-size="10" fill="#60a5fa">Unit 42B - Completion Date</text>
+  <text x="910" y="445" font-family="Arial, sans-serif" font-size="9" fill="#ffffff">1 hour ago</text>
+  <rect x="1060" y="410" width="20" height="20" rx="10" fill="#10b981" opacity="0.2" />
+  <text x="1070" y="424" font-family="Arial, sans-serif" font-size="10" fill="#10b981" text-anchor="middle">✓</text>
+  
+  <!-- Message 2 -->
+  <rect x="870" y="465" width="220" height="60" rx="5" fill="#0f172a" />
+  <circle cx="890" cy="485" r="10" fill="#60a5fa" />
+  <text x="890" y="488" font-family="Arial, sans-serif" font-size="10" fill="#ffffff" text-anchor="middle">JT</text>
+  <text x="910" y="480" font-family="Arial, sans-serif" font-size="12" fill="#ffffff">James Turner</text>
+  <text x="910" y="495" font-family="Arial, sans-serif" font-size="10" fill="#60a5fa">Unit 45A - Viewing Request</text>
+  <text x="910" y="515" font-family="Arial, sans-serif" font-size="9" fill="#ffffff">3 hours ago</text>
+  <rect x="1060" y="480" width="20" height="20" rx="10" fill="#3b82f6" opacity="0.2" />
+  <text x="1070" y="494" font-family="Arial, sans-serif" font-size="10" fill="#3b82f6" text-anchor="middle">!</text>
+  
+  <!-- Sales Pipeline Section -->
+  <rect x="240" y="570" width="580" height="310" rx="5" fill="#334155" />
+  <text x="260" y="600" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">Sales Pipeline</text>
+  <text x="260" y="625" font-family="Arial, sans-serif" font-size="14" fill="#60a5fa">Woodland Heights - 24 Units</text>
+  
+  <!-- Pipeline Stages -->
+  <rect x="260" y="645" width="110" height="30" rx="5" fill="#1e293b" />
+  <text x="315" y="665" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">New Listings</text>
+  
+  <rect x="380" y="645" width="110" height="30" rx="5" fill="#1e293b" />
+  <text x="435" y="665" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Viewings</text>
+  
+  <rect x="500" y="645" width="110" height="30" rx="5" fill="#1e293b" />
+  <text x="555" y="665" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Offers</text>
+  
+  <rect x="620" y="645" width="110" height="30" rx="5" fill="#1e293b" />
+  <text x="675" y="665" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Closing</text>
+  
+  <!-- Pipeline Items -->
+  <!-- New Listings Column -->
+  <rect x="260" y="685" width="110" height="70" rx="5" fill="#1e293b" />
+  <rect x="265" y="690" width="100" height="10" rx="2" fill="#334155" />
+  <text x="270" y="698" font-family="Arial, sans-serif" font-size="8" fill="#60a5fa">Woodland Heights</text>
+  <rect x="265" y="705" width="100" height="45" rx="2" fill="#334155" />
+  <text x="270" y="720" font-family="Arial, sans-serif" font-size="10" fill="#ffffff">Unit 45A</text>
+  <text x="270" y="735" font-family="Arial, sans-serif" font-size="8" fill="#60a5fa">3 Bed Townhouse</text>
+  <text x="270" y="745" font-family="Arial, sans-serif" font-size="8" fill="#34d399">£425,000</text>
+  
+  <rect x="260" y="765" width="110" height="70" rx="5" fill="#1e293b" />
+  <rect x="265" y="770" width="100" height="10" rx="2" fill="#334155" />
+  <text x="270" y="778" font-family="Arial, sans-serif" font-size="8" fill="#60a5fa">Woodland Heights</text>
+  <rect x="265" y="785" width="100" height="45" rx="2" fill="#334155" />
+  <text x="270" y="800" font-family="Arial, sans-serif" font-size="10" fill="#ffffff">Unit 46B</text>
+  <text x="270" y="815" font-family="Arial, sans-serif" font-size="8" fill="#60a5fa">4 Bed Townhouse</text>
+  <text x="270" y="825" font-family="Arial, sans-serif" font-size="8" fill="#34d399">£450,000</text>
+  
+  <!-- Viewings Column -->
+  <rect x="380" y="685" width="110" height="70" rx="5" fill="#1e293b" />
+  <rect x="385" y="690" width="100" height="10" rx="2" fill="#334155" />
+  <text x="390" y="698" font-family="Arial, sans-serif" font-size="8" fill="#60a5fa">Woodland Heights</text>
+  <rect x="385" y="705" width="100" height="45" rx="2" fill="#334155" />
+  <text x="390" y="720" font-family="Arial, sans-serif" font-size="10" fill="#ffffff">Unit 44C</text>
+  <text x="390" y="735" font-family="Arial, sans-serif" font-size="8" fill="#60a5fa">4 Viewings</text>
+  <text x="390" y="745" font-family="Arial, sans-serif" font-size="8" fill="#34d399">£395,000</text>
+  
+  <rect x="380" y="765" width="110" height="70" rx="5" fill="#1e293b" />
+  <rect x="385" y="770" width="100" height="10" rx="2" fill="#334155" />
+  <text x="390" y="778" font-family="Arial, sans-serif" font-size="8" fill="#60a5fa">Woodland Heights</text>
+  <rect x="385" y="785" width="100" height="45" rx="2" fill="#334155" />
+  <text x="390" y="800" font-family="Arial, sans-serif" font-size="10" fill="#ffffff">Unit 42C</text>
+  <text x="390" y="815" font-family="Arial, sans-serif" font-size="8" fill="#60a5fa">2 Viewings</text>
+  <text x="390" y="825" font-family="Arial, sans-serif" font-size="8" fill="#34d399">£380,000</text>
+  
+  <!-- Offers Column -->
+  <rect x="500" y="685" width="110" height="70" rx="5" fill="#1e293b" />
+  <rect x="505" y="690" width="100" height="10" rx="2" fill="#334155" />
+  <text x="510" y="698" font-family="Arial, sans-serif" font-size="8" fill="#60a5fa">Woodland Heights</text>
+  <rect x="505" y="705" width="100" height="45" rx="2" fill="#334155" />
+  <text x="510" y="720" font-family="Arial, sans-serif" font-size="10" fill="#ffffff">Unit 40B</text>
+  <rect x="510" y="730" width="50" height="15" rx="7" fill="#10b981" opacity="0.3" />
+  <text x="535" y="741" font-family="Arial, sans-serif" font-size="8" fill="#10b981" text-anchor="middle">£435,000</text>
+  
+  <rect x="500" y="765" width="110" height="70" rx="5" fill="#1e293b" />
+  <rect x="505" y="770" width="100" height="10" rx="2" fill="#334155" />
+  <text x="510" y="778" font-family="Arial, sans-serif" font-size="8" fill="#60a5fa">Woodland Heights</text>
+  <rect x="505" y="785" width="100" height="45" rx="2" fill="#334155" />
+  <text x="510" y="800" font-family="Arial, sans-serif" font-size="10" fill="#ffffff">Unit 41C</text>
+  <rect x="510" y="810" width="50" height="15" rx="7" fill="#3b82f6" opacity="0.3" />
+  <text x="535" y="821" font-family="Arial, sans-serif" font-size="8" fill="#3b82f6" text-anchor="middle">£410,000</text>
+  
+  <!-- Closing Column -->
+  <rect x="620" y="685" width="110" height="70" rx="5" fill="#1e293b" />
+  <rect x="625" y="690" width="100" height="10" rx="2" fill="#334155" />
+  <text x="630" y="698" font-family="Arial, sans-serif" font-size="8" fill="#60a5fa">Woodland Heights</text>
+  <rect x="625" y="705" width="100" height="45" rx="2" fill="#334155" />
+  <text x="630" y="720" font-family="Arial, sans-serif" font-size="10" fill="#ffffff">Unit 38A</text>
+  <rect x="630" y="730" width="60" height="15" rx="7" fill="#10b981" opacity="0.3" />
+  <text x="660" y="741" font-family="Arial,

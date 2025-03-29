@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#1e293b" />
+  
+  <!-- Subtle gradient overlay -->
+  <defs>
+    <radialGradient id="backgroundGradient" cx="200" cy="200" r="300" fx="200" fy="200">
+      <stop offset="0%" stop-color="#334155" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.8" />
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#backgroundGradient)" />
+  
+  <!-- Subtle edge lighting -->
+  <rect x="0" y="0" width="400" height="400" fill="none" stroke="#3b82f6" stroke-width="1" stroke-opacity="0.3" />
+  
+  <!-- Person -->
+  <g transform="translate(200, 200)">
+    <!-- Blazer - business development style -->
+    <path d="M-60,-20 L-90,150 L90,150 L60,-20 z" fill="#0f172a" />
+    <path d="M-40,-20 L-45,150 L45,150 L40,-20 z" fill="#1e293b" />
+    
+    <!-- Professional blouse -->
+    <path d="M-25,-20 L-15,40 L0,50 L15,40 L25,-20 z" fill="#cbd5e1" />
+    
+    <!-- Business accessory - subtle necklace -->
+    <path d="M-10,-5 C-5,5 5,5 10,-5" fill="none" stroke="#94a3b8" stroke-width="1" />
+    <circle cx="0" cy="5" r="2" fill="#3b82f6" />
+    
+    <!-- Neck -->
+    <path d="M-15,-50 L-20,-20 L20,-20 L15,-50 z" fill="#f8fafc" />
+    
+    <!-- Head - female with business style -->
+    <ellipse cx="0" cy="-90" rx="45" ry="55" fill="#f8fafc" />
+    
+    <!-- Business appropriate hairstyle -->
+    <path d="M-40,-120 C-45,-140 -20,-160 0,-160 C20,-160 45,-140 40,-120 L30,-90 L0,-95 L-30,-90 z" fill="#0f172a" />
+    <path d="M-35,-115 C-40,-135 -15,-150 
