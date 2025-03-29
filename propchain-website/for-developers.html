@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Developers - PropChain</title>
+  <meta name="description" content="PropChain offers property developers faster sales cycles, reduced fall-through rates, and a competitive advantage with 70-75% faster transactions and 48% cost savings.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.ico">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <img src="images/propchain-logo.svg" alt="PropChain Logo">
+        PropChain
+      </a>
+      
+      <nav class="nav">
+        <button class="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="our-solution.html" class="nav-link">Our Solution</a></li>
+          <li class="nav-item"><a href="for-developers.html" class="nav-link">For Developers</a></li>
+          <li class="nav-item"><a href="for-solicitors.html" class="nav-link">For Solicitors</a></li>
+          <li class="nav-item"><a href="technology.html" class="nav-link">Technology</a></li>
+          <li class="nav-item"><a href="about-us.html" class="nav-link">About Us</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Hero Section -->
+  <section class="solution-hero">
+    <div class="container">
+      <h1>For Property Developers</h1>
+      <p class="hero-subtitle">PropChain offers significant advantages for property developers, helping you sell properties faster, reduce costs, and create a competitive advantage in the market.</p>
+    </div>
+  </section>
+  
+  <!-- Developer Benefits -->
+  <section class="benefits">
+    <div class="container benefits-container">
+      <div class="benefits-content">
+        <h2>The Developer Advantage</h2>
+        <p>PropChain's blockchain-based property transaction system provides property developers with significant competitive advantages in today's challenging market.</p>
+        
+        <ul class="benefits-list">
+          <li class="benefit-item animate-on-scroll">
+            <div class="benefit-icon">
+              <i class="fas fa-tachometer-alt"></i>
+            </div>
+            <div class="benefit-text">
+              <h3 class="benefit-title">Faster Sales Cycles</h3>
+              <p class="benefit-description">Reduce the time from offer to completion by 70-75%, allowing you to recognize revenue sooner and reduce carrying costs. Complete transactions in 3-4 weeks instead of 12-16 weeks.</p>
+            </div>
+          </li>
+          
+          <li class="benefit-item animate-on-scroll">
+            <div class="benefit-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="benefit-text">
+              <h3 class="benefit-title">Reduced Fall-Through Rates</h3>
+              <p class="benefit-description">Decrease transaction failures from 25-30% to approximately 10%, improving sales forecasting and reducing remarketing costs. More reliable completions mean better business planning.</p>
+            </div>
+          </li>
+          
+          <li class="benefit-item animate-on-scroll">
+            <div class="benefit-icon">
+              <i class="fas fa-pound-sign"></i>
+            </div>
+            <div class="benefit-text">
+              <h3 class="benefit-title">Lower Transaction Costs</h3>
+              <p class="benefit-description">Cut direct transaction costs by 48%, from £3,825 to £1,975 per property through elimination of duplicate work and automated verification processes.</p>
+            </div>
+          </li>
+          
+          <li class="benefit-item animate-on-scroll">
+            <div class="benefit-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <div class="benefit-text">
+              <h3 class="benefit-title">Competitive Advantage</h3>
+              <p class="benefit-description">Offer buyers a faster, more transparent purchase experience as a key selling point for your properties. Stand out in a crowded market with innovative technology.</p>
+            </div>
+          </li>
+          
+          <li class="benefit-item animate-on-scroll">
+            <div class="benefit-icon">
+              <i class="fas fa-tasks"></i>
+            </div>
+            <div class="benefit-text">
+              <h3 class="benefit-title">Standardized Process</h3>
+              <p class="benefit-description">Create a consistent, efficient sales process across all your developments with comprehensive analytics and reporting on transaction progress.</p>
+            </div>
+          </li>
+          
+          <li class="benefit-item animate-on-scroll">
+            <div class="benefit-icon">
+              <i class="fas fa-eye"></i>
+            </div>
+            <div class="benefit-text">
+              <h3 class="benefit-title">Complete Visibility</h3>
+              <p class="benefit-description">Gain real-time insights into your sales pipeline with transparent transaction monitoring and clear visibility of potential bottlenecks.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="benefits-image">
+        <img src="images/developer-dashboard-mockup.svg" alt="PropChain Developer Dashboard">
+      </div>
+    </div>
+  </section>
+  
+  <!-- ROI Calculator -->
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title">Calculate Your ROI</h2>
+      <p class="section-subtitle">See how PropChain can impact your bottom line with our interactive ROI calculator.</p>
+      
+      <div class="roi-calculator" id="roi-calculator">
+        <form class="calculator-form">
+          <div>
+            <div class="form-group">
+              <label for="property-units" class="form-label">Number of Properties (Annual)</label>
+              <input type="number" id="property-units" class="form-input" placeholder="e.g., 50" min="1" max="1000">
+            </div>
+            
+            <div class="form-group">
+              <label for="average-price" class="form-label">Average Property Price (£)</label>
+              <input type="number" id="average-price" class="form-input" placeholder="e.g., 350000" min="100000" max="10000000">
+            </div>
+          </div>
+          
+          <div>
+            <div class="form-group">
+              <label for="current-time" class="form-label">Current Average Transaction Time (weeks)</label>
+              <input type="number" id="current-time" class="form-input" placeholder="e.g., 14" min="4" max="52" value="14">
+            </div>
+            
+            <div class="form-group">
+              <button id="calculate-roi" class="button button-primary" style="margin-top: 32px; width: 100%;">Calculate ROI</button>
+            </div>
+          </div>
+        </form>
+        
+        <div id="calculator-results" class="calculator-results" style="display: none;">
+          <h3 class="mb-3">Your Potential Savings</h3>
+          
+          <div class="result-item">
+            <div class="result-label">Time Savings:</div>
+            <div class="result-value" id="time-savings">-</div>
+          </div>
+          
+          <div class="result-item">
+            <div class="result-label">Cost Savings:</div>
+            <div class="result-value" id="cost-savings">-</div>
+          </div>
+          
+          <div class="result-item">
+            <div class="result-label">Fall-Through Reduction:</div>
+            <div class="result-value" id="fall-through-reduction">-</div>
+          </div>
+          
+          <div class="result-item">
+            <div class="result-label">Total Potential Value:</div>
+            <div class="result-value" id="total-savings">-</div>
+          </div>
+          
+          <p class="mt-3">Contact us for a detailed analysis specific to your development portfolio.</p>
+          <a href="contact.html" class="button button-secondary mt-2">Request Detailed Analysis</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Implementation Process -->
+  <section class="how-it-works">
+    <div class="container">
+      <h2 class="section-title">Implementation Process</h2>
+      <p class="section-subtitle">PropChain offers a straightforward implementation process designed to minimize disruption to your existing operations.</p>
+      
+      <div class="steps">
+        <div class="step animate-on-scroll">
+          <div class="step-number">1</div>
+          <h3 class="step-title">Initial Assessment</h3>
+          <p class="step-description">We analyze your current sales process, identify integration points, and create a customized implementation plan.</p>
+        </div>
+        
+        <div class="step animate-on-scroll">
+          <div class="step-number">2</div>
+          <h3 class="step-title">System Configuration</h3>
+          <p class="step-description">PropChain is configured to match your development portfolio, branding, and specific requirements.</p>
+        </div>
+        
+        <div class="step animate-on-scroll">
+          <div class="step-number">3</div>
+          <h3 class="step-title">Team Training</h3>
+          <p class="step-description">Your sales and legal teams receive comprehensive training on the PropChain system and dashboard.</p>
+        </div>
+        
+        <div class="step animate-on-scroll">
+          <div class="step-number">4</div>
+          <h3 class="step-title">Pilot Implementation</h3>
+          <p class="step-description">We start with a single development site to demonstrate value and refine the process before full rollout.</p>
+        </div>
+        
+        <div class="step animate-on-scroll">
+          <div class="step-number">5</div>
+          <h3 class="step-title">Full Deployment</h3>
+          <p class="step-description">PropChain is deployed across all your development sites with ongoing support and optimization.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Developer Dashboard -->
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title">Developer Dashboard</h2>
+      <p class="section-subtitle">PropChain provides a comprehensive dashboard that gives you complete visibility into your property transactions.</p>
+      
+      <div class="tech-diagram">
+        <img src="images/developer-dashboard-full.svg" alt="PropChain Developer Dashboard">
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon">
+            <i class="fas fa-chart-pie"></i>
+          </div>
+          <h3 class="feature-title">Portfolio Overview</h3>
+          <p class="feature-description">See your entire property portfolio with real-time status updates on each transaction.</p>
+        </div>
+        
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon">
+            <i class="fas fa-tasks"></i>
+          </div>
+          <h3 class="feature-title">Transaction Tracking</h3>
+          <p class="feature-description">Monitor each step of the transaction process with clear visibility of completed and pending tasks.</p>
+        </div>
+        
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon">
+            <i class="fas fa-file-alt"></i>
+          </div>
+          <h3 class="feature-title">Document Management</h3>
+          <p class="feature-description">Upload, store, and manage all property documentation in one secure, blockchain-verified location.</p>
+        </div>
+        
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3 class="feature-title">Analytics & Reporting</h3>
+          <p class="feature-description">Access comprehensive analytics on transaction times, costs, and performance metrics.</p>
+        </div>
+        
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3 class="feature-title">Stakeholder Management</h3>
+          <p class="feature-description">Manage all transaction stakeholders including buyers, solicitors, and mortgage providers.</p>
+        </div>
+        
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon">
+            <i class="fas fa-bell"></i>
+          </div>
+          <h3 class="feature-title">Alerts & Notifications</h3>
+          <p class="feature-description">Receive real-time alerts for important transaction milestones and potential delays.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section class="benefits">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-subtitle">Get answers to common questions about PropChain for property developers.</p>
+      
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How does PropChain integrate with our existing systems?</h3>
+            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>PropChain is designed to integrate with your existing property management and sales systems through secure APIs. Our implementation team will work with your IT department to ensure seamless integration with minimal disruption to your operations.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What is the implementation timeframe?</h3>
+            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>Typical implementation takes 4-6 weeks from initial assessment to pilot launch. Full deployment across multiple sites can be completed within 3 months, depending on the size and complexity of your development portfolio.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How do buyers and solicitors access the system?</h3>
+            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>Buyers and solicitors receive secure access to their side of the transaction dashboard through a web-based portal. No special software is required, and the interface is intuitive and user-friendly. We provide training materials and support for all users.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What are the costs involved?</h3>
+            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>PropChain operates on a subscription model with an implementation fee and per-transaction charges. The exact pricing depends on your transaction volume and specific requirements. Our pricing is structured to deliver clear ROI, with typical cost savings of 48% per transaction compared to conventional methods.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Is PropChain compliant with UK property laws and regulations?</h3>
+            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, PropChain is designed to work within existing UK legal frameworks for property transactions. Our system complies with all relevant regulations including Land Registry requirements, GDPR, and anti-money laundering legislation. We regularly update the system to reflect any regulatory changes.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What support is provided after implementation?</h3>
+            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>PropChain provides comprehensive ongoing support including a dedicated account manager, technical support team, regular system updates, and continuous optimization based on performance data. We also offer additional training for new staff members as needed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <h2 class="cta-title">Ready to Transform Your Property Transactions?</h2>
+      <p class="cta-description">Join the property transaction revolution and gain a competitive advantage with PropChain's blockchain-based solution.</p>
+      <a href="contact.html" class="cta-button">Request a Demo</a>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-info">
+        <a href="index.html" class="footer-logo">PropChain</a>
+        <p class="footer-description">PropChain transforms property transactions through blockchain technology, reducing completion times from 12-16 weeks to just 3-4 weeks while cutting direct costs by 48%.</p>
+        
+        <div class="footer-social">
+          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-links-column">
+        <h3 class="footer-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li class="footer-link"><a href="index.html">Home</a></li>
+          <li class="footer-link"><a href="our-solution.html">Our Solution</a></li>
+          <li class="footer-link"><a href="for-developers.html">For Developers</a></li>
+          <li class="footer-link"><a href="for-solicitors.html">For Solicitors</a></li>
+          <li class="footer-link"><a href="technology.html">Technology</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links-column">
+        <h3 class="footer-title">Company</h3>
+        <ul class="footer-links">
+          <li class="footer-link"><a href="about-us.html">About Us</a></li>
+          <li class="footer-link"><a href="blog.html">Blog</a></li>
+          <li class="footer-link"><a href="contact.html">Contact</a></li>
+          <li class="footer-link"><a href="#">Privacy Policy</a></li>
+          <li class="footer-link"><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links-column">
+        <h3 class="footer-title">Contact</h3>
+        <ul class="footer-links">
+          <li class="footer-link"><i class="fas fa-map-marker-alt"></i> North Wales, UK</li>
+          <li class="footer-link"><i class="fas fa-phone"></i> +44 (0) 1234 567890</li>
+          <li class="footer-link"><i class="fas fa-envelope"></i> info@propchain.co.uk</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2025 PropChain. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>

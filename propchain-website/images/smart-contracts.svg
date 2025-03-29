@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#1e293b" />
+  
+  <!-- Title -->
+  <text x="400" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">Smart Contracts in Property Transactions</text>
+  
+  <!-- Subtitle -->
+  <text x="400" y="80" font-family="Arial, sans-serif" font-size="16" fill="#60a5fa" text-anchor="middle">Automated Execution Based on Predefined Conditions</text>
+  
+  <!-- Smart Contract Code Block -->
+  <rect x="50" y="120" width="300" height="200" rx="5" fill="#334155" />
+  <rect x="60" y="130" width="280" height="180" rx="3" fill="#0f172a" />
+  
+  <!-- Code Title -->
+  <rect x="70" y="140" width="260" height="25" rx="3" fill="#334155" />
+  <text x="200" y="157" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">PROPERTY TRANSACTION SMART CONTRACT</text>
+  
+  <!-- Code Content -->
+  <text x="80" y="180" font-family="Courier New, monospace" font-size="11" fill="#60a5fa">contract PropertyTransfer {</text>
+  <text x="80" y="195" font-family="Courier New, monospace" font-size="11" fill="#ffffff">  address buyer;</text>
+  <text x="80" y="210" font-family="Courier New, monospace" font-size="11" fill="#ffffff">  address seller;</text>
+  <text x="80" y="225" font-family="Courier New, monospace" font-size="11" fill="#ffffff">  address solicitor;</text>
+  <text x="80" y="240" font-family="Courier New, monospace" font-size="11" fill="#ffffff">  bool documentsVerified;</text>
+  <text x="80" y="255" font-family="Courier New, monospace" font-size="11" fill="#ffffff">  bool fundsEscrowed;</text>
+  <text x="80" y="270" font-family="Courier New, monospace" font-size="11" fill="#10b981">  function executeTransfer() {</text>
+  <text x="80" y="285" font-family="Courier New, monospace" font-size="11" fill="#ef4444">    if(documentsVerified &amp;&amp; fundsEscrowed) {</text>
+  <text x="80" y="300" font-family="Courier New, monospace" font-size="11" fill="#60a5fa">      transferTitle();</text>
+  <text x="80" y="315" font-family="Courier New, monospace" font-size="11" fill="#60a5fa">      releaseFunds();</text>
+  <text x="80" y="330" font-family="Courier New, monospace" font-size="11" fill="#ef4444">    }</text>
+  <text x="80" y="345" font-family="Courier New, monospace" font-size="11" fill="#10b981">  }</text>
+  <text x="80" y="360" font-family="Courier New, monospace" font-size="11" fill="#60a5fa">}</text>
+  
+  <!-- Conditions Flow -->
+  <rect x="450" y="120" width="300" height="200" rx="5" fill="#334155" />
+  <text x="600" y="140" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">SMART CONTRACT CONDITIONS</text>
+  
+  <!-- Conditions Check Boxes -->
+  <rect x="470" y="160" width="260" height="40" rx="3" fill="#0f172a" />
+  <rect x="480" y="170" width="20" height="20" rx="3" fill="#334155" stroke="#10b981" stroke-width="2" />
+  <text x="520" y="185" font-family="Arial, sans-serif" font-size="12" fill="#ffffff">Documents Verified</text>
+  <path d="M483,180 L490,187 L498,173" stroke="#10b981" stroke-width="2" fill="none" />
+  
+  <rect x="470" y="210" width="260" height="40" rx="3" fill="#0f172a" />
+  <rect x="480" y="220" width="20" height="20" rx="3" fill="#334155" stroke="#10b981" stroke-width="2" />
+  <text x="520" y="235" font-family="Arial, sans-serif" font-size="12" fill="#ffffff">Funds Deposited in Escrow</text>
+  <path d="M483,230 L490,237 L498,223" stroke="#10b981" stroke-width="2" fill="none" />
+  
+  <rect x="470" y="260" width="260" height="40" rx="3" fill="#0f172a" />
+  <rect x="480" y="270" width="20" height="20" rx="3" fill="#334155" stroke="#60a5fa" stroke-width="2" />
+  <text x="520" y="285" font-family="Arial, sans-serif" font-size="12" fill="#ffffff">All Parties Digitally Signed</text>
+  <path d="M483,280 L490,287 L498,273" stroke="#60a5fa" stroke-width="2" fill="none" />
+  
+  <!-- Connection between code and conditions -->
+  <path d="M350,220 C370,220 380,220 400,220 C420,220 430,200 450,200" stroke="#10b981" stroke-width="2" fill="none" stroke-dasharray="5,3" />
+  <path d="M350,240 C370,240 380,240 400,240 C420,240 430,230 450,230" stroke="#10b981" stroke-width="2" fill="none" stroke-dasharray="5,3" />
+  
+  <!-- Execution Flow Diagram -->
+  <rect x="100" y="370" width="600" height="180" rx="5" fill="#334155" />
+  <text x="400" y="390" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">SMART CONTRACT EXECUTION FLOW</text>
+  
+  <!-- Smart Contract Execution Steps -->
+  <!-- Step 1: Contract Creation -->
+  <circle cx="150" cy="440" r="30" fill="#3b82f6" />
+  <text x="150" y="444" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+  <text x="150" y="485" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Contract</text>
+  <text x="150" y="500" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Created</text>
+  
+  <!-- Step 2: Document Verification -->
+  <circle cx="250" cy="440" r="30" fill="#3b82f6" />
+  <text x="250" y="444" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+  <text x="250" y="485" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Documents</text>
+  <text x="250" y="500" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Verified</text>
+  
+  <!-- Step 3: Funds Deposited -->
+  <circle cx="350" cy="440" r="30" fill="#3b82f6" />
+  <text x="350" y="444" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+  <text x="350" y="485" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Funds</text>
+  <text x="350" y="500" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Escrowed</text>
+  
+  <!-- Step 4: Condition Check -->
+  <circle cx="450" cy="440" r="30" fill="#10b981" />
+  <text x="450" y="444" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
+  <text x="450" y="485" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Conditions</text>
+  <text x="450" y="500" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Checked</text>
+  
+  <!-- Step 5: Contract Execution -->
+  <circle cx="550" cy="440" r="30" fill="#10b981" />
+  <text x="550" y="444" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">5</text>
+  <text x="550" y="485" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Property</text>
+  <text x="550" y="500" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Transferred</text>
+  
+  <!-- Step 6: Completion -->
+  <circle cx="650" cy="440" r="30" fill="#10b981" />
+  <text x="650" y="444" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">6</text>
+  <text x="650" y="485" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Funds</text>
+  <text x="650" y="500" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Released</text>
+  
+  <!-- Flow Connection Lines -->
+  <line x1="180" y1="440" x2="220" y2="440" stroke="#60a5fa" stroke-width="2" />
+  <line x1="280" y1="440" x2="320" y2="440" stroke="#60a5fa" stroke-width="2" />
+  <line x1="380" y1="440" x2="420" y2="440" stroke="#60a5fa" stroke-width="2" />
+  <line x1="480" y1="440" x2="520" y2="440" stroke="#10b981" stroke-width="2" />
+  <line x1="580" y1="440" x2="620" y2="440" stroke="#10b981" stroke-width="2" />
+  
+  <!-- Benefits Section -->
+  <rect x="50" y="570" width="220" height="20" rx="10" fill="#3b82f6" opacity="0.2" />
+  <text x="160" y="585" font-family="Arial, sans-serif" font-size="12" fill="#3b82f6" text-anchor="middle">AUTOMATED EXECUTION</text>
+  
+  <rect x="290" y="570" width="220" height="20" rx="10" fill="#10b981" opacity="0.2" />
+  <text x="400" y="585" font-family="Arial, sans-serif" font-size="12" fill="#10b981" text-anchor="middle">TRANSPARENT CONDITIONS</text>
+  
+  <rect x="530" y="570" width="220" height="20" rx="10" fill="#60a5fa" opacity="0.2" />
+  <text x="640" y="585" font-family="Arial, sans-serif" font-size="12" fill="#60a5fa" text-anchor="middle">REDUCED TRANSACTION TIME</text>
+  
+  <!-- PropChain Logo -->
+  <g transform="translate(50, 50) scale(0.6)">
+    <!-- Chain link -->
+    <path d="M30,30 C30,22 25,15 18,15 C11,15 5,22 5,30 C5,38 11,45 18,45 L30,45" 
+          fill="none" stroke="#3b82f6" stroke-width="4" stroke-linecap="round" />
+    <path d="M28,45 L40,45 C47,45 53,38 53,30 C53,22 47,15 40,15 C33,15 28,22 28,30" 
+          fill="none" stroke="#60a5fa" stroke-width="4" stroke-linecap="round" />
+    
+    <!-- House roof -->
+    <path d="M15,15 L40,0 L65,15" fill="none" stroke="#10b981" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <!-- House body -->
+    <rect x="25" y="15" width="30" height="30" fill="none" stroke="#34d399" stroke-width="4" stroke-linejoin="round" />
+  </g>
+  
+  <!-- Blockchain Elements -->
+  <g transform="translate(700, 50) scale(0.6)">
+    <rect x="0" y="0" width="25" height="10" rx="2" fill="#334155" stroke="#10b981" stroke-width="1" />
+    <rect x="10" y="15" width="25" height="10" rx="2" fill="#334155" stroke="#10b981" stroke-width="1" />
+    <rect x="20" y="30" width="25" height="10" rx="2" fill="#334155" stroke="#10b981" stroke-width="1" />
+  </g>
+</svg>
