@@ -1,13 +1,13 @@
-# PropChain Website
+# PropXchain Website
 
-A professional, modern website for PropChain, a blockchain-based property transaction system that reduces UK property transaction times from 12-16 weeks to 3-4 weeks while cutting costs by approximately 48%.
+A professional, modern website for PropXchain, a blockchain-based property transaction system that reduces UK property transaction times from 12-16 weeks to 3-4 weeks while cutting costs by approximately 48%.
 
 ## Website Structure
 
 The website consists of the following pages:
 
 1. **Homepage (index.html)** - Main landing page with clear value proposition, key benefits, and call-to-action
-2. **Our Solution (our-solution.html)** - Detailed explanation of the PropChain system, comparison with conventional methods
+2. **Our Solution (our-solution.html)** - Detailed explanation of the PropXchain system, comparison with conventional methods
 3. **For Developers (for-developers.html)** - Specific benefits for property developers, ROI calculator, implementation process
 4. **For Solicitors (for-solicitors.html)** - Benefits for conveyancing professionals, streamlined legal processes
 5. **Technology (technology.html)** - Explanation of blockchain technology, security, compliance, and technical architecture
@@ -37,7 +37,7 @@ The website is built with:
 
 The website requires the following images (to be added):
 
-- propchain-logo.svg - Company logo for the header
+- propXchain-logo.svg - Company logo for the header
 - hero-dashboard.png - Dashboard screenshot for the homepage hero section
 - developer-benefits.jpg - Image for the developer benefits section
 - new-builds.jpg - Image for the new builds section
@@ -64,10 +64,10 @@ The website requires the following images (to be added):
 
 For any questions or support, please contact:
 
-PropChain Innovation Centre  
+PropXchain Innovation Centre  
 Technology Park  
 North Wales, UK  
 LL12 8XY
 
-Email: info@propchain.co.uk  
+Email: info@propXchain.co.uk  
 Phone: +44 (0) 1234 567890

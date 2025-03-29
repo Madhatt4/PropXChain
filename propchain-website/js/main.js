@@ -1,4 +1,4 @@
-// PropChain Website JavaScript
+// PropXchain Website JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
   // Mobile Menu Toggle
@@ -39,14 +39,14 @@ document.addEventListener('DOMContentLoaded', function() {
       const timeSavingsPercentage = (timeSavings / currentTime * 100).toFixed(0);
       
       const conventionalCost = 3825; // £3,825 average transaction cost
-      const propchainCost = 1975; // £1,975 average transaction cost
-      const costSavingsPerProperty = conventionalCost - propchainCost;
+      const propXchainCost = 1975; // £1,975 average transaction cost
+      const costSavingsPerProperty = conventionalCost - propXchainCost;
       const totalCostSavings = costSavingsPerProperty * propertyUnits;
       
       const conventionalFallThrough = 0.28; // 28% average fall-through rate
-      const propchainFallThrough = 0.10; // 10% estimated fall-through rate
-      const fallThroughReduction = ((conventionalFallThrough - propchainFallThrough) * 100).toFixed(0);
-      const additionalSales = Math.round(propertyUnits * (conventionalFallThrough - propchainFallThrough));
+      const propXchainFallThrough = 0.10; // 10% estimated fall-through rate
+      const fallThroughReduction = ((conventionalFallThrough - propXchainFallThrough) * 100).toFixed(0);
+      const additionalSales = Math.round(propertyUnits * (conventionalFallThrough - propXchainFallThrough));
       const additionalRevenue = additionalSales * averagePrice;
       
       // Display results
