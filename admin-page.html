@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PropXchain Admin - Contact Form Submissions</title>
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #f8fafc;
+      background-color: #1e293b;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #334155;
+    }
+    
+    h1 {
+      color: #f8fafc;
+      margin: 0;
+    }
+    
+    .login-form {
+      max-width: 400px;
+      margin: 5rem auto;
+      padding: 2rem;
+      background-color: #334155;
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .submissions-container {
+      display: none;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+      background-color: #334155;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+    
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #475569;
+    }
+    
+    th {
+      background-color: #1e40af;
+      color: white;
+      font-weight: 600;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #3f495f;
+    }
+    
+    tr:hover {
+      background-color: #475569;
+    }
+    
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+    
+    button {
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+    
+    button:hover {
+      background-color: #2563eb;
+    }
+    
+    button:disabled {
+      background-color: #64748b;
+      cursor: default;
+    }
+    
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 0.25rem;
+      border: 1px solid #475569;
+      background-color: #1e293b;
+      color: #f8fafc;
+    }
+    
+    .message-details {
+      max-height: 100px;
+      overflow-y: auto;
+    }
+    
+    .view-details {
+      cursor: pointer;
+      text-decoration: underline;
+      color: #60a5fa;
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .modal-content {
+      background-color: #334155;
+      margin: 15% auto;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      max-width: 600px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+    
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    .close:hover {
+      color: white;
+    }
+    
+    .modal-field {
+      margin-bottom: 1rem;
+    }
+    
+    .modal-label {
+      font-weight: 600;
+      display: inline-block;
+      width: 100px;
+    }
+    
+    .card {
+      padding: 1.5rem;
+      background-color: #475569;
+      border-radius: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    
+    .no-submissions {
+      text-align: center;
+      padding: 3rem;
+      background-color: #334155;
+      border-radius: 0.5rem;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+      
+      th, td {
+        padding: 0.75rem 0.5rem;
+      }
+      
+      .modal-content {
+        width: 90%;
+        margin: 10% auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="login-form" id="login-form">
+      <h2>PropXchain Admin Login</h2>
+      <p>Enter your credentials to view contact form submissions.</p>
+      
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      
+      <button type="button" id="login-button">Login</button>
+      <p id="login-error" style="color: #ef4444; display: none;">Invalid credentials. Please try again.</p>
+    </div>
+    
+    <div class="submissions-container" id="submissions-container">
+      <header>
+        <h1>Contact Form Submissions</h1>
+        <button id="logout-button">Logout</button>
+      </header>
+      
+      <div id="submissions-list">
+        <!-- Submissions will be loaded here -->
+      </div>
+      
+      <div class="pagination" id="pagination">
+        <!-- Pagination controls will be added here -->
+      </div>
+    </div>
+  </div>
+  
+  <div id="submission-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Submission Details</h2>
+      <div id="modal-body">
+        <!-- Submission details will be loaded here -->
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    const apiUrl = 'https://your-backend-url.com'; // Update with your actual backend URL
+    let currentPage = 1;
+    let totalPages = 1;
+    let submissionsData = [];
+    let credentials = null;
+    
+    // DOM Elements
+    const loginForm = document.getElementById('login-form');
+    const submissionsContainer = document.getElementById('submissions-container');
+    const submissionsList = document.getElementById('submissions-list');
+    const pagination = document.getElementById('pagination');
+    const loginButton = document.getElementById('login-button');
+    const loginError = document.getElementById('login-error');
+    const logoutButton = document.getElementById('logout-button');
+    const modal = document.getElementById('submission-modal');
+    const modalClose = document.querySelector('.close');
+    const modalBody = document.getElementById('modal-body');
+    
+    // Event Listeners
+    loginButton.addEventListener('click', login);
+    logoutButton.addEventListener('click', logout);
+    modalClose.addEventListener('click', closeModal);
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+    
+    // Check for stored credentials
+    function checkAuth() {
+      const storedCredentials = localStorage.getItem('propxchain_admin_auth');
+      if (storedCredentials) {
+        credentials = storedCredentials;
+        loginForm.style.display = 'none';
+        submissionsContainer.style.display = 'block';
+        loadSubmissions();
+      }
+    }
+    
+    // Login function
+    async function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      
+      if (!username || !password) {
+        loginError.textContent = 'Please enter both username and password';
+        loginError.style.display = 'block';
+        return;
+      }
+      
+      credentials = btoa(`${username}:${password}`);
+      
+      try {
+        const response = await fetch(`${apiUrl}/api/submissions?page=1&limit=10`, {
+          headers: {
+            'Authorization': `Basic ${credentials}`
+          }
+        });
+        
+        if (response.ok) {
+          localStorage.setItem('propxchain_admin_auth', credentials);
+          loginForm.style.display = 'none';
+          submissionsContainer.style.display = 'block';
+          loadSubmissions();
+        } else {
+          loginError.textContent = 'Invalid credentials. Please try again.';
+          loginError.style.display = 'block';
+          credentials = null;
+        }
+      } catch (error) {
+        console.error('Login error:', error);
+        loginError.textContent = 'Connection error. Please try again later.';
+        loginError.style.display = 'block';
+      }
+    }
+    
+    // Logout function
+    function logout() {
+      localStorage.removeItem('propxchain_admin_auth');
+      credentials = null;
+      submissionsContainer.style.display = 'none';
+      loginForm.style.display = 'block';
+      document.getElementById('username').value = '';
+      document.getElementById('password').value = '';
+      loginError.style.display = 'none';
+    }
+    
+    // Load submissions from API
+    async function loadSubmissions(page = 1) {
+      if (!credentials) return;
+      
+      try {
+        const response = await fetch(`${apiUrl}/api/submissions?page=${page}&limit=10`, {
+          headers: {
+            'Authorization': `Basic ${credentials}`
+          }
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          submissionsData = data.data;
+          totalPages = data.pagination.pages;
+          currentPage = data.pagination.page;
+          
+          renderSubmissions();
+          renderPagination();
+        } else if (response.status === 401) {
+          // Unauthorized - clear credentials and show login
+          logout();
+        } else {
+          console.error('Error loading submissions:', await response.text());
+        }
+      } catch (error) {
+        console.error('Error loading submissions:', error);
+      }
+    }
+    
+    // Render submissions to the page
+    function renderSubmissions() {
+      if (submissionsData.length === 0) {
+        submissionsList.innerHTML = `
+          <div class="no-submissions">
+            <h3>No submissions found</h3>
+            <p>There are no contact form submissions to display.</p>
+          </div>
+        `;
+        return;
+      }
+      
+      let html = `
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Interest</th>
+              <th>Message</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+      
+      submissionsData.forEach(submission => {
+        const date = new Date(submission.submittedAt).toLocaleString();
+        const messageSummary = submission.message.length > 50 
+          ? submission.message.substring(0, 50) + '...' 
+          : submission.message;
+        
+        html += `
+          <tr>
+            <td>${date}</td>
+            <td>${submission.name}</td>
+            <td>${submission.email}</td>
+            <td>${submission.interest || 'General'}</td>
+            <td>${messageSummary}</td>
+            <td>
+              <span class="view-details" data-id="${submission._id}">View Details</span>
+            </td>
+          </tr>
+        `;
+      });
+      
+      html += `
+          </tbody>
+        </table>
+      `;
+      
+      submissionsList.innerHTML = html;
+      
+      // Add event listeners to view detail links
+      document.querySelectorAll('.view-details').forEach(link => {
+        link.addEventListener('click', () => {
+          const id = link.getAttribute('data-id');
+          showSubmissionDetails(id);
+        });
+      });
+    }
+    
+    // Render pagination controls
+    function renderPagination() {
+      if (totalPages <= 1) {
+        pagination.innerHTML = '';
+        return;
+      }
+      
+      let html = '';
+      
+      // Previous button
+      html += `
+        <button ${currentPage === 1 ? 'disabled' : ''} onclick="loadSubmissions(${currentPage - 1})">
+          Previous
+        </button>
+      `;
+      
+      // Page numbers
+      for (let i = 1; i <= totalPages; i++) {
+        html += `
+          <button ${currentPage === i ? 'disabled' : ''} onclick="loadSubmissions(${i})">
+            ${i}
+          </button>
+        `;
+      }
+      
+      // Next button
+      html += `
+        <button ${currentPage === totalPages ? 'disabled' : ''} onclick="loadSubmissions(${currentPage + 1})">
+          Next
+        </button>
+      `;
+      
+      pagination.innerHTML = html;
+    }
+    
+    // Show submission details in modal
+    function showSubmissionDetails(id) {
+      const submission = submissionsData.find(s => s._id === id);
+      if (!submission) return;
+      
+      const date = new Date(submission.submittedAt).toLocaleString();
+      
+      let html = `
+        <div class="modal-field">
+          <span class="modal-label">Date:</span> ${date}
+        </div>
+        <div class="modal-field">
+          <span class="modal-label">Name:</span> ${submission.name}
+        </div>
+        <div class="modal-field">
+          <span class="modal-label">Email:</span> <a href="mailto:${submission.email}">${submission.email}</a>
+        </div>
+        <div class="modal-field">
+          <span class="modal-label">Company:</span> ${submission.company || 'Not provided'}
+        </div>
+        <div class="modal-field">
+          <span class="modal-label">Phone:</span> ${submission.phone ? `<a href="tel:${submission.phone}">${submission.phone}</a>` : 'Not provided'}
+        </div>
+        <div class="modal-field">
+          <span class="modal-label">Interest:</span> ${submission.interest || 'General Inquiry'}
+        </div>
+        <div class="modal-field">
+          <span class="modal-label">Message:</span>
+          <div class="card">
+            ${submission.message.replace(/\n/g, '<br>')}
+          </div>
+        </div>
+      `;
+      
+      modalBody.innerHTML = html;
+      modal.style.display = 'block';
+    }
+    
+    // Close modal
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+    
+    // Initialize
+    checkAuth();
+  </script>
+</body>
+</html>
