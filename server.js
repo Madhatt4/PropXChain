@@ -10,15 +10,18 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve static files
-app.use(express.static(path.join(__dirname)));
+// MongoDB Connection (optional for Vercel deployment)
+let dbConnected = false;
+const MONGODB_URI = process.env.MONGODB_URI;
 
-// MongoDB Connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://marchatton:Marc2711@cluster0.elgpsni.mongodb.net/propxchain';
-
-mongoose.connect(MONGODB_URI)
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.error('MongoDB connection error:', err));
+if (MONGODB_URI) {
+  mongoose.connect(MONGODB_URI)
+    .then(() => {
+      console.log('MongoDB connected');
+      dbConnected = true;
+    })
+    .catch(err => console.error('MongoDB connection error:', err));
+}
 
 // Contact Form Submission Schema
 const ContactSubmissionSchema = new mongoose.Schema({
