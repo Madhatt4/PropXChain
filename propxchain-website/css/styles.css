@@ -211,8 +211,11 @@ ul, ol {
   background: none;
   border: none;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   cursor: pointer;
+  padding: 8px;
+  z-index: 200;
+  position: relative;
 }
 
 /* Hero Section */
@@ -689,6 +692,59 @@ ul, ol {
   }
 }
 
+/* Tablet and Mobile Styles */
+@media (max-width: 992px) {
+  .nav {
+    position: relative;
+  }
+  
+  .mobile-menu-toggle {
+    display: block;
+    transition: transform var(--transition-normal);
+  }
+  
+  .mobile-menu-toggle.active {
+    transform: rotate(90deg);
+  }
+  
+  .nav-list {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: auto;
+    right: 0;
+    width: 250px;
+    background-color: #0f172a;
+    flex-direction: column;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    z-index: 150;
+  }
+  
+  .nav-list.active {
+    display: flex;
+  }
+  
+  .nav-item {
+    margin: var(--spacing-md) 0;
+    margin-left: 0;
+    text-align: center;
+  }
+  
+  .nav-link {
+    display: block;
+    padding: var(--spacing-sm) 0;
+  }
+  
+  .nav-cta {
+    margin-left: 0;
+    display: block;
+    text-align: center;
+    margin-top: var(--spacing-md);
+  }
+}
+
 @media (max-width: 768px) {
   .hero-container {
     flex-direction: column;
@@ -707,45 +763,28 @@ ul, ol {
     grid-template-columns: 1fr;
   }
   
-  .nav-list {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: #0f172a;
-    flex-direction: column;
-    padding: var(--spacing-lg);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 100;
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Landscape mode on mobile */
+@media (max-width: 992px) and (orientation: landscape) {
+  .header {
+    padding: var(--spacing-sm) 0;
   }
   
-  .nav-list.active {
-    display: flex;
+  .logo img {
+    height: 30px;
+  }
+  
+  .nav-list {
+    max-height: 80vh;
+    overflow-y: auto;
   }
   
   .nav-item {
-    margin: var(--spacing-md) 0;
-    margin-left: 0;
-  }
-  
-  .nav-cta {
-    margin-left: 0;
-    display: inline-block;
-    margin-top: var(--spacing-md);
-  }
-  
-  .mobile-menu-toggle {
-    display: block;
-    transition: transform var(--transition-normal);
-  }
-  
-  .mobile-menu-toggle.active {
-    transform: rotate(90deg);
-  }
-  
-  .footer-container {
-    grid-template-columns: 1fr;
+    margin: var(--spacing-sm) 0;
   }
 }
 
