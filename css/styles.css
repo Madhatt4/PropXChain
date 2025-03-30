@@ -176,12 +176,13 @@ ul, ol {
 }
 
 .nav-item {
-  margin-left: var(--spacing-lg);
+  margin-left: var(--spacing-md);
 }
 
 .nav-link {
   color: white;
   font-weight: 500;
+  font-size: 0.95rem;
   transition: opacity var(--transition-fast);
 }
 
@@ -193,10 +194,11 @@ ul, ol {
 .nav-cta {
   background-color: var(--primary-green);
   color: white;
-  padding: var(--spacing-sm) var(--spacing-md);
+  padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--radius-md);
   margin-left: var(--spacing-md);
   font-weight: 500;
+  font-size: 0.95rem;
   transition: background-color var(--transition-fast);
 }
 
