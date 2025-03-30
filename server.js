@@ -69,7 +69,7 @@ app.post('/api/contact', async (req, res) => {
     // Email content
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: 'info@propxchain.com',
+      to: 'marchatton@hotmail.co.uk',
       subject: `PropXchain Contact Form: ${interest || 'General Inquiry'}`,
       html: `
         <h2>New Contact Form Submission</h2>
