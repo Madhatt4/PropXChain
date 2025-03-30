@@ -1,13 +1,17 @@
-// server.js - Backend for PropXchain contact form
+// server.js - Backend for PropXchain website and portal
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Serve static files
+app.use(express.static(path.join(__dirname)));
 
 // MongoDB Connection
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://marchatton:Marc2711@cluster0.elgpsni.mongodb.net/propxchain';
@@ -170,6 +174,17 @@ app.get('/api/submissions', async (req, res) => {
     console.error('Error retrieving submissions:', error);
     res.status(500).json({ success: false, message: 'Failed to retrieve submissions' });
   }
+});
+
+// Catch-all route to handle client-side routing
+app.get('*', (req, res) => {
+  // If the request is for the demo portal, serve the demo index.html
+  if (req.path.startsWith('/demo')) {
+    return res.sendFile(path.join(__dirname, 'demo', 'index.html'));
+  }
+  
+  // Otherwise, serve the main index.html
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Start server
