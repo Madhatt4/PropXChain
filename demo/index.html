@@ -543,27 +543,27 @@
         
         <ul class="nav-list">
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="index.html" class="nav-link active">
               <i class="fas fa-home"></i> Dashboard
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="property-management.html" class="nav-link">
               <i class="fas fa-building"></i> Property Management
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="document-repository.html" class="nav-link">
               <i class="fas fa-folder"></i> Document Repository
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="transaction-tracker.html" class="nav-link">
               <i class="fas fa-exchange-alt"></i> Transaction Tracker
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="communication-center.html" class="nav-link">
               <i class="fas fa-comments"></i> Communication Center
             </a>
           </li>
@@ -573,27 +573,27 @@
         
         <ul class="nav-list">
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="buyer-dashboard.html" class="nav-link">
               <i class="fas fa-home"></i> Buyer Dashboard
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="document-verification.html" class="nav-link">
               <i class="fas fa-file-alt"></i> Document Verification
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="property-details.html" class="nav-link">
               <i class="fas fa-info-circle"></i> Property Details
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="transaction-timeline.html" class="nav-link">
               <i class="fas fa-history"></i> Transaction Timeline
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="buyer-communication.html" class="nav-link">
               <i class="fas fa-comments"></i> Communication Center
             </a>
           </li>
@@ -801,27 +801,27 @@
         
         <ul class="nav-list">
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="buyer-dashboard.html" class="nav-link active">
               <i class="fas fa-home"></i> Dashboard
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="document-verification.html" class="nav-link">
               <i class="fas fa-file-alt"></i> Document Verification
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="property-details.html" class="nav-link">
               <i class="fas fa-info-circle"></i> Property Details
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="transaction-timeline.html" class="nav-link">
               <i class="fas fa-history"></i> Transaction Timeline
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="buyer-communication.html" class="nav-link">
               <i class="fas fa-comments"></i> Communication Center
             </a>
           </li>
@@ -997,17 +997,17 @@
         document.getElementById('password').value = '';
       });
       
-      // Make nav links clickable for demo
+      // Make nav links work properly
       const navLinks = document.querySelectorAll('.nav-link');
       navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          
+        link.addEventListener('click', function() {
           // Remove active class from all links
           navLinks.forEach(l => l.classList.remove('active'));
           
           // Add active class to clicked link
           this.classList.add('active');
+          
+          // Navigation will happen naturally through the href attribute
         });
       });
     });
