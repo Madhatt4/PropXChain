@@ -709,10 +709,39 @@ ul, ol {
   
   .nav-list {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #0f172a;
+    flex-direction: column;
+    padding: var(--spacing-lg);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+  }
+  
+  .nav-list.active {
+    display: flex;
+  }
+  
+  .nav-item {
+    margin: var(--spacing-md) 0;
+    margin-left: 0;
+  }
+  
+  .nav-cta {
+    margin-left: 0;
+    display: inline-block;
+    margin-top: var(--spacing-md);
   }
   
   .mobile-menu-toggle {
     display: block;
+    transition: transform var(--transition-normal);
+  }
+  
+  .mobile-menu-toggle.active {
+    transform: rotate(90deg);
   }
   
   .footer-container {
