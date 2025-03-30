@@ -938,6 +938,11 @@
   </div>
   
   <script>
+    // Vercel Analytics
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script>
     document.addEventListener('DOMContentLoaded', function() {
       const loginPage = document.getElementById('loginPage');
       const developerPortal = document.getElementById('developerPortal');
