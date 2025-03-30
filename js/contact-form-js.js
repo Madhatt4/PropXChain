@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       try {
         // Send form data to backend
-        const response = await fetch('https://your-backend-url.com/api/contact', {
+        const response = await fetch('https://propxchain.com/api/contact', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
