@@ -70,7 +70,22 @@ export default async function handler(req, res) {
     return res.status(200).end();
   }
 
-  // Only allow POST for this endpoint
+  // Add a test endpoint for GET requests
+  if (req.method === 'GET') {
+    return res.status(200).json({ 
+      success: true, 
+      message: 'Contact API endpoint is working!',
+      timestamp: new Date().toISOString(),
+      env: {
+        mongodbUri: MONGODB_URI ? 'Set (first 10 chars): ' + MONGODB_URI.substring(0, 10) + '...' : 'Not set',
+        emailService: process.env.EMAIL_SERVICE || 'Not set',
+        emailUser: process.env.EMAIL_USER ? 'Set' : 'Not set',
+        emailPassword: process.env.EMAIL_PASSWORD ? 'Set' : 'Not set'
+      }
+    });
+  }
+
+  // Only allow POST for form submissions
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, message: 'Method not allowed' });
   }

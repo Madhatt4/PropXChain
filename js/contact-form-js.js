@@ -66,12 +66,18 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const result = await response.json();
         
+        // Log detailed response information
+        console.log('Server response status:', response.status);
+        console.log('Server response OK:', response.ok);
+        console.log('Server response body:', result);
+        
         if (response.ok) {
           // Success
           showMessage('Your message has been sent successfully! We will get back to you soon.', 'success');
           contactForm.reset();
         } else {
           // Server returned an error
+          console.error('Server error response:', result);
           showMessage(result.message || 'Failed to send your message. Please try again later.', 'error');
         }
       } catch (error) {
