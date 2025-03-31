@@ -24,11 +24,19 @@
     {
       "src": "server.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
+      "src": "/api/contact",
+      "dest": "/api/contact/index.js"
+    },
+    {
+      "src": "/api/((?!contact).*)",
       "dest": "server.js"
     },
     {

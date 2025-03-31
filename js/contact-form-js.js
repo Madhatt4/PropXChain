@@ -76,7 +76,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       } catch (error) {
         // Network or other error
-        console.error('Error submitting form:', error);
+        console.error('Error submitting form:', error.toString());
+        console.error('Error details:', error);
         showMessage('An error occurred. Please try again later or contact us directly.', 'error');
       } finally {
         // Reset button state
