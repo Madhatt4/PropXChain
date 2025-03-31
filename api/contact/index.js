@@ -17,7 +17,7 @@ const ContactSubmissionSchema = new mongoose.Schema({
   interest: { type: String },
   message: { type: String, required: true },
   submittedAt: { type: Date, default: Date.now }
-});
+}, { collection: 'contact' }); // Explicitly set collection name to 'contact'
 
 // Only create the model if it doesn't exist
 const ContactSubmission = mongoose.models.ContactSubmission || 
@@ -25,13 +25,25 @@ const ContactSubmission = mongoose.models.ContactSubmission ||
 
 // Connect to MongoDB
 const connectDB = async () => {
-  if (dbConnected) return;
+  if (dbConnected) {
+    console.log('MongoDB already connected, connection state:', mongoose.connection.readyState);
+    return;
+  }
+  
+  console.log('Attempting to connect to MongoDB...');
+  console.log('MongoDB URI:', MONGODB_URI ? `${MONGODB_URI.substring(0, 20)}...` : 'undefined');
+  
   try {
     await mongoose.connect(MONGODB_URI);
     dbConnected = true;
-    console.log('MongoDB connected');
+    console.log('MongoDB connected successfully');
+    console.log('Connection state:', mongoose.connection.readyState);
+    console.log('Database name:', mongoose.connection.name);
+    console.log('Available collections:', await mongoose.connection.db.listCollections().toArray());
   } catch (error) {
     console.error('MongoDB connection error:', error);
+    console.error('Error details:', error.toString());
+    console.error('Connection state after error:', mongoose.connection.readyState);
   }
 };
 
@@ -74,6 +86,10 @@ export default async function handler(req, res) {
   }
 
   try {
+    console.log('Attempting to save submission to MongoDB...');
+    console.log('MongoDB connection state:', mongoose.connection.readyState);
+    console.log('Form data:', { name, email, company, phone, interest });
+    
     // Save submission to MongoDB
     const newSubmission = new ContactSubmission({
       name,
@@ -86,6 +102,7 @@ export default async function handler(req, res) {
     
     await newSubmission.save();
     console.log('Form submission saved to database with ID:', newSubmission._id);
+    console.log('Collection name:', ContactSubmission.collection.name);
 
     // Create email transporter
     const transporter = createTransporter();
@@ -135,6 +152,22 @@ export default async function handler(req, res) {
     res.status(200).json({ success: true, message: 'Your message has been sent successfully!' });
   } catch (error) {
     console.error('Error processing form submission:', error);
-    res.status(500).json({ success: false, message: 'Failed to send message. Please try again later.' });
+    console.error('Error details:', error.toString());
+    
+    // Provide more specific error messages based on the error type
+    if (error.name === 'MongooseError' || error.name === 'MongoError') {
+      console.error('MongoDB error details:', {
+        name: error.name,
+        code: error.code,
+        message: error.message,
+        connectionState: mongoose.connection.readyState
+      });
+    }
+    
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to send message. Please try again later.',
+      error: process.env.NODE_ENV === 'development' ? error.toString() : undefined
+    });
   }
 };
