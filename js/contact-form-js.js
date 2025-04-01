@@ -1,23 +1,47 @@
 // JavaScript to handle the contact form submission
-// Version: 1.0.1 - Updated to fix MongoDB integration
+// Version: 1.0.2 - Simplified form with debug logger
 document.addEventListener('DOMContentLoaded', function() {
+  // Set up debug logger
+  const debugLog = document.getElementById('debug-log');
+  const debugOutput = document.getElementById('debug-output');
+  
+  // Show debug output in development
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    if (debugOutput) debugOutput.style.display = 'block';
+  }
+  
+  // Override console methods to log to debug output
+  if (debugLog) {
+    const originalConsoleLog = console.log;
+    const originalConsoleError = console.error;
+    const originalConsoleWarn = console.warn;
+    
+    console.log = function() {
+      originalConsoleLog.apply(console, arguments);
+      const args = Array.from(arguments).map(arg => 
+        typeof arg === 'object' ? JSON.stringify(arg, null, 2) : arg
+      );
+      debugLog.textContent += args.join(' ') + '\n';
+    };
+    
+    console.error = function() {
+      originalConsoleError.apply(console, arguments);
+      const args = Array.from(arguments).map(arg => 
+        typeof arg === 'object' ? JSON.stringify(arg, null, 2) : arg
+      );
+      debugLog.textContent += 'ERROR: ' + args.join(' ') + '\n';
+    };
+    
+    console.warn = function() {
+      originalConsoleWarn.apply(console, arguments);
+      const args = Array.from(arguments).map(arg => 
+        typeof arg === 'object' ? JSON.stringify(arg, null, 2) : arg
+      );
+      debugLog.textContent += 'WARNING: ' + args.join(' ') + '\n';
+    };
+  }
+  
   console.log('Contact form handler loaded');
-  
-  console.log('Inspecting all forms on the page');
-  // Log all forms on the page
-  const allForms = document.querySelectorAll('form');
-  console.log(`Found ${allForms.length} forms on the page`);
-  
-  // Log all inputs on the page for debugging
-  const allInputs = document.querySelectorAll('input');
-  console.log(`Found ${allInputs.length} input elements on the page`);
-  allInputs.forEach((input, index) => {
-    console.log(`Input ${index} type:`, input.type);
-    console.log(`Input ${index} ID:`, input.id);
-    console.log(`Input ${index} name:`, input.name);
-    console.log(`Input ${index} placeholder:`, input.placeholder);
-    console.log(`Input ${index} value:`, input.value);
-  });
   
   // Try to find the contact form using different selectors
   let contactForm = document.getElementById('contact-form');
@@ -26,6 +50,9 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!contactForm) {
     console.log('Contact form not found by ID, trying alternative selectors');
     // Try to find any form on the page
+    const allForms = document.querySelectorAll('form');
+    console.log(`Found ${allForms.length} forms on the page`);
+    
     if (allForms.length > 0) {
       // Use the first form found
       contactForm = allForms[0];
@@ -291,10 +318,10 @@ document.addEventListener('DOMContentLoaded', function() {
   // Function to show messages to the user
   function showMessage(message, type) {
     try {
-      // Check if a message element already exists
+      // Get the message element
       let messageElement = document.getElementById('form-message');
       
-      // If not, create one
+      // If not found, create one
       if (!messageElement) {
         messageElement = document.createElement('div');
         messageElement.id = 'form-message';
@@ -311,6 +338,19 @@ document.addEventListener('DOMContentLoaded', function() {
       // Set appropriate class and content
       messageElement.className = `message ${type}`;
       messageElement.textContent = message;
+      messageElement.style.display = 'block';
+      
+      // Add icon based on message type
+      let icon = '';
+      if (type === 'success') {
+        icon = '<i class="fas fa-check-circle"></i> ';
+      } else if (type === 'error') {
+        icon = '<i class="fas fa-exclamation-circle"></i> ';
+      } else if (type === 'warning') {
+        icon = '<i class="fas fa-exclamation-triangle"></i> ';
+      }
+      
+      messageElement.innerHTML = icon + message;
       
       // Scroll to the message
       messageElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -318,7 +358,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Automatically remove success messages after 5 seconds
       if (type === 'success') {
         setTimeout(() => {
-          messageElement.remove();
+          messageElement.style.display = 'none';
         }, 5000);
       }
     } catch (error) {
