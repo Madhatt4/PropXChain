@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .error {
+      border-color: red;
+    }
+    .message {
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+    }
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    .error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    .warning {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+  </style>
+</head>
+<body>
+  <h1>Contact Form Test</h1>
+  
+  <form id="contact-form">
+    <div class="form-group">
+      <label for="name">Your Name *</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Email Address *</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="message">Your Message *</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+    </div>
+    
+    <button type="submit">Send Message</button>
+  </form>
+  
+  <div id="debug-output" style="margin-top: 30px; padding: 15px; background-color: #f5f5f5; border-radius: 4px;">
+    <h2>Debug Output</h2>
+    <pre id="debug-log"></pre>
+  </div>
+  
+  <script>
+    // Debug logger
+    const debugLog = document.getElementById('debug-log');
+    const originalConsoleLog = console.log;
+    const originalConsoleError = console.error;
+    const originalConsoleWarn = console.warn;
+    
+    console.log = function() {
+      originalConsoleLog.apply(console, arguments);
+      const args = Array.from(arguments).map(arg => 
+        typeof arg === 'object' ? JSON.stringify(arg, null, 2) : arg
+      );
+      debugLog.textContent += args.join(' ') + '\n';
+    };
+    
+    console.error = function() {
+      originalConsoleError.apply(console, arguments);
+      const args = Array.from(arguments).map(arg => 
+        typeof arg === 'object' ? JSON.stringify(arg, null, 2) : arg
+      );
+      debugLog.textContent += 'ERROR: ' + args.join(' ') + '\n';
+    };
+    
+    console.warn = function() {
+      originalConsoleWarn.apply(console, arguments);
+      const args = Array.from(arguments).map(arg => 
+        typeof arg === 'object' ? JSON.stringify(arg, null, 2) : arg
+      );
+      debugLog.textContent += 'WARNING: ' + args.join(' ') + '\n';
+    };
+    
+    // JavaScript to handle the contact form submission
+    document.addEventListener('DOMContentLoaded', function() {
+      // Try to find the contact form using different selectors
+      let contactForm = document.getElementById('contact-form');
+      
+      // Debug information
+      console.log('Contact form found by ID:', !!contactForm);
+      
+      // If not found by ID, try other selectors
+      if (!contactForm) {
+        // Log all forms on the page for debugging
+        const allForms = document.querySelectorAll('form');
+        console.log('All forms on page:', allForms.length);
+        allForms.forEach((form, index) => {
+          console.log(`Form ${index} ID:`, form.id);
+          console.log(`Form ${index} class:`, form.className);
+          console.log(`Form ${index} action:`, form.action);
+        });
+        
+        // Try to find the form by other means
+        contactForm = document.querySelector('form') || 
+                     document.querySelector('.contact-form') ||
+                     document.querySelector('.form');
+        
+        console.log('Contact form found by alternate selector:', !!contactForm);
+      }
+      
+      // Log all buttons on the page
+      const allButtons = document.querySelectorAll('button');
+      console.log('All buttons on page:', allButtons.length);
+      allButtons.forEach((button, index) => {
+        console.log(`Button ${index} text:`, button.innerText);
+        console.log(`Button ${index} type:`, button.type);
+        console.log(`Button ${index} class:`, button.className);
+      });
+      
+      // Only proceed if the contact form exists
+      if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          // Only validate the name field for now
+          const nameInput = document.getElementById('name');
+          let isValid = true;
+          
+          // Debug information
+          console.log('Name input found:', !!nameInput);
+          if (nameInput) {
+            console.log('Name input value:', nameInput.value);
+          }
+          
+          if (!nameInput || !nameInput.value.trim()) {
+            if (nameInput) {
+              nameInput.classList.add('error');
+            }
+            isValid = false;
+          } else {
+            nameInput.classList.remove('error');
+          }
+          
+          if (!isValid) {
+            showMessage('Please enter your name.', 'error');
+            return;
+          }
+          
+          // Super simplified form data - only include name field
+          const formData = {
+            name: nameInput.value.trim(),
+            // Add default values for other required fields
+            email: 'test@example.com',
+            message: 'Test message',
+            company: '',
+            phone: '',
+            interest: 'General Inquiry'
+          };
+          
+          console.log('Form data prepared:', formData);
+          
+          // Show loading state
+          const submitButton = contactForm.querySelector('button[type="submit"]');
+          const originalButtonText = submitButton.innerHTML;
+          submitButton.innerHTML = 'Sending...';
+          submitButton.disabled = true;
+          
+          try {
+            // Log form data for debugging
+            console.log('Form data to be submitted:', {
+              name: formData.name,
+              email: formData.email,
+              company: formData.company,
+              phone: formData.phone,
+              interest: formData.interest,
+              message: formData.message
+            });
+            
+            // Simulate API call with a delay
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            // Simulate successful response
+            console.log('Simulated successful response');
+            
+            // Success
+            showMessage('Your message has been sent successfully! We will get back to you soon.', 'success');
+            contactForm.reset();
+          } catch (error) {
+            // Network or other error
+            console.error('Error submitting form:', error.toString());
+            console.error('Error details:', error);
+            showMessage('An error occurred. Please try again later or contact us directly.', 'error');
+          } finally {
+            // Reset button state
+            submitButton.innerHTML = originalButtonText;
+            submitButton.disabled = false;
+          }
+        });
+      }
+      
+      // Function to show messages to the user
+      function showMessage(message, type) {
+        try {
+          // Check if a message element already exists
+          let messageElement = document.getElementById('form-message');
+          
+          // If not, create one
+          if (!messageElement) {
+            messageElement = document.createElement('div');
+            messageElement.id = 'form-message';
+            
+            // Make sure contactForm exists before using it
+            if (contactForm && contactForm.parentNode) {
+              contactForm.insertAdjacentElement('beforebegin', messageElement);
+            } else {
+              // Fallback - append to body
+              document.body.appendChild(messageElement);
+            }
+          }
+          
+          // Set appropriate class and content
+          messageElement.className = `message ${type}`;
+          messageElement.textContent = message;
+          
+          // Scroll to the message
+          messageElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          
+          // Automatically remove success messages after 5 seconds
+          if (type === 'success') {
+            setTimeout(() => {
+              messageElement.remove();
+            }, 5000);
+          }
+        } catch (error) {
+          console.error('Error showing message:', error);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
