@@ -17,20 +17,38 @@ document.addEventListener('DOMContentLoaded', function() {
     e.preventDefault();
     console.log('Form submitted');
     
-    // Get form elements
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const messageInput = document.getElementById('message');
+    // Get form elements directly from the form
+    console.log('Form elements:', contactForm.elements);
+    
+    // Get form elements by their index or name
+    const nameInput = contactForm.elements[0] || contactForm.elements['name'];
+    const emailInput = contactForm.elements[1] || contactForm.elements['email'];
+    const messageInput = contactForm.elements[2] || contactForm.elements['message'];
+    
+    console.log('Form inputs found:', {
+      nameInput: nameInput ? `Found (${nameInput.name || 'unnamed'})` : 'Not found',
+      emailInput: emailInput ? `Found (${emailInput.name || 'unnamed'})` : 'Not found',
+      messageInput: messageInput ? `Found (${messageInput.name || 'unnamed'})` : 'Not found'
+    });
     
     // Check if elements exist
     if (!nameInput || !emailInput || !messageInput) {
-      console.error('Form elements not found:', {
-        nameInput: !!nameInput,
-        emailInput: !!emailInput,
-        messageInput: !!messageInput
-      });
-      alert('Form error: Some form elements could not be found');
-      return;
+      console.error('Form elements not found using direct access');
+      
+      // Last resort: get all inputs in the form
+      const inputs = contactForm.querySelectorAll('input, textarea');
+      console.log(`Found ${inputs.length} inputs in form`);
+      
+      if (inputs.length >= 3) {
+        // Assume first input is name, second is email, third is message
+        nameInput = inputs[0];
+        emailInput = inputs[1];
+        messageInput = inputs[2];
+        console.log('Using inputs by position in form');
+      } else {
+        alert('Form error: Could not find all required form elements');
+        return;
+      }
     }
     
     // Get values
