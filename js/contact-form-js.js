@@ -69,28 +69,32 @@ document.addEventListener('DOMContentLoaded', function() {
     contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       
-      // DIRECT APPROACH: Use the first text input on the page as the name input
-      // This is a simplified approach that should work regardless of IDs or attributes
-      console.log('Using direct approach to find name input');
+      // ULTRA DIRECT APPROACH: Directly access form elements by traversing the DOM
+      console.log('Using ultra direct approach to find name input');
       
-      // Get all text inputs on the page
-      const allTextInputs = document.querySelectorAll('input[type="text"]');
-      console.log(`Found ${allTextInputs.length} text inputs on the page`);
+      // Get all inputs in the form using direct DOM traversal
+      const formInputs = contactForm.getElementsByTagName('input');
+      console.log(`Found ${formInputs.length} inputs directly in the form`);
       
-      // Use the first text input as the name input
-      let nameInput = null;
-      if (allTextInputs.length > 0) {
-        nameInput = allTextInputs[0];
-        console.log('Using first text input on the page as name input');
-        console.log('Name input details:', {
-          type: nameInput.type,
-          id: nameInput.id,
-          name: nameInput.name,
-          value: nameInput.value,
-          placeholder: nameInput.placeholder
+      // Log all inputs for debugging
+      for (let i = 0; i < formInputs.length; i++) {
+        console.log(`Form input ${i}:`, {
+          type: formInputs[i].type,
+          id: formInputs[i].id,
+          name: formInputs[i].name,
+          value: formInputs[i].value
         });
+      }
+      
+      // Use the first input as the name input (assuming it's the name field)
+      let nameInput = formInputs.length > 0 ? formInputs[0] : null;
+      
+      if (nameInput) {
+        console.log('Using first input in form as name input');
       } else {
-        console.error('No text inputs found on the page');
+        // Fallback: try to get the input by its ID directly from the form
+        nameInput = document.getElementById('name');
+        console.log('Fallback: trying to get name input by ID directly');
       }
       
       let isValid = true;
