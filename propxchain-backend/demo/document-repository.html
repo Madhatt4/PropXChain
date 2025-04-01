@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Repository - PropXchain Portal Demo</title>
+  <link rel="icon" href="../images/propxchain-favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #0066cc;
+      --primary-dark: #0052a3;
+      --secondary: #2c3e50;
+      --success: #28a745;
+      --warning: #ffc107;
+      --danger: #dc3545;
+      --light: #f8f9fa;
+      --dark: #1a2a3a;
+      --gray: #6c757d;
+      --gray-light: #e9ecef;
+      --gray-dark: #343a40;
+      --border-radius: 4px;
+      --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: #f0f2f5;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    /* Header Styles */
+    .header {
+      background-color: var(--dark);
+      color: white;
+      padding: 15px 0;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .logo img {
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-right: 10px;
+    }
+
+    .user-name {
+      font-weight: 500;
+    }
+
+    .logout-button {
+      margin-left: 15px;
+      padding: 5px 10px;
+      background-color: transparent;
+      border: 1px solid white;
+      color: white;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .logout-button:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Main Container Styles */
+    .main-container {
+      display: flex;
+      min-height: calc(100vh - 66px);
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: var(--secondary);
+      color: white;
+      padding: 20px 0;
+    }
+
+    .portal-type {
+      padding: 10px 20px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gray-light);
+      margin-bottom: 10px;
+    }
+
+    .nav-list {
+      list-style: none;
+    }
+
+    .nav-item {
+      margin-bottom: 5px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .nav-link:hover, .nav-link.active {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-link i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+
+    /* Content Styles */
+    .content {
+      flex: 1;
+      padding: 30px;
+    }
+
+    .page-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .upload-button {
+      padding: 8px 16px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: var(--border-radius);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+    }
+
+    .upload-button i {
+      margin-right: 8px;
+    }
+
+    .upload-button:hover {
+      background-color: var(--primary-dark);
+    }
+
+    /* Search and Filter */
+    .search-filter {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .search-box {
+      flex: 1;
+      max-width: 400px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 10px 15px 10px 40px;
+      border: 1px solid var(--gray-light);
+      border-radius: var(--border-radius);
+      font-size: 14px;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray);
+    }
+
+    .filter-dropdown {
+      position: relative;
+    }
+
+    .filter-button {
+      padding: 10px 15px;
+      background-color: white;
+      border: 1px solid var(--gray-light);
+      border-radius: var(--border-radius);
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    .filter-button i {
+      margin-left: 10px;
+    }
+
+    /* Document Tabs */
+    .document-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--gray-light);
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: var(--transition);
+    }
+
+    .tab.active {
+      border-bottom-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .tab-count {
+      display: inline-block;
+      margin-left: 5px;
+      padding: 2px 6px;
+      background-color: var(--gray-light);
+      border-radius: 10px;
+      font-size: 12px;
+      color: var(--gray);
+    }
+
+    /* Document List */
+    .document-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    .document-item {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 20px;
+      box-shadow: var(--box-shadow);
+      display: flex;
+      align-items: center;
+    }
+
+    .document-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-right: 20px;
+      color: white;
+    }
+
+    .document-icon.verified {
+      background-color: var(--success);
+    }
+
+    .document-icon.pending {
+      background-color: var(--warning);
+    }
+
+    .document-icon.missing {
+      background-color: var(--danger);
+    }
+
+    .document-info {
+      flex: 1;
+    }
+
+    .document-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .document-type {
+      font-size: 14px;
+      color: var(--gray);
+      margin-bottom: 5px;
+    }
+
+    .document-property {
+      font-size: 14px;
+      color: var(--gray);
+    }
+
+    .document-status {
+      font-size: 14px;
+      font-weight: 500;
+      margin-right: 20px;
+    }
+
+    .status-verified {
+      color: var(--success);
+    }
+
+    .status-pending {
+      color: var(--warning);
+    }
+
+    .status-missing {
+      color: var(--danger);
+    }
+
+    .document-action {
+      padding: 8px 12px;
+      border-radius: var(--border-radius);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .view-action {
+      background-color: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+
+    .view-action:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .upload-action {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+    }
+
+    .upload-action:hover {
+      background-color: var(--primary-dark);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        padding: 10px 0;
+      }
+
+      .search-filter {
+        flex-direction: column;
+      }
+
+      .search-box {
+        max-width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .document-item {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .document-icon {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+
+      .document-status {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <img src="../images/propxchain-logo.svg" alt="PropXchain Logo">
+        PropXchain
+      </a>
+      
+      <div class="user-info">
+        <div class="user-avatar">E</div>
+        <span class="user-name">Emma Wilson</span>
+        <button class="logout-button" id="logoutButton">Log Out</button>
+      </div>
+    </div>
+  </header>
+  
+  <div class="main-container">
+    <aside class="sidebar">
+      <div class="portal-type">DEVELOPER PORTAL</div>
+      
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-home"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="property-management.html" class="nav-link">
+            <i class="fas fa-building"></i> Property Management
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="document-repository.html" class="nav-link active">
+            <i class="fas fa-folder"></i> Document Repository
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="transaction-tracker.html" class="nav-link">
+            <i class="fas fa-exchange-alt"></i> Transaction Tracker
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="communication-center.html" class="nav-link">
+            <i class="fas fa-comments"></i> Communication Center
+          </a>
+        </li>
+      </ul>
+      
+      <div class="portal-type">BUYER PORTAL</div>
+      
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="buyer-dashboard.html" class="nav-link">
+            <i class="fas fa-home"></i> Buyer Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="document-verification.html" class="nav-link">
+            <i class="fas fa-file-alt"></i> Document Verification
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="property-details.html" class="nav-link">
+            <i class="fas fa-info-circle"></i> Property Details
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="transaction-timeline.html" class="nav-link">
+            <i class="fas fa-history"></i> Transaction Timeline
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="buyer-communication.html" class="nav-link">
+            <i class="fas fa-comments"></i> Communication Center
+          </a>
+        </li>
+      </ul>
+    </aside>
+    
+    <main class="content">
+      <div class="page-title">
+        <h1>Document Repository</h1>
+        <button class="upload-button"><i class="fas fa-upload"></i> Upload Document</button>
+      </div>
+      
+      <div class="search-filter">
+        <div class="search-box">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" class="search-input" placeholder="Search documents...">
+        </div>
+        
+        <div class="filter-dropdown">
+          <button class="filter-button">All Properties <i class="fas fa-chevron-down"></i></button>
+        </div>
+      </div>
+      
+      <div class="document-tabs">
+        <div class="tab active">All <span class="tab-count">5</span></div>
+        <div class="tab">Verified <span class="tab-count">3</span></div>
+        <div class="tab">Pending <span class="tab-count">1</span></div>
+        <div class="tab">Rejected <span class="tab-count">0</span></div>
+        <div class="tab">Missing <span class="tab-count">1</span></div>
+      </div>
+      
+      <div class="document-list">
+        <div class="document-item">
+          <div class="document-icon verified">
+            <i class="fas fa-check"></i>
+          </div>
+          <div class="document-info">
+            <h3 class="document-title">Property Title Deed</h3>
+            <p class="document-type">Title Deed</p>
+            <p class="document-property">Riverside Apartments, Unit 301</p>
+          </div>
+          <div class="document-status status-verified">Verified</div>
+          <button class="document-action view-action">View</button>
+        </div>
+        
+        <div class="document-item">
+          <div class="document-icon verified">
+            <i class="fas fa-check"></i>
+          </div>
+          <div class="document-info">
+            <h3 class="document-title">Energy Performance Certificate</h3>
+            <p class="document-type">EPC</p>
+            <p class="document-property">Riverside Apartments, Unit 301</p>
+          </div>
+          <div class="document-status status-verified">Verified</div>
+          <button class="document-action view-action">View</button>
+        </div>
+        
+        <div class="document-item">
+          <div class="document-icon pending">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="document-info">
+            <h3 class="document-title">Building Regulation Compliance</h3>
+            <p class="document-type">Building Compliance</p>
+            <p class="document-property">Riverside Apartments, Unit 301</p>
+          </div>
+          <div class="document-status status-pending">Pending</div>
+          <button class="document-action view-action">View</button>
+        </div>
+        
+        <div class="document-item">
+          <div class="document-icon missing">
+            <i class="fas fa-exclamation-circle"></i>
+          </div>
+          <div class="document-info">
+            <h3 class="document-title">Local Authority Search</h3>
+            <p class="document-type">Local Search</p>
+            <p class="document-property">Riverside Apartments, Unit 301</p>
+          </div>
+          <div class="document-status status-missing">Missing</div>
+          <button class="document-action upload-action">Upload</button>
+        </div>
+        
+        <div class="document-item">
+          <div class="document-icon verified">
+            <i class="fas fa-check"></i>
+          </div>
+          <div class="document-info">
+            <h3 class="document-title">Flood Risk Assessment</h3>
+            <p class="document-type">Flood Risk</p>
+            <p class="document-property">Riverside Apartments, Unit 301</p>
+          </div>
+          <div class="document-status status-verified">Verified</div>
+          <button class="document-action view-action">View</button>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const logoutButton = document.getElementById('logoutButton');
+      const tabs = document.querySelectorAll('.tab');
+      
+      logoutButton.addEventListener('click', function() {
+        window.location.href = 'index.html';
+      });
+      
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          tabs.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

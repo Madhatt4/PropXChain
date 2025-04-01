@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <!-- Dark background -->
+  <rect width="1200" height="800" fill="#1e293b" />
+  
+  <!-- Sidebar -->
+  <rect x="0" y="0" width="220" height="800" fill="#334155" />
+  
+  <!-- Logo area -->
+  <rect x="20" y="20" width="180" height="50" rx="5" fill="#334155" />
+  <text x="55" y="52" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#ffffff">PropChain</text>
+  <circle cx="35" cy="45" r="10" fill="#60a5fa" />
+  
+  <!-- Navigation menu -->
+  <rect x="20" y="100" width="180" height="40" rx="5" fill="#3b82f6" />
+  <text x="55" y="125" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Dashboard</text>
+  <circle cx="35" cy="120" r="6" fill="#ffffff" />
+  
+  <rect x="20" y="150" width="180" height="40" rx="5" fill="#334155" />
+  <text x="55" y="175" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Properties</text>
+  <circle cx="35" cy="170" r="6" fill="#60a5fa" />
+  
+  <rect x="20" y="200" width="180" height="40" rx="5" fill="#334155" />
+  <text x="55" y="225" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Documents</text>
+  <circle cx="35" cy="220" r="6" fill="#60a5fa" />
+  
+  <rect x="20" y="250" width="180" height="40" rx="5" fill="#334155" />
+  <text x="55" y="275" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Stakeholders</text>
+  <circle cx="35" cy="270" r="6" fill="#60a5fa" />
+  
+  <rect x="20" y="300" width="180" height="40" rx="5" fill="#334155" />
+  <text x="55" y="325" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Analytics</text>
+  <circle cx="35" cy="320" r="6" fill="#60a5fa" />
+  
+  <rect x="20" y="350" width="180" height="40" rx="5" fill="#334155" />
+  <text x="55" y="375" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Settings</text>
+  <circle cx="35" cy="370" r="6" fill="#60a5fa" />
+  
+  <!-- Main Content Area -->
+  <!-- Header -->
+  <rect x="240" y="20" width="940" height="70" rx="5" fill="#334155" />
+  <text x="270" y="60" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffffff">Transaction Dashboard</text>
+  
+  <!-- User info -->
+  <circle cx="1100" cy="55" r="20" fill="#60a5fa" />
+  <text x="1050" y="60" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">John Smith</text>
+  
+  <!-- Summary Cards -->
+  <rect x="240" y="110" width="220" height="120" rx="5" fill="#334155" />
+  <text x="260" y="140" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Active Transactions</text>
+  <text x="260" y="180" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#3b82f6">12</text>
+  <circle cx="400" cy="170" r="30" fill="#334155" stroke="#3b82f6" stroke-width="3" />
+  <path d="M385 170 L395 180 L415 160" stroke="#10b981" stroke-width="3" fill="none" />
+  
+  <rect x="480" y="110" width="220" height="120" rx="5" fill="#334155" />
+  <text x="500" y="140" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Completed This Month</text>
+  <text x="500" y="180" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#10b981">8</text>
+  <circle cx="640" cy="170" r="30" fill="#334155" stroke="#10b981" stroke-width="3" />
+  <path d="M630 170 L640 180 L650 165" stroke="#10b981" stroke-width="3" fill="none" />
+  
+  <rect x="720" y="110" width="220" height="120" rx="5" fill="#334155" />
+  <text x="740" y="140" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Avg. Completion Time</text>
+  <text x="740" y="180" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#60a5fa">3.2</text>
+  <text x="800" y="180" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">weeks</text>
+  <line x1="740" y1="200" x2="900" y2="200" stroke="#2563eb" stroke-width="2" />
+  
+  <rect x="960" y="110" width="220" height="120" rx="5" fill="#334155" />
+  <text x="980" y="140" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Cost Savings</text>
+  <text x="980" y="180" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#34d399">48%</text>
+  <path d="M1050 190 L1080 160 L1110 190 L1140 140" stroke="#34d399" stroke-width="3" fill="none" />
+  
+  <!-- Transaction Progress Timeline -->
+  <rect x="240" y="250" width="940" height="240" rx="5" fill="#334155" />
+  <text x="260" y="280" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">Transaction Progress - Woodland Heights, Unit 42B</text>
+  
+  <!-- Timeline Bar -->
+  <line x1="260" y1="350" x2="1140" y2="350" stroke="#60a5fa" stroke-width="4" />
+  
+  <!-- Timeline Points -->
+  <circle cx="320" cy="350" r="15" fill="#10b981" />
+  <text x="320" y="390" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Initial Offer</text>
+  <text x="320" y="410" font-family="Arial, sans-serif" font-size="10" fill="#60a5fa" text-anchor="middle">Completed</text>
+  
+  <circle cx="460" cy="350" r="15" fill="#10b981" />
+  <text x="460" y="390" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Documentation</text>
+  <text x="460" y="410" font-family="Arial, sans-serif" font-size="10" fill="#60a5fa" text-anchor="middle">Completed</text>
+  
+  <circle cx="600" cy="350" r="15" fill="#10b981" />
+  <text x="600" y="390" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Legal Checks</text>
+  <text x="600" y="410" font-family="Arial, sans-serif" font-size="10" fill="#60a5fa" text-anchor="middle">Completed</text>
+  
+  <circle cx="740" cy="350" r="15" fill="#3b82f6" />
+  <text x="740" y="390" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Blockchain Verification</text>
+  <text x="740" y="410" font-family="Arial, sans-serif" font-size="10" fill="#60a5fa" text-anchor="middle">In Progress</text>
+  
+  <circle cx="880" cy="350" r="15" fill="#334155" stroke="#60a5fa" stroke-width="2" />
+  <text x="880" y="390" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Contract Exchange</text>
+  <text x="880" y="410" font-family="Arial, sans-serif" font-size="10" fill="#60a5fa" text-anchor="middle">Pending</text>
+  
+  <circle cx="1020" cy="350" r="15" fill="#334155" stroke="#60a5fa" stroke-width="2" />
+  <text x="1020" y="390" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Completion</text>
+  <text x="1020" y="410" font-family="Arial, sans-serif" font-size="10" fill="#60a5fa" text-anchor="middle">Pending</text>
+  
+  <!-- Timeline Status -->
+  <rect x="260" y="440" width="900" height="30" rx="5" fill="#1e293b" />
+  <rect x="260" y="440" width="480" height="30" rx="5" fill="#2563eb" />
+  <text x="700" y="462" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">65% Complete - Estimated completion: 4 days</text>
+  
+  <!-- Document Verification Section -->
+  <rect x="240" y="510" width="460" height="270" rx="5" fill="#334155" />
+  <text x="260" y="540" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">Document Verification</text>
+  
+  <!-- Document Items -->
+  <rect x="260" y="560" width="420" height="40" rx="5" fill="#1e293b" />
+  <text x="280" y="585" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Property Deed</text>
+  <circle cx="650" cy="580" r="10" fill="#10b981" />
+  <path d="M640 580 L650 590 L660 570" stroke="#ffffff" stroke-width="2" fill="none" />
+  
+  <rect x="260" y="610" width="420" height="40" rx="5" fill="#1e293b" />
+  <text x="280" y="635" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Survey Report</text>
+  <circle cx="650" cy="630" r="10" fill="#10b981" />
+  <path d="M640 630 L650 640 L660 620" stroke="#ffffff" stroke-width="2" fill="none" />
+  
+  <rect x="260" y="660" width="420" height="40" rx="5" fill="#1e293b" />
+  <text x="280" y="685" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Land Registry Confirmation</text>
+  <circle cx="650" cy="680" r="10" fill="#10b981" />
+  <path d="M640 680 L650 690 L660 670" stroke="#ffffff" stroke-width="2" fill="none" />
+  
+  <rect x="260" y="710" width="420" height="40" rx="5" fill="#1e293b" />
+  <text x="280" y="735" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Mortgage Approval</text>
+  <circle cx="650" cy="730" r="10" fill="#3b82f6" />
+  <text x="647" y="734" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff">...</text>
+  
+  <!-- Stakeholder Section -->
+  <rect x="720" y="510" width="460" height="270" rx="5" fill="#334155" />
+  <text x="740" y="540" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">Stakeholders</text>
+  
+  <!-- Stakeholder Items -->
+  <rect x="740" y="560" width="420" height="50" rx="5" fill="#1e293b" />
+  <circle cx="765" cy="585" r="15" fill="#60a5fa" />
+  <text x="790" y="580" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">John Smith (Buyer)</text>
+  <text x="790" y="600" font-family="Arial, sans-serif" font-size="12" fill="#60a5fa">Last activity: Document signed - 2 hrs ago</text>
+  
+  <rect x="740" y="620" width="420" height="50" rx="5" fill="#1e293b" />
+  <circle cx="765" cy="645" r="15" fill="#34d399" />
+  <text x="790" y="640" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Amy Johnson (Seller)</text>
+  <text x="790" y="660" font-family="Arial, sans-serif" font-size="12" fill="#60a5fa">Last activity: Contract reviewed - 1 day ago</text>
+  
+  <rect x="740" y="680" width="420" height="50" rx="5" fill="#1e293b" />
+  <circle cx="765" cy="705" r="15" fill="#3b82f6" />
+  <text x="790" y="700" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">Robert Davis (Solicitor)</text>
+  <text x="790" y="720" font-family="Arial, sans-serif" font-size="12" fill="#60a5fa">Last activity: Legal check completed - 5 hrs ago</text>
+  
+  <!-- Blockchain Elements -->
+  <rect x="1080" y="220" width="60" height="20" rx="2" fill="#334155" stroke="#10b981" stroke-width="1" />
+  <rect x="1090" y="230" width="60" height="20" rx="2" fill="#334155" stroke="#10b981" stroke-width="1" />
+  <rect x="1100" y="240" width="60" height="20" rx="2" fill="#334155" stroke="#10b981" stroke-width="1" />
+  
+  <!-- Smart Contract Indicators -->
+  <rect x="880" y="460" width="200" height="30" rx="5" fill="#334155" stroke="#34d399" stroke-width="1" />
+  <text x="980" y="480" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Smart Contract Active</text>
+</svg>

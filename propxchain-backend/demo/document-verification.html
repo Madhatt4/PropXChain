@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Verification - PropXchain Portal Demo</title>
+  <link rel="icon" href="../images/propxchain-favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #0066cc;
+      --primary-dark: #0052a3;
+      --secondary: #2c3e50;
+      --success: #28a745;
+      --warning: #ffc107;
+      --danger: #dc3545;
+      --light: #f8f9fa;
+      --dark: #1a2a3a;
+      --gray: #6c757d;
+      --gray-light: #e9ecef;
+      --gray-dark: #343a40;
+      --border-radius: 4px;
+      --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: #f0f2f5;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    /* Header Styles */
+    .header {
+      background-color: var(--dark);
+      color: white;
+      padding: 15px 0;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .logo img {
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-right: 10px;
+    }
+
+    .user-name {
+      font-weight: 500;
+    }
+
+    .logout-button {
+      margin-left: 15px;
+      padding: 5px 10px;
+      background-color: transparent;
+      border: 1px solid white;
+      color: white;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .logout-button:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Main Container Styles */
+    .main-container {
+      display: flex;
+      min-height: calc(100vh - 66px);
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: var(--secondary);
+      color: white;
+      padding: 20px 0;
+    }
+
+    .portal-type {
+      padding: 10px 20px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gray-light);
+      margin-bottom: 10px;
+    }
+
+    .nav-list {
+      list-style: none;
+    }
+
+    .nav-item {
+      margin-bottom: 5px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .nav-link:hover, .nav-link.active {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-link i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+
+    /* Content Styles */
+    .content {
+      flex: 1;
+      padding: 30px;
+    }
+
+    .page-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .page-subtitle {
+      font-size: 16px;
+      color: var(--gray);
+      margin-bottom: 30px;
+    }
+
+    /* Document Verification Status */
+    .verification-status {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 20px;
+      box-shadow: var(--box-shadow);
+      margin-bottom: 30px;
+    }
+
+    .verification-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .verification-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-right: 15px;
+    }
+
+    .verification-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .verification-progress {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .verification-text {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .verification-percentage {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background-color: var(--gray-light);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      background-color: var(--primary);
+    }
+
+    .verification-stats {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .verification-stat {
+      text-align: center;
+      flex: 1;
+      padding: 10px;
+      border-right: 1px solid var(--gray-light);
+    }
+
+    .verification-stat:last-child {
+      border-right: none;
+    }
+
+    .stat-number {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--gray);
+    }
+
+    /* Document List */
+    .document-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    .document-item {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 20px;
+      box-shadow: var(--box-shadow);
+      display: flex;
+      align-items: center;
+    }
+
+    .document-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-right: 20px;
+      color: white;
+    }
+
+    .document-icon.verified {
+      background-color: var(--success);
+    }
+
+    .document-icon.pending {
+      background-color: var(--warning);
+    }
+
+    .document-icon.missing {
+      background-color: var(--danger);
+    }
+
+    .document-info {
+      flex: 1;
+    }
+
+    .document-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .document-description {
+      font-size: 14px;
+      color: var(--gray);
+      margin-bottom: 10px;
+    }
+
+    .document-date {
+      font-size: 12px;
+      color: var(--gray);
+    }
+
+    .document-status {
+      font-size: 14px;
+      font-weight: 500;
+      margin-right: 20px;
+    }
+
+    .status-verified {
+      color: var(--success);
+    }
+
+    .status-pending {
+      color: var(--warning);
+    }
+
+    .status-missing {
+      color: var(--danger);
+    }
+
+    .document-action {
+      padding: 8px 12px;
+      border-radius: var(--border-radius);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .view-action {
+      background-color: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+
+    .view-action:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .upload-action {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+    }
+
+    .upload-action:hover {
+      background-color: var(--primary-dark);
+    }
+
+    /* Blockchain Verification */
+    .blockchain-verification {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 20px;
+      box-shadow: var(--box-shadow);
+      margin-top: 30px;
+    }
+
+    .blockchain-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .blockchain-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-right: 15px;
+    }
+
+    .blockchain-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .blockchain-description {
+      margin-bottom: 20px;
+    }
+
+    .blockchain-hash {
+      background-color: var(--gray-light);
+      padding: 15px;
+      border-radius: var(--border-radius);
+      font-family: monospace;
+      font-size: 14px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .blockchain-hash-label {
+      font-size: 12px;
+      color: var(--gray);
+      margin-bottom: 5px;
+    }
+
+    .blockchain-verification-status {
+      display: flex;
+      align-items: center;
+    }
+
+    .verification-badge {
+      display: flex;
+      align-items: center;
+      padding: 5px 10px;
+      background-color: rgba(40, 167, 69, 0.1);
+      color: var(--success);
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .verification-badge i {
+      margin-right: 5px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        padding: 10px 0;
+      }
+
+      .document-item {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .document-icon {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+
+      .document-status {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+
+      .verification-stats {
+        flex-direction: column;
+      }
+
+      .verification-stat {
+        border-right: none;
+        border-bottom: 1px solid var(--gray-light);
+        padding: 15px 0;
+      }
+
+      .verification-stat:last-child {
+        border-bottom: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <img src="../images/propxchain-logo.svg" alt="PropXchain Logo">
+        PropXchain
+      </a>
+      
+      <div class="user-info">
+        <div class="user-avatar">J</div>
+        <span class="user-name">James Brown</span>
+        <button class="logout-button" id="logoutButton">Log Out</button>
+      </div>
+    </div>
+  </header>
+  
+  <div class="main-container">
+    <aside class="sidebar">
+      <div class="portal-type">DEVELOPER PORTAL</div>
+      
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-home"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="property-management.html" class="nav-link">
+            <i class="fas fa-building"></i> Property Management
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="document-repository.html" class="nav-link">
+            <i class="fas fa-folder"></i> Document Repository
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="transaction-tracker.html" class="nav-link">
+            <i class="fas fa-exchange-alt"></i> Transaction Tracker
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="communication-center.html" class="nav-link">
+            <i class="fas fa-comments"></i> Communication Center
+          </a>
+        </li>
+      </ul>
+      
+      <div class="portal-type">BUYER PORTAL</div>
+      
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="buyer-dashboard.html" class="nav-link">
+            <i class="fas fa-home"></i> Buyer Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="document-verification.html" class="nav-link active">
+            <i class="fas fa-file-alt"></i> Document Verification
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="property-details.html" class="nav-link">
+            <i class="fas fa-info-circle"></i> Property Details
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="transaction-timeline.html" class="nav-link">
+            <i class="fas fa-history"></i> Transaction Timeline
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="buyer-communication.html" class="nav-link">
+            <i class="fas fa-comments"></i> Communication Center
+          </a>
+        </li>
+      </ul>
+    </aside>
+    
+    <main class="content">
+      <h1 class="page-title">Document Verification</h1>
+      <p class="page-subtitle">Required documents and their verification status for Riverside Apartments, Unit 301</p>
+      
+      <div class="verification-status">
+        <div class="verification-header">
+          <div class="verification-icon">
+            <i class="fas fa-file-alt"></i>
+          </div>
+          <h2 class="verification-title">Document Verification Status</h2>
+        </div>
+        
+        <div class="verification-progress">
+          <div class="verification-text">Overall Progress</div>
+          <div class="verification-percentage">80%</div>
+        </div>
+        
+        <div class="progress-bar">
+          <div class="progress-bar-fill" style="width: 80%"></div>
+        </div>
+        
+        <div class="verification-stats">
+          <div class="verification-stat">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Total Documents</div>
+          </div>
+          
+          <div class="verification-stat">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Verified</div>
+          </div>
+          
+          <div class="verification-stat">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Pending</div>
+          </div>
+          
+          <div class="verification-stat">
+            <div class="stat-number">1</div>
+            <div class="stat-label">Missing</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="document-list">
+        <div class="document-item">
+          <div class="document-icon verified">
+            <i class="fas fa-check"></i>
+          </div>
+          <div class="document-info">
+            <h3 class="document-title">Identity Verification</h3>
+            <p class="document-description">Personal identification and proof of address</p>
+            <p class="document-date">Verified on March 28, 2023</p>
+          </div>
+          <div class="document-status status-verified">Verified</div>
+          <button class="document-action view-action">View</button>
+        </div>
+        
+        <div class="document-item">
+          <div class="document-icon verified">
+            <i class="fas fa-check"></i>
+          </div>
+          <div class="document-info">
+            <h3 class="document-title">Proof of Funds</h3>
+            <p class="document-description">Bank statements and financial documentation</p>
+            <p class="document-date">Verified on March 28, 2023</p>
+          </div>
+          <div class="document-status status-verified">Verified</div>
+          <button class="document-action view-action">View</button>
+        </div>
+        
+        <div class="document-item">
+          <div class="document-icon verified">
+            <i class="fas fa-check"></i>
+          </div>
+          <div class="document-info">
+            <h3 class="document-title">Deposit Confirmation</h3>
+            <p class="document-description">10% deposit secured in escrow smart contract</p>
+            <p class="document-date">Verified on April 2, 2023</p>
+          </div>
+          <div class="document-status status-verified">Verified</div>
+          <button class="document-action view-action">View</button>
+        </div>
+        
+        <div class="document-item">
+          <div class="document-icon missing">
+            <i class="fas fa-exclamation-circle"></i>
+          </div>
+          <div class="document-info">
+            <h3 class="document-title">Local Authority Search</h3>
+            <p class="document-description">Required for legal process completion</p>
+            <p class="document-date">Document missing</p>
+          </div>
+          <div class="document-status status-missing">Missing</div>
+          <button class="document-action upload-action">Upload</button>
+        </div>
+      </div>
+      
+      <div class="blockchain-verification">
+        <div class="blockchain-header">
+          <div class="blockchain-icon">
+            <i class="fas fa-link"></i>
+          </div>
+          <h2 class="blockchain-title">Blockchain Verification</h2>
+        </div>
+        
+        <p class="blockchain-description">All verified documents are securely stored on the blockchain with tamper-proof verification.</p>
+        
+        <div class="blockchain-hash-label">Latest Transaction Hash</div>
+        <div class="blockchain-hash">0x7f4e5d3c2b1a9876543210fedcba9876543210fedcba9876543210fedcba9876</div>
+        
+        <div class="blockchain-verification-status">
+          <div class="verification-badge">
+            <i class="fas fa-shield-alt"></i> Blockchain Verified
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const logoutButton = document.getElementById('logoutButton');
+      
+      logoutButton.addEventListener('click', function() {
+        window.location.href = 'index.html';
+      });
+    });
+  </script>
+</body>
+</html>
