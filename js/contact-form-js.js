@@ -1,129 +1,74 @@
-// JavaScript to handle the contact form submission
+// Ultra simple contact form handler
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('Contact form handler loaded');
+  console.log('Simple contact form handler loaded');
   
-  // Find the contact form
-  const contactForm = document.getElementById('contact-form');
+  // Find the form
+  const form = document.querySelector('.simple-form');
   
-  if (!contactForm) {
-    console.error('Contact form not found on the page');
+  if (!form) {
+    console.log('Simple form not found');
     return;
   }
   
-  console.log('Contact form found:', contactForm);
+  console.log('Simple form found');
   
   // Add submit event listener
-  contactForm.addEventListener('submit', async function(e) {
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
     console.log('Form submitted');
     
-    // Get form elements directly from the form
-    console.log('Form elements:', contactForm.elements);
-    
-    // Get form elements by their index or name
-    const nameInput = contactForm.elements[0] || contactForm.elements['name'];
-    const emailInput = contactForm.elements[1] || contactForm.elements['email'];
-    const messageInput = contactForm.elements[2] || contactForm.elements['message'];
-    
-    console.log('Form inputs found:', {
-      nameInput: nameInput ? `Found (${nameInput.name || 'unnamed'})` : 'Not found',
-      emailInput: emailInput ? `Found (${emailInput.name || 'unnamed'})` : 'Not found',
-      messageInput: messageInput ? `Found (${messageInput.name || 'unnamed'})` : 'Not found'
-    });
-    
-    // Check if elements exist
-    if (!nameInput || !emailInput || !messageInput) {
-      console.error('Form elements not found using direct access');
-      
-      // Last resort: get all inputs in the form
-      const inputs = contactForm.querySelectorAll('input, textarea');
-      console.log(`Found ${inputs.length} inputs in form`);
-      
-      if (inputs.length >= 3) {
-        // Assume first input is name, second is email, third is message
-        nameInput = inputs[0];
-        emailInput = inputs[1];
-        messageInput = inputs[2];
-        console.log('Using inputs by position in form');
-      } else {
-        alert('Form error: Could not find all required form elements');
-        return;
-      }
-    }
-    
-    // Get values
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    const message = messageInput.value.trim();
-    
-    // Validate
-    if (!name || !email || !message) {
-      console.error('Validation failed:', { name, email, message: message ? 'provided' : 'missing' });
-      alert('Please fill out all required fields');
-      return;
-    }
-    
+    // Get form data
     const formData = {
-      name,
-      email,
-      message,
+      name: form.querySelector('[name="user_name"]').value,
+      email: form.querySelector('[name="user_email"]').value,
+      message: form.querySelector('[name="user_message"]').value,
+      // Add required fields for MongoDB schema
       company: '',
       phone: '',
       interest: 'General Inquiry'
     };
     
-    console.log('Form data prepared:', formData);
+    console.log('Form data:', formData);
     
     // Show loading state
-    const submitButton = contactForm.querySelector('button[type="submit"]');
-    const originalButtonText = submitButton ? submitButton.innerHTML : 'Send Message';
-    if (submitButton) {
-      submitButton.innerHTML = 'Sending...';
-      submitButton.disabled = true;
-    }
+    const button = form.querySelector('button[type="submit"]');
+    const originalText = button.textContent;
+    button.textContent = 'Sending...';
+    button.disabled = true;
     
-    try {
-      // Use the full URL to the API endpoint
-      const apiUrl = 'https://propxchain.com/api/contact';
-      console.log('Submitting to API:', apiUrl);
-      
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-      
+    // Send data to API
+    fetch('https://propxchain.com/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => {
       console.log('Response status:', response.status);
+      return response.text().then(text => {
+        return text ? { text, status: response.status } : { text: '', status: response.status };
+      });
+    })
+    .then(({ text, status }) => {
+      console.log('Response text:', text);
       
-      let result;
-      try {
-        const text = await response.text();
-        console.log('Response text:', text);
-        result = text ? JSON.parse(text) : {};
-      } catch (parseError) {
-        console.error('Error parsing response:', parseError);
-        result = { message: 'Invalid response from server' };
-      }
-      
-      if (response.ok) {
-        console.log('Submission successful');
-        alert('Message sent successfully!');
-        contactForm.reset();
+      // Show success message
+      if (status >= 200 && status < 300) {
+        form.style.display = 'none';
+        document.getElementById('success-message').style.display = 'block';
       } else {
-        console.error('Server returned error:', result);
-        alert('Error: ' + (result.message || 'Failed to send message'));
+        alert('Error sending message. Please try again later.');
       }
-    } catch (error) {
-      console.error('Error submitting form:', error);
+    })
+    .catch(error => {
+      console.error('Error:', error);
       alert('Error sending message. Please try again later.');
-    } finally {
-      // Reset button state
-      if (submitButton) {
-        submitButton.innerHTML = originalButtonText;
-        submitButton.disabled = false;
-      }
-    }
+    })
+    .finally(() => {
+      // Reset button
+      button.textContent = originalText;
+      button.disabled = false;
+    });
   });
 });

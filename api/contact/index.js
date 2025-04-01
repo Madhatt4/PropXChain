@@ -105,10 +105,19 @@ export default async function handler(req, res) {
   // Connect to database
   await connectDB();
 
-  const { name, email, company, phone, interest, message } = req.body;
+  // Get form data with support for both old and new field names
+  const name = req.body.name || req.body.user_name;
+  const email = req.body.email || req.body.user_email;
+  const message = req.body.message || req.body.user_message;
+  const company = req.body.company || '';
+  const phone = req.body.phone || '';
+  const interest = req.body.interest || 'General Inquiry';
+  
+  console.log('Received form data:', { name, email, message });
   
   // Basic validation
   if (!name || !email || !message) {
+    console.log('Validation failed:', { name, email, message });
     return res.status(400).json({ success: false, message: 'Please provide name, email, and message' });
   }
 
