@@ -55,8 +55,15 @@ document.addEventListener('DOMContentLoaded', function() {
       submitButton.disabled = true;
       
       try {
-        // Send form data to Render backend
-        const response = await fetch('https://propxchain-backend.onrender.com/api/contact', {
+        // Determine the API endpoint based on the current environment
+        const apiEndpoint = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+          ? '/api/contact'  // Local development
+          : 'https://propxchain.onrender.com/api/contact';  // Production environment
+        
+        console.log('Sending form data to:', apiEndpoint);
+        
+        // Send form data to backend
+        const response = await fetch(apiEndpoint, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

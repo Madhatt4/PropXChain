@@ -6,7 +6,7 @@ dotenv.config();
 
 // MongoDB Connection
 let dbConnected = false;
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://marchatton:Marc2711@cluster0.elgpsni.mongodb.net/PropXChain';
 
 // Contact Form Submission Schema
 const ContactSubmissionSchema = new mongoose.Schema({
@@ -59,11 +59,23 @@ const createTransporter = () => {
 };
 
 export default async function handler(req, res) {
-  // Set CORS headers
+  // Set CORS headers for specific origins
+  const allowedOrigins = ['https://www.propxchain.com', 'https://propxchain.com', 'http://localhost:3000'];
+  const origin = req.headers.origin;
+  
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  
   res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
+  
+  // Log the request for debugging
+  console.log('Received contact form submission:');
+  console.log('Headers:', req.headers);
+  console.log('Origin:', req.headers.origin);
+  console.log('Body:', req.body);
 
   // Handle OPTIONS request for CORS
   if (req.method === 'OPTIONS') {

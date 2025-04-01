@@ -38,7 +38,7 @@ The demo portal provides a simplified version of the PropXchain platform, allowi
    ```
 5. Connect to your GitHub repository:
    ```
-   git remote add origin https://github.com/yourusername/propxchain.git
+   git remote add origin https://github.com/yourusername/PropXChain.git
    ```
 6. Push your code:
    ```

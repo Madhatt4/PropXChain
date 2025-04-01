@@ -44,7 +44,7 @@ To access the demo portal, click the "Demo of Portal" button on the website or n
    ```
 5. Connect to your GitHub repository:
    ```
-   git remote add origin https://github.com/yourusername/propxchain.git
+   git remote add origin https://github.com/yourusername/PropXChain.git
    ```
 6. Push your code:
    ```
