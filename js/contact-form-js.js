@@ -36,7 +36,45 @@ document.addEventListener('DOMContentLoaded', function() {
     button.textContent = 'Sending...';
     button.disabled = true;
     
-    // Send data to API
+    // Send data to API using XMLHttpRequest to avoid CORS preflight issues
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://propxchain.com/api/contact', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    
+    xhr.onload = function() {
+      console.log('XHR response status:', xhr.status);
+      console.log('XHR response text:', xhr.responseText);
+      
+      if (xhr.status >= 200 && xhr.status < 300) {
+        // Show success message
+        form.style.display = 'none';
+        const successMessage = document.getElementById('success-message');
+        if (successMessage) {
+          successMessage.style.display = 'block';
+        } else {
+          alert('Message sent successfully!');
+        }
+      } else {
+        alert('Error sending message. Please try again later.');
+      }
+      
+      // Reset button
+      button.textContent = originalText;
+      button.disabled = false;
+    };
+    
+    xhr.onerror = function() {
+      console.error('XHR error');
+      alert('Error sending message. Please try again later.');
+      
+      // Reset button
+      button.textContent = originalText;
+      button.disabled = false;
+    };
+    
+    xhr.send(JSON.stringify(formData));
+    
+    /* Using fetch (commented out due to CORS issues)
     fetch('https://propxchain.com/api/contact', {
       method: 'POST',
       headers: {
@@ -70,5 +108,6 @@ document.addEventListener('DOMContentLoaded', function() {
       button.textContent = originalText;
       button.disabled = false;
     });
+    */
   });
 });
