@@ -1,61 +1,111 @@
 // JavaScript to handle the contact form submission
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('Contact form handler loaded');
+  
+  // Find the contact form
   const contactForm = document.getElementById('contact-form');
   
-  if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      const nameInput = document.getElementById('name');
-      const emailInput = document.getElementById('email');
-      const messageInput = document.getElementById('message');
-      
-      if (!nameInput.value || !emailInput.value || !messageInput.value) {
-        alert('Please fill out all required fields');
-        return;
-      }
-      
-      const formData = {
-        name: nameInput.value,
-        email: emailInput.value,
-        message: messageInput.value
-      };
-      
-      // Show loading state
-      const submitButton = contactForm.querySelector('button[type="submit"]');
-      const originalButtonText = submitButton.innerHTML;
+  if (!contactForm) {
+    console.error('Contact form not found on the page');
+    return;
+  }
+  
+  console.log('Contact form found:', contactForm);
+  
+  // Add submit event listener
+  contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    console.log('Form submitted');
+    
+    // Get form elements
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+    
+    // Check if elements exist
+    if (!nameInput || !emailInput || !messageInput) {
+      console.error('Form elements not found:', {
+        nameInput: !!nameInput,
+        emailInput: !!emailInput,
+        messageInput: !!messageInput
+      });
+      alert('Form error: Some form elements could not be found');
+      return;
+    }
+    
+    // Get values
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const message = messageInput.value.trim();
+    
+    // Validate
+    if (!name || !email || !message) {
+      console.error('Validation failed:', { name, email, message: message ? 'provided' : 'missing' });
+      alert('Please fill out all required fields');
+      return;
+    }
+    
+    const formData = {
+      name,
+      email,
+      message,
+      company: '',
+      phone: '',
+      interest: 'General Inquiry'
+    };
+    
+    console.log('Form data prepared:', formData);
+    
+    // Show loading state
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton ? submitButton.innerHTML : 'Send Message';
+    if (submitButton) {
       submitButton.innerHTML = 'Sending...';
       submitButton.disabled = true;
+    }
+    
+    try {
+      // Use the full URL to the API endpoint
+      const apiUrl = 'https://propxchain.com/api/contact';
+      console.log('Submitting to API:', apiUrl);
       
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      
+      console.log('Response status:', response.status);
+      
+      let result;
       try {
-        console.log('Submitting form data:', formData);
-        
-        const response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        });
-        
-        const result = await response.json();
-        
-        if (response.ok) {
-          alert('Message sent successfully!');
-          contactForm.reset();
-        } else {
-          alert('Error: ' + (result.message || 'Failed to send message'));
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        alert('Error sending message. Please try again later.');
-      } finally {
-        // Reset button state
+        const text = await response.text();
+        console.log('Response text:', text);
+        result = text ? JSON.parse(text) : {};
+      } catch (parseError) {
+        console.error('Error parsing response:', parseError);
+        result = { message: 'Invalid response from server' };
+      }
+      
+      if (response.ok) {
+        console.log('Submission successful');
+        alert('Message sent successfully!');
+        contactForm.reset();
+      } else {
+        console.error('Server returned error:', result);
+        alert('Error: ' + (result.message || 'Failed to send message'));
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Error sending message. Please try again later.');
+    } finally {
+      // Reset button state
+      if (submitButton) {
         submitButton.innerHTML = originalButtonText;
         submitButton.disabled = false;
       }
-    });
-  } else {
-    console.error('Contact form not found');
-  }
+    }
+  });
 });
