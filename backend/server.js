@@ -1,4 +1,4 @@
-// render-server.js - Backend server for PropXchain contact form
+// Backend server for PropXchain contact form
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -23,6 +23,7 @@ app.use(cors({
 // MongoDB Connection
 const MONGODB_URI = process.env.MONGODB_URI;
 console.log('Attempting to connect to MongoDB...');
+console.log('MongoDB URI:', MONGODB_URI ? 'Set' : 'Not set');
 
 mongoose.connect(MONGODB_URI)
   .then(() => {
@@ -61,7 +62,13 @@ app.get('/', (req, res) => {
   res.status(200).json({ 
     status: 'ok',
     message: 'PropXchain contact form API is running',
-    mongodb: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected'
+    mongodb: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
+    env: {
+      mongodb_uri: process.env.MONGODB_URI ? 'Set' : 'Not set',
+      email_service: process.env.EMAIL_SERVICE ? 'Set' : 'Not set',
+      email_user: process.env.EMAIL_USER ? 'Set' : 'Not set',
+      email_password: process.env.EMAIL_PASSWORD ? 'Set' : 'Not set'
+    }
   });
 });
 
@@ -110,7 +117,7 @@ app.post('/api/contact', async (req, res) => {
         <h3>Message:</h3>
         <p>${message}</p>
         <p><em>This submission has been saved to the database with ID: ${newSubmission._id}</em></p>
-      `,
+      `
     };
 
     // Send email
@@ -131,7 +138,7 @@ app.post('/api/contact', async (req, res) => {
         <br>
         <p>Best regards,</p>
         <p>The PropXchain Team</p>
-      `,
+      `
     };
 
     await transporter.sendMail(autoResponseOptions);
