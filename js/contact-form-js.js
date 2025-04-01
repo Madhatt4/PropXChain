@@ -42,43 +42,28 @@ document.addEventListener('DOMContentLoaded', function() {
     contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       
-      // Try to find the name input using different selectors and heuristics
-      let nameInput = document.getElementById('name');
+      // DIRECT APPROACH: Use the first text input on the page as the name input
+      // This is a simplified approach that should work regardless of IDs or attributes
+      console.log('Using direct approach to find name input');
       
-      // If not found by ID, try other selectors
-      if (!nameInput) {
-        console.log('Name input not found by ID, trying alternative selectors');
-        
-        // Try by name attribute
-        nameInput = document.querySelector('[name="name"]');
-        
-        if (!nameInput) {
-          // Try by placeholder text containing "name"
-          const inputsWithNamePlaceholder = Array.from(document.querySelectorAll('input'))
-            .filter(input => input.placeholder && input.placeholder.toLowerCase().includes('name'));
-          
-          if (inputsWithNamePlaceholder.length > 0) {
-            nameInput = inputsWithNamePlaceholder[0];
-            console.log('Found name input by placeholder text');
-          } else {
-            // Try by label text
-            const nameLabels = Array.from(document.querySelectorAll('label'))
-              .filter(label => label.textContent.toLowerCase().includes('name'));
-            
-            if (nameLabels.length > 0 && nameLabels[0].htmlFor) {
-              nameInput = document.getElementById(nameLabels[0].htmlFor);
-              console.log('Found name input by label text');
-            } else {
-              // Last resort: just use the first text input on the form
-              nameInput = document.querySelector('input[type="text"]');
-              console.log('Using first text input as name input');
-            }
-          }
-        } else {
-          console.log('Found name input by name attribute');
-        }
+      // Get all text inputs on the page
+      const allTextInputs = document.querySelectorAll('input[type="text"]');
+      console.log(`Found ${allTextInputs.length} text inputs on the page`);
+      
+      // Use the first text input as the name input
+      let nameInput = null;
+      if (allTextInputs.length > 0) {
+        nameInput = allTextInputs[0];
+        console.log('Using first text input on the page as name input');
+        console.log('Name input details:', {
+          type: nameInput.type,
+          id: nameInput.id,
+          name: nameInput.name,
+          value: nameInput.value,
+          placeholder: nameInput.placeholder
+        });
       } else {
-        console.log('Found name input by ID');
+        console.error('No text inputs found on the page');
       }
       
       let isValid = true;
