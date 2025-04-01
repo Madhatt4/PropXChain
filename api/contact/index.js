@@ -184,8 +184,23 @@ export default async function handler(req, res) {
 
     await transporter.sendMail(autoResponseOptions);
 
-    // Success response
-    res.status(200).json({ success: true, message: 'Your message has been sent successfully!' });
+    // Check if this is a form submission (not JSON)
+    const isFormSubmission = req.headers['content-type'] && 
+                            req.headers['content-type'].includes('application/x-www-form-urlencoded');
+    
+    console.log('Is form submission:', isFormSubmission);
+    console.log('Content-Type:', req.headers['content-type']);
+    
+    if (isFormSubmission) {
+      // Redirect back to contact page with success message
+      res.writeHead(302, {
+        'Location': '/contact.html?success=true'
+      });
+      res.end();
+    } else {
+      // JSON API response
+      res.status(200).json({ success: true, message: 'Your message has been sent successfully!' });
+    }
   } catch (error) {
     console.error('Error processing form submission:', error);
     console.error('Error details:', error.toString());
