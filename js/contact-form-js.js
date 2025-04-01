@@ -55,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
       submitButton.disabled = true;
       
       try {
-        // Send form data to backend
-        const response = await fetch('/api/contact', {
+        // Send form data to Render backend
+        const response = await fetch('https://propxchain-backend.onrender.com/api/contact', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
