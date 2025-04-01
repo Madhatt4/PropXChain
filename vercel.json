@@ -1,4 +1,4 @@
- {
+{
   "version": 2,
   "github": {
     "enabled": true
@@ -35,11 +35,7 @@
   ],
   "routes": [
     {
-      "src": "/api/contact",
-      "dest": "/api/contact/index.js"
-    },
-    {
-      "src": "/api/((?!contact).*)",
+      "src": "/api/(.*)",
       "dest": "server.js"
     },
     {
