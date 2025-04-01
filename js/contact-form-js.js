@@ -1,7 +1,12 @@
 // JavaScript to handle the contact form submission
 document.addEventListener('DOMContentLoaded', function() {
+  // Find the contact form
   const contactForm = document.getElementById('contact-form');
   
+  // Debug information
+  console.log('Contact form found:', !!contactForm);
+  
+  // Only proceed if the contact form exists
   if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
@@ -38,15 +43,30 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
       
-      // Prepare form data
+      // Prepare form data with null checks
+      const companyElement = document.getElementById('company');
+      const phoneElement = document.getElementById('phone');
+      const interestElement = document.getElementById('interest');
+      
+      console.log('Form elements found:', {
+        name: !!nameInput,
+        email: !!emailInput,
+        company: !!companyElement,
+        phone: !!phoneElement,
+        interest: !!interestElement,
+        message: !!messageInput
+      });
+      
       const formData = {
         name: nameInput.value.trim(),
         email: emailInput.value.trim(),
-        company: document.getElementById('company').value.trim(),
-        phone: document.getElementById('phone').value.trim(),
-        interest: document.getElementById('interest').value,
+        company: companyElement ? companyElement.value.trim() : '',
+        phone: phoneElement ? phoneElement.value.trim() : '',
+        interest: interestElement ? interestElement.value : 'General Inquiry',
         message: messageInput.value.trim()
       };
+      
+      console.log('Form data prepared:', formData);
       
       // Show loading state
       const submitButton = contactForm.querySelector('button[type="submit"]');
@@ -56,9 +76,8 @@ document.addEventListener('DOMContentLoaded', function() {
       
       try {
         // Determine the API endpoint based on the current environment
-        const apiEndpoint = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
-          ? '/api/contact'  // Local development
-          : 'https://propxchain.onrender.com/api/contact';  // Production environment
+        // Always use the Render endpoint for now to ensure it works
+        const apiEndpoint = 'https://propxchain.onrender.com/api/contact';
         
         console.log('Sending form data to:', apiEndpoint);
         
@@ -108,28 +127,39 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Function to show messages to the user
   function showMessage(message, type) {
-    // Check if a message element already exists
-    let messageElement = document.getElementById('form-message');
-    
-    // If not, create one
-    if (!messageElement) {
-      messageElement = document.createElement('div');
-      messageElement.id = 'form-message';
-      contactForm.insertAdjacentElement('beforebegin', messageElement);
-    }
-    
-    // Set appropriate class and content
-    messageElement.className = `message ${type}`;
-    messageElement.textContent = message;
-    
-    // Scroll to the message
-    messageElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    
-    // Automatically remove success messages after 5 seconds
-    if (type === 'success') {
-      setTimeout(() => {
-        messageElement.remove();
-      }, 5000);
+    try {
+      // Check if a message element already exists
+      let messageElement = document.getElementById('form-message');
+      
+      // If not, create one
+      if (!messageElement) {
+        messageElement = document.createElement('div');
+        messageElement.id = 'form-message';
+        
+        // Make sure contactForm exists before using it
+        if (contactForm && contactForm.parentNode) {
+          contactForm.insertAdjacentElement('beforebegin', messageElement);
+        } else {
+          // Fallback - append to body
+          document.body.appendChild(messageElement);
+        }
+      }
+      
+      // Set appropriate class and content
+      messageElement.className = `message ${type}`;
+      messageElement.textContent = message;
+      
+      // Scroll to the message
+      messageElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      
+      // Automatically remove success messages after 5 seconds
+      if (type === 'success') {
+        setTimeout(() => {
+          messageElement.remove();
+        }, 5000);
+      }
+    } catch (error) {
+      console.error('Error showing message:', error);
     }
   }
 });
