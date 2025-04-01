@@ -27,14 +27,34 @@ document.addEventListener('DOMContentLoaded', function() {
     contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       
-      // Only validate the name field for now
-      const nameInput = document.getElementById('name');
+      // Try to find the name input using different selectors
+      let nameInput = document.getElementById('name');
+      
+      // If not found by ID, try other selectors
+      if (!nameInput) {
+        console.log('Name input not found by ID, trying alternative selectors');
+        nameInput = contactForm.querySelector('[name="name"]') || 
+                   contactForm.querySelector('input[type="text"]:first-child') ||
+                   contactForm.querySelector('input[type="text"]');
+        
+        // Log all text inputs for debugging
+        const allTextInputs = contactForm.querySelectorAll('input[type="text"]');
+        console.log(`Found ${allTextInputs.length} text inputs on the form`);
+        allTextInputs.forEach((input, index) => {
+          console.log(`Text input ${index} ID:`, input.id);
+          console.log(`Text input ${index} name:`, input.name);
+          console.log(`Text input ${index} placeholder:`, input.placeholder);
+        });
+      }
+      
       let isValid = true;
       
       // Debug information
       console.log('Name input found:', !!nameInput);
       if (nameInput) {
         console.log('Name input value:', nameInput.value);
+        console.log('Name input ID:', nameInput.id);
+        console.log('Name input name attribute:', nameInput.name);
       }
       
       if (!nameInput || !nameInput.value.trim()) {
