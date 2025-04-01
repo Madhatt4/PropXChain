@@ -1,0 +1,216 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <!-- Background -->
+  <rect width="900" height="600" fill="#1e293b" />
+  
+  <!-- Heading -->
+  <text x="450" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">Property Transaction Legal Process</text>
+  <text x="450" y="80" font-family="Arial, sans-serif" font-size="18" fill="#60a5fa" text-anchor="middle">Traditional Process vs. PropChain Process</text>
+  
+  <!-- Section Headers -->
+  <text x="250" y="120" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">Traditional Process</text>
+  <text x="250" y="140" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">(12-16 weeks)</text>
+  
+  <text x="650" y="120" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">PropChain Process</text>
+  <text x="650" y="140" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">(3-4 weeks)</text>
+  
+  <!-- Dividing Line -->
+  <line x1="450" y1="110" x2="450" y2="580" stroke="#334155" stroke-width="2" />
+  
+  <!-- Traditional Process Flow -->
+  
+  <!-- Step 1: Initial Contact -->
+  <rect x="150" y="160" width="200" height="50" rx="5" fill="#334155" />
+  <text x="250" y="190" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Initial Client Contact</text>
+  
+  <!-- Step 2: Manual Document Collection -->
+  <rect x="150" y="230" width="200" height="50" rx="5" fill="#334155" />
+  <text x="250" y="260" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Manual Document Collection</text>
+  
+  <!-- Step 3: Title Search -->
+  <rect x="150" y="300" width="200" height="50" rx="5" fill="#334155" />
+  <text x="250" y="330" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Manual Title Search &amp; Verification</text>
+  
+  <!-- Step 4: Draft Contract -->
+  <rect x="150" y="370" width="200" height="50" rx="5" fill="#334155" />
+  <text x="250" y="400" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Manual Contract Drafting</text>
+  
+  <!-- Step 5: Review and Revisions -->
+  <rect x="150" y="440" width="200" height="50" rx="5" fill="#334155" />
+  <text x="250" y="470" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Multiple Review &amp; Revision Cycles</text>
+  
+  <!-- Step 6: Physical Exchange -->
+  <rect x="150" y="510" width="200" height="50" rx="5" fill="#334155" />
+  <text x="250" y="540" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Physical Contract Exchange</text>
+  
+  <!-- PropChain Process Flow -->
+  
+  <!-- Step 1: Digital Onboarding -->
+  <rect x="550" y="160" width="200" height="50" rx="5" fill="#334155" stroke="#3b82f6" stroke-width="2" />
+  <text x="650" y="190" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Digital Client Onboarding</text>
+  
+  <!-- Step 2: Automated Document Collection -->
+  <rect x="550" y="230" width="200" height="50" rx="5" fill="#334155" stroke="#3b82f6" stroke-width="2" />
+  <text x="650" y="260" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Automated Document Collection</text>
+  
+  <!-- Step 3: Blockchain Verification -->
+  <rect x="550" y="300" width="200" height="50" rx="5" fill="#334155" stroke="#10b981" stroke-width="2" />
+  <text x="650" y="330" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Blockchain Title Verification</text>
+  
+  <!-- Step 4: Smart Contracts -->
+  <rect x="550" y="370" width="200" height="50" rx="5" fill="#334155" stroke="#10b981" stroke-width="2" />
+  <text x="650" y="400" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Smart Contract Generation</text>
+  
+  <!-- Step 5: Digital Signing -->
+  <rect x="550" y="440" width="200" height="50" rx="5" fill="#334155" stroke="#10b981" stroke-width="2" />
+  <text x="650" y="470" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Digital Signing &amp; Verification</text>
+  
+  <!-- Step 6: Blockchain Transaction -->
+  <rect x="550" y="510" width="200" height="50" rx="5" fill="#334155" stroke="#3b82f6" stroke-width="2" />
+  <text x="650" y="540" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Blockchain Transaction Completion</text>
+  
+  <!-- Connection Arrows - Traditional -->
+  <line x1="250" y1="210" x2="250" y2="230" stroke="#475569" stroke-width="2" />
+  <polygon points="250,230 245,220 255,220" fill="#475569" />
+  
+  <line x1="250" y1="280" x2="250" y2="300" stroke="#475569" stroke-width="2" />
+  <polygon points="250,300 245,290 255,290" fill="#475569" />
+  
+  <line x1="250" y1="350" x2="250" y2="370" stroke="#475569" stroke-width="2" />
+  <polygon points="250,370 245,360 255,360" fill="#475569" />
+  
+  <line x1="250" y1="420" x2="250" y2="440" stroke="#475569" stroke-width="2" />
+  <polygon points="250,440 245,430 255,430" fill="#475569" />
+  
+  <line x1="250" y1="490" x2="250" y2="510" stroke="#475569" stroke-width="2" />
+  <polygon points="250,510 245,500 255,500" fill="#475569" />
+  
+  <!-- Connection Arrows - PropChain -->
+  <line x1="650" y1="210" x2="650" y2="230" stroke="#3b82f6" stroke-width="2" />
+  <polygon points="650,230 645,220 655,220" fill="#3b82f6" />
+  
+  <line x1="650" y1="280" x2="650" y2="300" stroke="#3b82f6" stroke-width="2" />
+  <polygon points="650,300 645,290 655,290" fill="#3b82f6" />
+  
+  <line x1="650" y1="350" x2="650" y2="370" stroke="#10b981" stroke-width="2" />
+  <polygon points="650,370 645,360 655,360" fill="#10b981" />
+  
+  <line x1="650" y1="420" x2="650" y2="440" stroke="#10b981" stroke-width="2" />
+  <polygon points="650,440 645,430 655,430" fill="#10b981" />
+  
+  <line x1="650" y1="490" x2="650" y2="510" stroke="#10b981" stroke-width="2" />
+  <polygon points="650,510 645,500 655,500" fill="#10b981" />
+  
+  <!-- Timeline Indicators - Traditional -->
+  <rect x="105" y="160" width="40" height="20" rx="10" fill="#475569" />
+  <text x="125" y="175" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Day 1</text>
+  
+  <rect x="105" y="230" width="40" height="20" rx="10" fill="#475569" />
+  <text x="125" y="245" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Week 1</text>
+  
+  <rect x="105" y="300" width="40" height="20" rx="10" fill="#475569" />
+  <text x="125" y="315" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Week 3</text>
+  
+  <rect x="105" y="370" width="40" height="20" rx="10" fill="#475569" />
+  <text x="125" y="385" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Week 6</text>
+  
+  <rect x="105" y="440" width="40" height="20" rx="10" fill="#475569" />
+  <text x="125" y="455" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Week 9</text>
+  
+  <rect x="105" y="510" width="40" height="20" rx="10" fill="#475569" />
+  <text x="125" y="525" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Week 12</text>
+  
+  <!-- Timeline Indicators - PropChain -->
+  <rect x="755" y="160" width="40" height="20" rx="10" fill="#3b82f6" />
+  <text x="775" y="175" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Day 1</text>
+  
+  <rect x="755" y="230" width="40" height="20" rx="10" fill="#3b82f6" />
+  <text x="775" y="245" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Day 2</text>
+  
+  <rect x="755" y="300" width="40" height="20" rx="10" fill="#10b981" />
+  <text x="775" y="315" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Day 3</text>
+  
+  <rect x="755" y="370" width="40" height="20" rx="10" fill="#10b981" />
+  <text x="775" y="385" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Week 1</text>
+  
+  <rect x="755" y="440" width="40" height="20" rx="10" fill="#10b981" />
+  <text x="775" y="455" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Week 2</text>
+  
+  <rect x="755" y="510" width="40" height="20" rx="10" fill="#3b82f6" />
+  <text x="775" y="525" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Week 3</text>
+  
+  <!-- Traditional Process Pain Points -->
+  <circle cx="360" y="185" r="10" fill="#ef4444" />
+  <text x="360" y="190" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">!</text>
+  <text x="400" y="190" font-family="Arial, sans-serif" font-size="11" fill="#ef4444" text-anchor="start">Multiple in-person meetings</text>
+  
+  <circle cx="360" y="255" r="10" fill="#ef4444" />
+  <text x="360" y="260" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">!</text>
+  <text x="400" y="260" font-family="Arial, sans-serif" font-size="11" fill="#ef4444" text-anchor="start">Paper-based &amp; prone to errors</text>
+  
+  <circle cx="360" y="325" r="10" fill="#ef4444" />
+  <text x="360" y="330" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">!</text>
+  <text x="400" y="330" font-family="Arial, sans-serif" font-size="11" fill="#ef4444" text-anchor="start">Time-consuming manual search</text>
+  
+  <circle cx="360" y="395" r="10" fill="#ef4444" />
+  <text x="360" y="400" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">!</text>
+  <text x="400" y="400" font-family="Arial, sans-serif" font-size="11" fill="#ef4444" text-anchor="start">Error-prone drafting process</text>
+  
+  <circle cx="360" y="465" r="10" fill="#ef4444" />
+  <text x="360" y="470" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">!</text>
+  <text x="400" y="470" font-family="Arial, sans-serif" font-size="11" fill="#ef4444" text-anchor="start">Delays from multiple parties</text>
+  
+  <circle cx="360" y="535" r="10" fill="#ef4444" />
+  <text x="360" y="540" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">!</text>
+  <text x="400" y="540" font-family="Arial, sans-serif" font-size="11" fill="#ef4444" text-anchor="start">Physical signing coordination</text>
+  
+  <!-- PropChain Benefits -->
+  <circle cx="540" y="185" r="10" fill="#10b981" />
+  <text x="540" y="190" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">✓</text>
+  <text x="500" y="190" font-family="Arial, sans-serif" font-size="11" fill="#10b981" text-anchor="end">Instant digital registration</text>
+  
+  <circle cx="540" y="255" r="10" fill="#10b981" />
+  <text x="540" y="260" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">✓</text>
+  <text x="500" y="260" font-family="Arial, sans-serif" font-size="11" fill="#10b981" text-anchor="end">Secure document upload portal</text>
+  
+  <circle cx="540" y="325" r="10" fill="#10b981" />
+  <text x="540" y="330" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">✓</text>
+  <text x="500" y="330" font-family="Arial, sans-serif" font-size="11" fill="#10b981" text-anchor="end">Automated blockchain verification</text>
+  
+  <circle cx="540" y="395" r="10" fill="#10b981" />
+  <text x="540" y="400" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">✓</text>
+  <text x="500" y="400" font-family="Arial, sans-serif" font-size="11" fill="#10b981" text-anchor="end">Auto-generated legal contracts</text>
+  
+  <circle cx="540" y="465" r="10" fill="#10b981" />
+  <text x="540" y="470" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">✓</text>
+  <text x="500" y="470" font-family="Arial, sans-serif" font-size="11" fill="#10b981" text-anchor="end">Secure digital signatures</text>
+  
+  <circle cx="540" y="535" r="10" fill="#10b981" />
+  <text x="540" y="540" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">✓</text>
+  <text x="500" y="540" font-family="Arial, sans-serif" font-size="11" fill="#10b981" text-anchor="end">Automated settlement process</text>
+  
+  <!-- Legend -->
+  <rect x="300" y="570" width="300" height="20" rx="5" fill="#334155" />
+  <text x="450" y="585" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Time Saving: 75% | Cost Reduction: 48%</text>
+  
+  <!-- Blockchain Elements -->
+  <g transform="translate(650, 590) scale(0.6)">
+    <rect x="-20" y="-10" width="30" height="10" rx="2" fill="#334155" stroke="#3b82f6" stroke-width="1" />
+    <rect x="-10" y="-5" width="30" height="10" rx="2" fill="#334155" stroke="#3b82f6" stroke-width="1" />
+    <rect x="0" y="0" width="30" height="10" rx="2" fill="#334155" stroke="#3b82f6" stroke-width="1" />
+  </g>
+  
+  <!-- PropChain Logo -->
+  <g transform="translate(250, 590) scale(0.5)">
+    <!-- Chain link -->
+    <path d="M30,30 C30,22 25,15 18,15 C11,15 5,22 5,30 C5,38 11,45 18,45 L30,45" 
+          fill="none" stroke="#3b82f6" stroke-width="4" stroke-linecap="round" />
+    <path d="M28,45 L40,45 C47,45 53,38 53,30 C53,22 47,15 40,15 C33,15 28,22 28,30" 
+          fill="none" stroke="#60a5fa" stroke-width="4" stroke-linecap="round" />
+    
+    <!-- House roof -->
+    <path d="M15,15 L40,0 L65,15" fill="none" stroke="#10b981" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <!-- House body -->
+    <rect x="25" y="15" width="30" height="30" fill="none" stroke="#34d399" stroke-width="4" stroke-linejoin="round" />
+  </g>
+</svg>

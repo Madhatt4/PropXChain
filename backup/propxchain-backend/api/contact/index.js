@@ -1,37 +1,12 @@
-// Backend server for PropXchain contact form
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const nodemailer = require('nodemailer');
-require('dotenv').config();
+import mongoose from 'mongoose';
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 
-const app = express();
-const PORT = process.env.PORT || 4000;
-
-// Middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// Configure CORS to allow requests from your Vercel frontend
-app.use(cors({
-  origin: ['https://propxchain.vercel.app', 'http://localhost:3000'],
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+dotenv.config();
 
 // MongoDB Connection
+let dbConnected = false;
 const MONGODB_URI = process.env.MONGODB_URI;
-console.log('Attempting to connect to MongoDB...');
-console.log('MongoDB URI:', MONGODB_URI ? 'Set' : 'Not set');
-
-mongoose.connect(MONGODB_URI)
-  .then(() => {
-    console.log('MongoDB connected successfully');
-  })
-  .catch(err => {
-    console.error('MongoDB connection error:', err);
-  });
 
 // Contact Form Submission Schema
 const ContactSubmissionSchema = new mongoose.Schema({
@@ -42,9 +17,35 @@ const ContactSubmissionSchema = new mongoose.Schema({
   interest: { type: String },
   message: { type: String, required: true },
   submittedAt: { type: Date, default: Date.now }
-}, { collection: 'contact' });
+}, { collection: 'contact' }); // Explicitly set collection name to 'contact'
 
-const ContactSubmission = mongoose.model('ContactSubmission', ContactSubmissionSchema);
+// Only create the model if it doesn't exist
+const ContactSubmission = mongoose.models.ContactSubmission || 
+  mongoose.model('ContactSubmission', ContactSubmissionSchema);
+
+// Connect to MongoDB
+const connectDB = async () => {
+  if (dbConnected) {
+    console.log('MongoDB already connected, connection state:', mongoose.connection.readyState);
+    return;
+  }
+  
+  console.log('Attempting to connect to MongoDB...');
+  console.log('MongoDB URI:', MONGODB_URI ? `${MONGODB_URI.substring(0, 20)}...` : 'undefined');
+  
+  try {
+    await mongoose.connect(MONGODB_URI);
+    dbConnected = true;
+    console.log('MongoDB connected successfully');
+    console.log('Connection state:', mongoose.connection.readyState);
+    console.log('Database name:', mongoose.connection.name);
+    console.log('Available collections:', await mongoose.connection.db.listCollections().toArray());
+  } catch (error) {
+    console.error('MongoDB connection error:', error);
+    console.error('Error details:', error.toString());
+    console.error('Connection state after error:', mongoose.connection.readyState);
+  }
+};
 
 // Email transport configuration
 const createTransporter = () => {
@@ -57,25 +58,41 @@ const createTransporter = () => {
   });
 };
 
-// Health check endpoint
-app.get('/', (req, res) => {
-  res.status(200).json({ 
-    status: 'ok',
-    message: 'PropXchain contact form API is running',
-    mongodb: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
-    env: {
-      mongodb_uri: process.env.MONGODB_URI ? 'Set' : 'Not set',
-      email_service: process.env.EMAIL_SERVICE ? 'Set' : 'Not set',
-      email_user: process.env.EMAIL_USER ? 'Set' : 'Not set',
-      email_password: process.env.EMAIL_PASSWORD ? 'Set' : 'Not set'
-    }
-  });
-});
+export default async function handler(req, res) {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
 
-// Contact form submission endpoint
-app.post('/api/contact', async (req, res) => {
-  console.log('Received contact form submission:', req.body);
-  
+  // Handle OPTIONS request for CORS
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
+  // Add a test endpoint for GET requests
+  if (req.method === 'GET') {
+    return res.status(200).json({ 
+      success: true, 
+      message: 'Contact API endpoint is working!',
+      timestamp: new Date().toISOString(),
+      env: {
+        mongodbUri: MONGODB_URI ? 'Set (first 10 chars): ' + MONGODB_URI.substring(0, 10) + '...' : 'Not set',
+        emailService: process.env.EMAIL_SERVICE || 'Not set',
+        emailUser: process.env.EMAIL_USER ? 'Set' : 'Not set',
+        emailPassword: process.env.EMAIL_PASSWORD ? 'Set' : 'Not set'
+      }
+    });
+  }
+
+  // Only allow POST for form submissions
+  if (req.method !== 'POST') {
+    return res.status(405).json({ success: false, message: 'Method not allowed' });
+  }
+
+  // Connect to database
+  await connectDB();
+
   const { name, email, company, phone, interest, message } = req.body;
   
   // Basic validation
@@ -85,6 +102,8 @@ app.post('/api/contact', async (req, res) => {
 
   try {
     console.log('Attempting to save submission to MongoDB...');
+    console.log('MongoDB connection state:', mongoose.connection.readyState);
+    console.log('Form data:', { name, email, company, phone, interest });
     
     // Save submission to MongoDB
     const newSubmission = new ContactSubmission({
@@ -98,6 +117,7 @@ app.post('/api/contact', async (req, res) => {
     
     await newSubmission.save();
     console.log('Form submission saved to database with ID:', newSubmission._id);
+    console.log('Collection name:', ContactSubmission.collection.name);
 
     // Create email transporter
     const transporter = createTransporter();
@@ -117,7 +137,7 @@ app.post('/api/contact', async (req, res) => {
         <h3>Message:</h3>
         <p>${message}</p>
         <p><em>This submission has been saved to the database with ID: ${newSubmission._id}</em></p>
-      `
+      `,
     };
 
     // Send email
@@ -138,7 +158,7 @@ app.post('/api/contact', async (req, res) => {
         <br>
         <p>Best regards,</p>
         <p>The PropXchain Team</p>
-      `
+      `,
     };
 
     await transporter.sendMail(autoResponseOptions);
@@ -147,6 +167,17 @@ app.post('/api/contact', async (req, res) => {
     res.status(200).json({ success: true, message: 'Your message has been sent successfully!' });
   } catch (error) {
     console.error('Error processing form submission:', error);
+    console.error('Error details:', error.toString());
+    
+    // Provide more specific error messages based on the error type
+    if (error.name === 'MongooseError' || error.name === 'MongoError') {
+      console.error('MongoDB error details:', {
+        name: error.name,
+        code: error.code,
+        message: error.message,
+        connectionState: mongoose.connection.readyState
+      });
+    }
     
     res.status(500).json({ 
       success: false, 
@@ -154,9 +185,4 @@ app.post('/api/contact', async (req, res) => {
       error: process.env.NODE_ENV === 'development' ? error.toString() : undefined
     });
   }
-});
-
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+};
