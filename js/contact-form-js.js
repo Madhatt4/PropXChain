@@ -3,6 +3,22 @@
 document.addEventListener('DOMContentLoaded', function() {
   console.log('Contact form handler loaded');
   
+  console.log('Inspecting all forms on the page');
+  // Log all forms on the page
+  const allForms = document.querySelectorAll('form');
+  console.log(`Found ${allForms.length} forms on the page`);
+  
+  // Log all inputs on the page for debugging
+  const allInputs = document.querySelectorAll('input');
+  console.log(`Found ${allInputs.length} input elements on the page`);
+  allInputs.forEach((input, index) => {
+    console.log(`Input ${index} type:`, input.type);
+    console.log(`Input ${index} ID:`, input.id);
+    console.log(`Input ${index} name:`, input.name);
+    console.log(`Input ${index} placeholder:`, input.placeholder);
+    console.log(`Input ${index} value:`, input.value);
+  });
+  
   // Try to find the contact form using different selectors
   let contactForm = document.getElementById('contact-form');
   
@@ -10,11 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!contactForm) {
     console.log('Contact form not found by ID, trying alternative selectors');
     // Try to find any form on the page
-    const allForms = document.querySelectorAll('form');
     if (allForms.length > 0) {
-      console.log(`Found ${allForms.length} forms on the page`);
       // Use the first form found
       contactForm = allForms[0];
+      console.log('Using first form found on the page');
     } else {
       console.error('No forms found on the page');
     }
@@ -27,24 +42,43 @@ document.addEventListener('DOMContentLoaded', function() {
     contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       
-      // Try to find the name input using different selectors
+      // Try to find the name input using different selectors and heuristics
       let nameInput = document.getElementById('name');
       
       // If not found by ID, try other selectors
       if (!nameInput) {
         console.log('Name input not found by ID, trying alternative selectors');
-        nameInput = contactForm.querySelector('[name="name"]') || 
-                   contactForm.querySelector('input[type="text"]:first-child') ||
-                   contactForm.querySelector('input[type="text"]');
         
-        // Log all text inputs for debugging
-        const allTextInputs = contactForm.querySelectorAll('input[type="text"]');
-        console.log(`Found ${allTextInputs.length} text inputs on the form`);
-        allTextInputs.forEach((input, index) => {
-          console.log(`Text input ${index} ID:`, input.id);
-          console.log(`Text input ${index} name:`, input.name);
-          console.log(`Text input ${index} placeholder:`, input.placeholder);
-        });
+        // Try by name attribute
+        nameInput = document.querySelector('[name="name"]');
+        
+        if (!nameInput) {
+          // Try by placeholder text containing "name"
+          const inputsWithNamePlaceholder = Array.from(document.querySelectorAll('input'))
+            .filter(input => input.placeholder && input.placeholder.toLowerCase().includes('name'));
+          
+          if (inputsWithNamePlaceholder.length > 0) {
+            nameInput = inputsWithNamePlaceholder[0];
+            console.log('Found name input by placeholder text');
+          } else {
+            // Try by label text
+            const nameLabels = Array.from(document.querySelectorAll('label'))
+              .filter(label => label.textContent.toLowerCase().includes('name'));
+            
+            if (nameLabels.length > 0 && nameLabels[0].htmlFor) {
+              nameInput = document.getElementById(nameLabels[0].htmlFor);
+              console.log('Found name input by label text');
+            } else {
+              // Last resort: just use the first text input on the form
+              nameInput = document.querySelector('input[type="text"]');
+              console.log('Using first text input as name input');
+            }
+          }
+        } else {
+          console.log('Found name input by name attribute');
+        }
+      } else {
+        console.log('Found name input by ID');
       }
       
       let isValid = true;
