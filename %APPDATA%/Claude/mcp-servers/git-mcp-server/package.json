@@ -1,0 +1,13 @@
+{
+  "name": "git-mcp-server",
+  "version": "0.1.0",
+  "description": "MCP server for Git operations",
+  "main": "git-mcp-server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node git-mcp-server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.1.0"
+  }
+}
