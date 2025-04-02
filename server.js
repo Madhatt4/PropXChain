@@ -41,7 +41,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-// Email transport configuration
+// Email transport configuration (Commented out for now)
+/*
 const transporter = nodemailer.createTransport({
   service: process.env.EMAIL_SERVICE, // e.g., 'gmail', 'outlook', etc.
   auth: {
@@ -49,6 +50,7 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASSWORD,
   },
 });
+*/
 
 // Contact form submission endpoint
 app.post('/api/contact', async (req, res) => {
@@ -101,10 +103,13 @@ app.post('/api/contact', async (req, res) => {
       `,
     };
 
-    // Send email
+    // Send email (Commented out for now)
+    /*
     await transporter.sendMail(mailOptions);
+    */
     
-    // Send auto-response to the submitter
+    // Send auto-response to the submitter (Commented out for now)
+    /*
     const autoResponseOptions = {
       from: process.env.EMAIL_USER,
       to: email,
@@ -123,6 +128,7 @@ app.post('/api/contact', async (req, res) => {
     };
 
     await transporter.sendMail(autoResponseOptions);
+    */
 
     // Check if this is a form submission (not JSON)
     const isFormSubmission = req.headers['content-type'] && 
