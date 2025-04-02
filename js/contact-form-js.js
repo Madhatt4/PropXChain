@@ -52,9 +52,21 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
       
-      if (!nameInput.value || !emailInput.value || !messageInput.value) {
-        console.error('Form validation failed');
-        alert('Please fill out all required fields');
+      // Enhanced validation
+      let validationError = '';
+      if (!nameInput.value.trim()) {
+        validationError = 'Please enter your name.';
+      } else if (!emailInput.value.trim()) {
+        validationError = 'Please enter your email address.';
+      } else if (!isValidEmail(emailInput.value.trim())) { // Check email format
+        validationError = 'Please enter a valid email address.';
+      } else if (!messageInput.value.trim()) {
+        validationError = 'Please enter your message.';
+      }
+
+      if (validationError) {
+        console.error('Form validation failed:', validationError);
+        alert(validationError); // Show specific error
         return;
       }
       
@@ -128,3 +140,9 @@ document.addEventListener('DOMContentLoaded', function() {
     console.error('Contact form not found');
   }
 });
+
+// Helper function to validate email
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}

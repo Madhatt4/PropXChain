@@ -78,52 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // Form validation
-  const contactForm = document.getElementById('contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      let isValid = true;
-      const nameInput = document.getElementById('name');
-      const emailInput = document.getElementById('email');
-      const messageInput = document.getElementById('message');
-      
-      // Simple validation
-      if (!nameInput.value.trim()) {
-        nameInput.classList.add('error');
-        isValid = false;
-      } else {
-        nameInput.classList.remove('error');
-      }
-      
-      if (!emailInput.value.trim() || !isValidEmail(emailInput.value)) {
-        emailInput.classList.add('error');
-        isValid = false;
-      } else {
-        emailInput.classList.remove('error');
-      }
-      
-      if (!messageInput.value.trim()) {
-        messageInput.classList.add('error');
-        isValid = false;
-      } else {
-        messageInput.classList.remove('error');
-      }
-      
-      if (isValid) {
-        // In a real implementation, this would submit the form
-        // For now, just show a success message
-        const formContent = contactForm.innerHTML;
-        contactForm.innerHTML = '<div class="success-message"><h3>Thank you for your message!</h3><p>We will get back to you shortly.</p></div>';
-        
-        // Reset form after 5 seconds (for demo purposes)
-        setTimeout(() => {
-          contactForm.innerHTML = formContent;
-        }, 5000);
-      }
-    });
-  }
   
   // Helper function to validate email
   function isValidEmail(email) {
