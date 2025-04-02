@@ -33,14 +33,22 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('Form submitted');
       
       // Get form data
-      const nameInput = document.getElementById('name');
-      const emailInput = document.getElementById('email');
-      const messageInput = document.getElementById('message');
+      const nameInput = form.querySelector('input[name="name"]');
+      const emailInput = form.querySelector('input[name="email"]');
+      const messageInput = form.querySelector('textarea[name="message"]');
+      
+      // Log form elements for debugging
+      console.log('Form elements:', {
+        nameInput,
+        emailInput,
+        messageInput,
+        form
+      });
       
       // Validate form data
       if (!nameInput || !emailInput || !messageInput) {
         console.error('Form elements not found');
-        alert('Form error: Some form elements could not be found');
+        alert('Form error: Some form elements could not be found. Please try again or contact us directly at marchatton@hotmail.co.uk');
         return;
       }
       
