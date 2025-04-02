@@ -46,7 +46,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Configure CORS to allow requests from the main website
 app.use(cors({
-  origin: ['https://www.propxchain.com', 'https://propxchain.com', 'http://localhost:3000'],
+  origin: '*', // Temporarily allow all origins for testing
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
   credentials: true
