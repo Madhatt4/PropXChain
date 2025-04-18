@@ -1,0 +1,125 @@
+/* Header Styles */
+.header {
+  background-color: #1a2a3a; /* var(--dark) */
+  color: white;
+  padding: 15px 0;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; Removed to group logo and nav */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.logo img {
+  height: 30px;
+  margin-right: 10px;
+}
+
+/* Added Header Nav Styles */
+.header .nav { /* Target nav within header */
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Push nav group to the right */
+}
+.header .nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.header .nav-item {
+  margin-left: 1rem; /* Use fixed value for simplicity */
+}
+.header .nav-link {
+  color: white; /* Ensure links are visible */
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: opacity 0.15s ease-in-out;
+  padding: 0.5rem 0; /* Add some padding for better click area */
+}
+.header .nav-link:hover {
+  opacity: 0.8;
+}
+.header .nav-cta {
+  background-color: #10b981; /* Use fixed color from main site */
+  color: white;
+  padding: 0.5rem 1rem; /* Adjusted padding */
+  border-radius: 6px; /* Adjusted border-radius */
+  margin-left: 1rem; /* Use fixed value */
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: background-color 0.15s ease-in-out;
+  text-decoration: none; /* Ensure no underline */
+}
+.header .nav-cta:hover {
+  background-color: #34d399; /* Use fixed color from main site */
+  color: white;
+}
+.header .mobile-menu-toggle {
+  display: none; /* Hide hamburger */
+}
+/* End Added Header Nav Styles */
+
+/* Ensure user info styles are present if needed alongside nav */
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Push user info to the right if nav isn't present */
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #0066cc; /* var(--primary) */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.user-name {
+  font-weight: 500;
+  margin-right: 15px; /* Add some space before logout */
+}
+
+.logout-button {
+  padding: 5px 10px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  border-radius: 4px; /* var(--border-radius) */
+  cursor: pointer;
+  transition: all 0.3s ease; /* var(--transition) */
+}
+
+.logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Add back link style if used in header */
+.header-container a[style*="margin-right: 10px"] {
+    margin-right: 10px;
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid white;
+    border-radius: 4px; /* var(--border-radius) */
+}
