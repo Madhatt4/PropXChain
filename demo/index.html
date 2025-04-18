@@ -906,7 +906,7 @@
       const loginError = document.getElementById('loginError');
       const logoutButton = document.getElementById('logoutButton');
       const buyerLogoutButton = document.getElementById('buyerLogoutButton');
-      
+
       // Demo credentials
       const credentials = {
         'emmadev': {
@@ -920,19 +920,62 @@
           name: 'James Brown'
         }
       };
-      
+
+      const SESSION_DURATION = 30 * 60 * 1000; // 30 minutes in milliseconds
+
+      // Function to check for active session
+      function checkSession() {
+        const storedUsername = localStorage.getItem('demoUsername');
+        const loginTime = localStorage.getItem('demoLoginTime');
+
+        if (storedUsername && loginTime) {
+          const currentTime = new Date().getTime();
+          if (currentTime - parseInt(loginTime) < SESSION_DURATION) {
+            // Session is valid, show the correct portal
+            loginPage.style.display = 'none';
+            loginError.style.display = 'none';
+            if (credentials[storedUsername] && credentials[storedUsername].role === 'developer') {
+              developerPortal.style.display = 'block';
+            } else if (credentials[storedUsername] && credentials[storedUsername].role === 'buyer') {
+              buyerPortal.style.display = 'block';
+            }
+            return true; // Session found and valid
+          } else {
+            // Session expired
+            clearSession();
+          }
+        }
+        return false; // No valid session
+      }
+
+      // Function to clear session
+      function clearSession() {
+        localStorage.removeItem('demoUsername');
+        localStorage.removeItem('demoLoginTime');
+      }
+
+      // Check session on page load
+      if (!checkSession()) {
+        loginPage.style.display = 'flex';
+      }
+
       // Handle login form submission
       loginForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
+
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-        
+
         // Check credentials
         if (credentials[username] && credentials[username].password === password) {
+          // Successful login
           loginPage.style.display = 'none';
           loginError.style.display = 'none';
-          
+
+          // Store session information
+          localStorage.setItem('demoUsername', username);
+          localStorage.setItem('demoLoginTime', new Date().getTime().toString());
+
           // Show appropriate portal based on role
           if (credentials[username].role === 'developer') {
             developerPortal.style.display = 'block';
@@ -940,25 +983,28 @@
             buyerPortal.style.display = 'block';
           }
         } else {
+          // Failed login
           loginError.style.display = 'block';
         }
       });
-      
+
       // Handle logout
       logoutButton.addEventListener('click', function() {
         developerPortal.style.display = 'none';
         loginPage.style.display = 'flex';
         document.getElementById('username').value = '';
         document.getElementById('password').value = '';
+        clearSession(); // Clear session on logout
       });
-      
+
       buyerLogoutButton.addEventListener('click', function() {
         buyerPortal.style.display = 'none';
         loginPage.style.display = 'flex';
         document.getElementById('username').value = '';
         document.getElementById('password').value = '';
+        clearSession(); // Clear session on logout
       });
-      
+
       // Make nav links work properly
       const navLinks = document.querySelectorAll('.nav-link');
       navLinks.forEach(link => {
@@ -967,10 +1013,10 @@
           if (window.location.pathname.endsWith(this.getAttribute('href'))) {
             e.preventDefault();
           }
-          
+
           // Remove active class from all links
           navLinks.forEach(l => l.classList.remove('active'));
-          
+
           // Add active class to clicked link
           this.classList.add('active');
         });
