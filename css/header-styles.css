@@ -71,9 +71,65 @@
   color: white;
 }
 .header .mobile-menu-toggle {
-  display: none; /* Hide hamburger */
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
 }
 /* End Added Header Nav Styles */
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .header .mobile-menu-toggle {
+    display: block;
+  }
+  
+  .header .nav-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #1a2a3a;
+    flex-direction: column;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .header .nav-list.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .header .nav-item {
+    margin: 0;
+    text-align: center;
+  }
+  
+  .header .nav-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .header .nav-cta {
+    margin: 0.5rem 1rem;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  .header .nav {
+    position: relative;
+  }
+}
 
 /* Ensure user info styles are present if needed alongside nav */
 .user-info {
