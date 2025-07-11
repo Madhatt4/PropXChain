@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PropXchain Technical Architecture</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #0f172a;
+        }
+
+        .architecture-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .architecture-diagram {
+            display: grid;
+            grid-template-rows: auto auto auto auto;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .layer {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .layer-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e293b;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 8px;
+        }
+
+        .components {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .component {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .component:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+        }
+
+        .component-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .component-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .icp-component .component-icon {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .external-component .component-icon {
+            background: #f3e8ff;
+            color: #7c3aed;
+        }
+
+        .user-component .component-icon {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .component-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .component-description {
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .component-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .component-features li {
+            font-size: 12px;
+            color: #64748b;
+            padding: 4px 0;
+            border-left: 3px solid #cbd5e1;
+            padding-left: 12px;
+            margin-bottom: 6px;
+        }
+
+        .data-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .flow-arrow {
+            font-size: 24px;
+            color: #3b82f6;
+            font-weight: bold;
+        }
+
+        .flow-step {
+            background: #eff6ff;
+            border: 2px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1e40af;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .benefits-section {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .benefits-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .benefit-item {
+            background: white;
+            border-radius: 6px;
+            padding: 16px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .benefit-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .benefit-description {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .components {
+                grid-template-columns: 1fr;
+            }
+            
+            .data-flow {
+                flex-direction: column;
+            }
+            
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="architecture-container">
+        <div class="header">
+            <div class="title">PropXchain Technical Architecture</div>
+            <div class="subtitle">Multi-Canister System on Internet Computer Protocol</div>
+        </div>
+
+        <div class="architecture-diagram">
+            <!-- User Interface Layer -->
+            <div class="layer">
+                <div class="layer-title">🌐 User Interface Layer</div>
+                <div class="components">
+                    <div class="component user-component">
+                        <div class="component-header">
+                            <div class="component-icon">🖥️</div>
+                            <div class="component-title">Web Frontend Canister</div>
+                        </div>
+                        <div class="component-description">
+                            ICP-hosted frontend serving transparency portal directly to users
+                        </div>
+                        <ul class="component-features">
+                            <li>Dual-sided dashboard (seller/buyer views)</li>
+                            <li>Real-time progress tracking</li>
+                            <li>Responsive design for all devices</li>
+                            <li>Internet Identity authentication</li>
+                        </ul>
+                    </div>
+
+                    <div class="component user-component">
+                        <div class="component-header">
+                            <div class="component-icon">👥</div>
+                            <div class="component-title">User Management</div>
+                        </div>
+                        <div class="component-description">
+                            Secure authentication and role-based access control
+                        </div>
+                        <ul class="component-features">
+                            <li>Internet Identity integration</li>
+                            <li>Role management (solicitor, developer, buyer)</li>
+                            <li>Session management</li>
+                            <li>Permission controls</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Smart Contract Layer -->
+            <div class="layer">
+                <div class="layer-title">⚡ Smart Contract Layer (ICP Canisters)</div>
+                <div class="components">
+                    <div class="component icp-component">
+                        <div class="component-header">
+                            <div class="component-icon">📋</div>
+                            <div class="component-title">Property Registry Canister</div>
+                        </div>
+                        <div class="component-description">
+                            Stores and manages verified property information packs
+                        </div>
+                        <ul class="component-features">
+                            <li>Immutable property records</li>
+                            <li>Developer information packs</li>
+                            <li>Document version control</li>
+                            <li>Ownership history tracking</li>
+                        </ul>
+                    </div>
+
+                    <div class="component icp-component">
+                        <div class="component-header">
+                            <div class="component-icon">🔄</div>
+                            <div class="component-title">Transaction Engine Canister</div>
+                        </div>
+                        <div class="component-description">
+                            Automates Law Society standard conditions and workflows
+                        </div>
+                        <ul class="component-features">
+                            <li>Smart contract automation</li>
+                            <li>Conditional logic execution</li>
+                            <li>Milestone progression</li>
+                            <li>Standard Conditions of Sale implementation</li>
+                        </ul>
+                    </div>
+
+                    <div class="component icp-component">
+                        <div class="component-header">
+                            <div class="component-icon">🔐</div>
+                            <div class="component-title">Document Verification Canister</div>
+                        </div>
+                        <div class="component-description">
+                            Validates and stores legal documents with blockchain proof
+                        </div>
+                        <ul class="component-features">
+                            <li>Document integrity verification</li>
+                            <li>Chain-key cryptography signatures</li>
+                            <li>Immutable audit trails</li>
+                            <li>Legal compliance validation</li>
+                        </ul>
+                    </div>
+
+                    <div class="component icp-component">
+                        <div class="component-header">
+                            <div class="component-icon">🌐</div>
+                            <div class="component-title">API Gateway Canister</div>
+                        </div>
+                        <div class="component-description">
+                            Manages secure HTTPS outcalls to external systems
+                        </div>
+                        <ul class="component-features">
+                            <li>HTTPS outcalls to external APIs</li>
+                            <li>Secure data transformation</li>
+                            <li>Rate limiting and error handling</li>
+                            <li>Response caching and optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Integration Layer -->
+            <div class="layer">
+                <div class="layer-title">🔗 External Integration Layer</div>
+                <div class="components">
+                    <div class="component external-component">
+                        <div class="component-header">
+                            <div class="component-icon">🏛️</div>
+                            <div class="component-title">Land Registry API</div>
+                        </div>
+                        <div class="component-description">
+                            Direct integration for title verification and ownership updates
+                        </div>
+                        <ul class="component-features">
+                            <li>Real-time title verification</li>
+                            <li>Automatic ownership registration</li>
+                            <li>Search results integration</li>
+                            <li>Property boundary data</li>
+                        </ul>
+                    </div>
+
+                    <div class="component external-component">
+                        <div class="component-header">
+                            <div class="component-icon">🏦</div>
+                            <div class="component-title">Mortgage Provider APIs</div>
+                        </div>
+                        <div class="component-description">
+                            Integration with lenders for approval status and verification
+                        </div>
+                        <ul class="component-features">
+                            <li>Mortgage application status</li>
+                            <li>Approval confirmations</li>
+                            <li>Valuation results</li>
+                            <li>Completion fund verification</li>
+                        </ul>
+                    </div>
+
+                    <div class="component external-component">
+                        <div class="component-header">
+                            <div class="component-icon">⚖️</div>
+                            <div class="component-title">Legal Practice Management</div>
+                        </div>
+                        <div class="component-description">
+                            Integration with existing solicitor case management systems
+                        </div>
+                        <ul class="component-features">
+                            <li>Case management sync</li>
+                            <li>Client communication logs</li>
+                            <li>Billing integration</li>
+                            <li>Document management</li>
+                        </ul>
+                    </div>
+
+                    <div class="component external-component">
+                        <div class="component-header">
+                            <div class="component-icon">🔍</div>
+                            <div class="component-title">Search Providers</div>
+                        </div>
+                        <div class="component-description">
+                            Automated ordering and tracking of property searches
+                        </div>
+                        <ul class="component-features">
+                            <li>Local authority searches</li>
+                            <li>Environmental searches</li>
+                            <li>Water and drainage searches</li>
+                            <li>Search result validation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Flow -->
+            <div class="layer">
+                <div class="layer-title">📊 Data Flow Example</div>
+                <div class="data-flow">
+                    <div class="flow-step">Developer uploads property pack</div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">Blockchain verification</div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">Buyer submits offer</div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">Smart contract automation</div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">Exchange completion</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="benefits-section">
+            <div class="benefits-title">🚀 ICP Advantages Leveraged</div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-title">Reverse Gas Model</div>
+                    <div class="benefit-description">Users never pay transaction fees - canisters pre-pay with cycles for seamless user experience</div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-title">HTTPS Outcalls</div>
+                    <div class="benefit-description">Direct API integration without oracles, enabling secure communication with Land Registry and mortgage providers</div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-title">Chain-Key Cryptography</div>
+                    <div class="benefit-description">Enables legally binding digital signatures and secure document verification without complex key management</div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-title">Web-Speed Performance</div>
+                    <div class="benefit-description">1-second finality ensures real-time updates and responsive user experience for property professionals</div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-title">Orthogonal Persistence</div>
+                    <div class="benefit-description">Automatic data persistence simplifies development and ensures property records are never lost</div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-title">Internet-Scale Storage</div>
+                    <div class="benefit-description">Handles large legal documents and property records efficiently without external storage dependencies</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
