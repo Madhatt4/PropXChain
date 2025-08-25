@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { margin: 0; padding: 0; background: white; }
+        canvas { border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <canvas id="logoCanvas" width="400" height="400"></canvas>
+    
+    <script>
+        const canvas = document.getElementById('logoCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Fill white background
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, 400, 400);
+        
+        // Create gradients
+        const blockchainGradient = ctx.createLinearGradient(0, 0, 400, 400);
+        blockchainGradient.addColorStop(0, '#00a8ff');
+        blockchainGradient.addColorStop(1, '#0078d4');
+        
+        const propertyGradient = ctx.createLinearGradient(0, 0, 400, 400);
+        propertyGradient.addColorStop(0, '#2ed573');
+        propertyGradient.addColorStop(1, '#1b9954');
+        
+        // Scale factor (400px canvas / 200px viewBox = 2)
+        const scale = 2;
+        ctx.scale(scale, scale);
+        
+        // Main circle
+        ctx.beginPath();
+        ctx.arc(100, 80, 45, 0, 2 * Math.PI);
+        ctx.fillStyle = blockchainGradient;
+        ctx.fill();
+        
+        // House base
+        ctx.fillStyle = 'white';
+        ctx.fillRect(85, 74, 30, 22);
+        
+        // House roof
+        ctx.beginPath();
+        ctx.moveTo(82, 80);
+        ctx.lineTo(100, 58);
+        ctx.lineTo(118, 80);
+        ctx.closePath();
+        ctx.fill();
+        
+        // Door
+        ctx.fillStyle = '#0078d4';
+        ctx.fillRect(96, 86, 8, 10);
+        
+        // Windows
+        ctx.fillRect(88, 78, 5, 5);
+        ctx.fillRect(107, 78, 5, 5);
+        
+        // Blockchain circles
+        ctx.beginPath();
+        ctx.arc(75, 80, 4, 0, 2 * Math.PI);
+        ctx.fillStyle = '#2ed573';
+        ctx.fill();
+        
+        ctx.beginPath();
+        ctx.arc(125, 80, 4, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        // Connecting lines
+        ctx.strokeStyle = '#2ed573';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(79, 80);
+        ctx.lineTo(82, 80);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.moveTo(118, 80);
+        ctx.lineTo(121, 80);
+        ctx.stroke();
+        
+        // Text
+        ctx.fillStyle = '#0078d4';
+        ctx.font = 'bold 24px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('Prop', 88, 150);
+        
+        ctx.fillStyle = '#2ed573';
+        ctx.fillText('X', 112, 150);
+        
+        ctx.fillStyle = '#0078d4';
+        ctx.fillText('Chain', 100, 175);
+        
+        // Convert to blob and download
+        canvas.toBlob(function(blob) {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'propxchain-logo-square.jpg';
+            a.click();
+            URL.revokeObjectURL(url);
+        }, 'image/jpeg', 0.95);
+    </script>
+    
+    <p>Canvas logo created! JPG download should start automatically.</p>
+    <p>You can also right-click the canvas above and "Save image as..." to save manually.</p>
+</body>
+</html>
