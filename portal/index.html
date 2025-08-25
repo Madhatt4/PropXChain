@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PropXchain Portal - Professional Property Transactions</title>
+  <link rel="icon" href="../images/propxchain-favicon.svg" type="image/svg+xml">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/index.min.js"></script>
+  
+  <link rel="stylesheet" href="css/portal.css">
+</head>
+<body>
+  <!-- Login Screen -->
+  <div id="loginScreen" class="login-screen">
+    <div class="login-container">
+      <div class="login-header">
+        <img src="../images/propxchain-logo.svg" alt="PropXchain" class="login-logo">
+        <h1>PropXchain Portal</h1>
+        <p>Secure blockchain-based property transactions</p>
+      </div>
+      
+      <form id="loginForm" class="login-form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" required>
+        </div>
+        
+        <button type="submit" class="login-btn">
+          <i class="fas fa-lock"></i>
+          Secure Login
+        </button>
+        
+        <div class="login-error" id="loginError">
+          Invalid credentials. Please try again.
+        </div>
+      </form>
+      
+      <div class="demo-credentials">
+        <h3>Demo Access</h3>
+        <div class="credential-option">
+          <strong>Developer Portal:</strong> <code>emmadev</code> / <code>password123</code>
+        </div>
+        <div class="credential-option">
+          <strong>Buyer Portal:</strong> <code>jamesbrown</code> / <code>password123</code>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Portal -->
+  <div id="portalApp" class="portal-app" style="display: none;">
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+      <div class="nav-left">
+        <img src="../images/propxchain-logo.svg" alt="PropXchain" class="nav-logo">
+        <span class="nav-title">PropXchain Portal</span>
+      </div>
+      
+      <div class="nav-center">
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search transactions, properties, documents...">
+        </div>
+      </div>
+      
+      <div class="nav-right">
+        <button class="nav-btn" id="notificationsBtn">
+          <i class="fas fa-bell"></i>
+          <span class="badge">3</span>
+        </button>
+        
+        <div class="user-menu">
+          <img src="https://ui-avatars.com/api/?name=User&background=0066cc&color=fff" alt="User" class="user-avatar" id="userAvatar">
+          <div class="user-dropdown" id="userDropdown">
+            <div class="user-info">
+              <div class="user-name" id="userName">User</div>
+              <div class="user-role" id="userRole">Role</div>
+            </div>
+            <hr>
+            <a href="#" class="dropdown-item"><i class="fas fa-user"></i> Profile</a>
+            <a href="#" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a>
+            <a href="#" class="dropdown-item"><i class="fas fa-question-circle"></i> Help</a>
+            <hr>
+            <a href="#" class="dropdown-item" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <span id="portalType">PORTAL</span>
+      </div>
+      
+      <nav class="sidebar-nav" id="sidebarNav">
+        <!-- Navigation items will be populated dynamically -->
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="page-header">
+        <h1 id="pageTitle">Dashboard</h1>
+        <div class="page-actions" id="pageActions">
+          <!-- Page-specific actions -->
+        </div>
+      </div>
+      
+      <div class="page-content" id="pageContent">
+        <!-- Content will be populated dynamically -->
+      </div>
+    </main>
+  </div>
+
+  <!-- Notification Panel -->
+  <div id="notificationPanel" class="notification-panel">
+    <div class="notification-header">
+      <h3>Notifications</h3>
+      <button class="close-btn" id="closeNotifications">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="notification-list" id="notificationList">
+      <!-- Notifications will be populated dynamically -->
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/pages.js"></script>
+  <script src="js/portal.js"></script>
+</body>
+</html>

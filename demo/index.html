@@ -4,12 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PropXchain Portal Demo</title>
-  <link rel="icon" href="../images/propxchain-favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/images/propxchain-favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="../css/header-styles.css"> <!-- Link the external header CSS -->
+  <link rel="stylesheet" href="../css/header-styles.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     :root {
       --primary: #0066cc;
@@ -429,7 +431,7 @@
   <div class="login-page" id="loginPage">
     <div class="login-container">
       <div class="login-logo">
-        <img src="../images/propxchain-logo.svg" alt="PropXchain Logo">
+        <img src="/images/propxchain-logo.svg" alt="PropXchain Logo">
         <span>PropXchain</span>
       </div>
       
@@ -469,7 +471,7 @@
   <header class="header">
     <div class="container header-container">
       <a href="../index.html" class="logo">
-        <img src="../images/propxchain-logo.svg" alt="PropXchain Logo">
+        <img src="/images/propxchain-logo.svg" alt="PropXchain Logo">
         PropXchain
       </a>
 
@@ -556,7 +558,7 @@
         </ul>
       </aside>
       
-      <main class="content">
+      <main class="dashboard-container">
         <h1 class="dashboard-title">Developer Dashboard</h1>
         
         <div class="stats-grid">
@@ -597,6 +599,33 @@
             <div class="stat-info">
               <h3>23</h3>
               <p>Avg. Closing Time (days)</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="charts-container">
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3 class="chart-title">Transaction Progress</h3>
+              <div class="chart-actions">
+                <button class="chart-action-btn"><i class="fas fa-sync-alt"></i></button>
+                <button class="chart-action-btn"><i class="fas fa-ellipsis-h"></i></button>
+              </div>
+            </div>
+            <div class="chart-placeholder">
+              <canvas id="progressChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3 class="chart-title">Document Status</h3>
+              <div class="chart-actions">
+                <button class="chart-action-btn"><i class="fas fa-sync-alt"></i></button>
+                <button class="chart-action-btn"><i class="fas fa-ellipsis-h"></i></button>
+              </div>
+            </div>
+            <div class="chart-placeholder">
+              <canvas id="documentsChart"></canvas>
             </div>
           </div>
         </div>
@@ -739,7 +768,7 @@
     <header class="header">
       <div class="container header-container">
         <a href="#" class="logo">
-          <img src="../images/propxchain-logo.svg" alt="PropXchain Logo">
+        <img src="/images/propxchain-logo.svg" alt="PropXchain Logo">
           PropXchain
         </a>
         
@@ -785,7 +814,7 @@
         </ul>
       </aside>
       
-      <main class="content">
+      <main class="dashboard-container">
         <h1 class="dashboard-title">Buyer Dashboard</h1>
         
         <div class="stats-grid">
@@ -873,7 +902,20 @@
           </tbody>
         </table>
         
-        <h2 class="section-title" style="margin-top: 30px;">Required Actions</h2>
+        <div class="action-card">
+          <div class="action-header">
+            <div class="action-icon">
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="action-content">
+              <h3>Upload Local Authority Search</h3>
+              <p>This document is required to proceed with the transaction.</p>
+            </div>
+          </div>
+          <button class="action-btn">
+            <i class="fas fa-upload"></i> Upload Document
+          </button>
+        </div>
         
         <div style="background-color: white; border-radius: var(--border-radius); padding: 20px; box-shadow: var(--box-shadow);">
           <div style="display: flex; align-items: center; margin-bottom: 15px;">
@@ -898,7 +940,96 @@
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script>
+    // Initialize charts
+    function initDeveloperCharts() {
+      // Transaction Progress Chart
+      const progressCtx = document.getElementById('progressChart').getContext('2d');
+      new Chart(progressCtx, {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+          datasets: [{
+            label: 'Transaction Progress',
+            data: [20, 35, 45, 55, 65, 75, 78],
+            borderColor: '#0066cc',
+            backgroundColor: 'rgba(0, 102, 204, 0.1)',
+            borderWidth: 3,
+            pointRadius: 5,
+            pointBackgroundColor: '#fff',
+            pointBorderWidth: 2,
+            tension: 0.3,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 100,
+              ticks: {
+                callback: function(value) {
+                  return value + '%';
+                }
+              }
+            }
+          }
+        }
+      });
+
+      // Document Status Chart
+      const documentsCtx = document.getElementById('documentsChart').getContext('2d');
+      new Chart(documentsCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Verified', 'Pending Review', 'Action Required'],
+          datasets: [{
+            data: [65, 25, 10],
+            backgroundColor: [
+              '#28a745',
+              '#ffc107',
+              '#dc3545'
+            ],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom'
+            }
+          },
+          cutout: '70%'
+        }
+      });
+    }
+
+    function initBuyerCharts() {
+      // Buyer can have different charts if needed
+      // For now we'll reuse the same charts for demo purposes
+      initDeveloperCharts();
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
+      // Show appropriate portal based on role
+      if (credentials[username].role === 'developer') {
+        developerPortal.style.display = 'block';
+        initDeveloperCharts(); // Initialize charts for developer
+      } else if (credentials[username].role === 'buyer') {
+        buyerPortal.style.display = 'block';
+        initBuyerCharts(); // Initialize charts for buyer
+      }
+      // Show appropriate portal based on role
+      if (credentials[username].role === 'developer') {
+        developerPortal.style.display = 'block';
+        initDeveloperCharts(); // Initialize charts for developer
+      } else if (credentials[username].role === 'buyer') {
+        buyerPortal.style.display = 'block';
+        initBuyerCharts(); // Initialize charts for buyer
+      }
       const loginPage = document.getElementById('loginPage');
       const developerPortal = document.getElementById('developerPortal');
       const buyerPortal = document.getElementById('buyerPortal');
