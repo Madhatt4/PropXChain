@@ -65,6 +65,11 @@ class PropXchainPortal {
 
   checkExistingSession() {
     console.log('Checking existing session...');
+    
+    // Clear any potentially corrupted sessions for debugging
+    localStorage.removeItem('propx_user');
+    localStorage.removeItem('propx_login_time');
+    
     const username = localStorage.getItem('propx_user');
     const loginTime = localStorage.getItem('propx_login_time');
     const sessionDuration = 30 * 60 * 1000; // 30 minutes
@@ -118,8 +123,17 @@ class PropXchainPortal {
   }
 
   showLoginScreen() {
-    document.getElementById('loginScreen').style.display = 'flex';
-    document.getElementById('portalApp').style.display = 'none';
+    console.log('showLoginScreen() called - forcing login display');
+    const loginScreen = document.getElementById('loginScreen');
+    const portalApp = document.getElementById('portalApp');
+    
+    if (loginScreen && portalApp) {
+      loginScreen.style.display = 'flex';
+      portalApp.style.display = 'none';
+      console.log('Login screen should now be visible');
+    } else {
+      console.error('Could not find loginScreen or portalApp elements');
+    }
   }
 
   showPortal() {
