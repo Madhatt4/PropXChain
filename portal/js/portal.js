@@ -1,15 +1,24 @@
 // PropXchain Portal Main Application
 class PropXchainPortal {
   constructor() {
+    console.log('PropXchainPortal constructor called');
     this.currentUser = null;
     this.currentPage = 'dashboard';
     this.charts = {};
+    console.log('Starting portal initialization...');
     this.init();
   }
 
   init() {
-    this.bindEvents();
-    this.checkExistingSession();
+    console.log('Portal init() called');
+    try {
+      this.bindEvents();
+      console.log('Events bound successfully');
+      this.checkExistingSession();
+      console.log('Session check completed');
+    } catch (error) {
+      console.error('Error in portal init:', error);
+    }
   }
 
   bindEvents() {
@@ -55,21 +64,25 @@ class PropXchainPortal {
   }
 
   checkExistingSession() {
+    console.log('Checking existing session...');
     const username = localStorage.getItem('propx_user');
     const loginTime = localStorage.getItem('propx_login_time');
     const sessionDuration = 30 * 60 * 1000; // 30 minutes
 
     if (username && loginTime) {
+      console.log('Found existing session for:', username);
       const now = new Date().getTime();
       if (now - parseInt(loginTime) < sessionDuration) {
         const user = DataHelpers.getUser(username);
         if (user) {
+          console.log('Valid session found, logging in user');
           this.loginUser(user, username);
           return;
         }
       }
     }
     
+    console.log('No valid session found, showing login screen');
     this.showLoginScreen();
   }
 
@@ -598,7 +611,13 @@ class PropXchainPortal {
 
 // Initialize the portal when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  window.Portal = new PropXchainPortal();
+  console.log('DOM Content Loaded - Initializing PropXchain Portal');
+  try {
+    window.Portal = new PropXchainPortal();
+    console.log('Portal initialized successfully');
+  } catch (error) {
+    console.error('Error initializing portal:', error);
+  }
 });
 
 // Add some additional CSS for dynamic elements

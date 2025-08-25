@@ -22,7 +22,7 @@
 </head>
 <body>
   <!-- Login Screen -->
-  <div id="loginScreen" class="login-screen">
+  <div id="loginScreen" class="login-screen" style="display: flex;">
     <div class="login-container">
       <div class="login-header">
         <img src="../images/propxchain-logo.svg" alt="PropXchain" class="login-logo">
@@ -143,6 +143,12 @@
   </div>
 
   <!-- Scripts -->
+  <script>
+    console.log('Portal HTML loaded');
+    window.addEventListener('load', () => {
+      console.log('Window loaded, checking portal initialization...');
+    });
+  </script>
   <script src="js/data.js"></script>
   <script src="js/components.js"></script>
   <script src="js/pages.js"></script>
