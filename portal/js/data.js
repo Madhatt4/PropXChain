@@ -141,13 +141,110 @@ const PortalData = {
       progress: 25,
       stage: 'Awaiting Documents',
       images: [
-        'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=300'
+        'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=300',
+        'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=300'
       ],
       details: {
         bedrooms: 3,
         bathrooms: 3,
         sqft: 2200,
         parking: 2,
+        terrace: true,
+        completion: '2024-10-15'
+      },
+      blockchain: {
+        contractAddress: '0x9a3b6c5e2f8d7a1b4c9e6f0a2d5b8e1c4f7a0d3b6e9c2f5a8b1e4d7c0f3a6b9',
+        transactionHash: null,
+        blockNumber: null,
+        gasUsed: null,
+        verified: false
+      },
+      timeline: [
+        { stage: 'Offer Accepted', date: '2024-01-12', status: 'completed', icon: 'fas fa-handshake' },
+        { stage: 'Initial Verification', date: '2024-01-15', status: 'completed', icon: 'fas fa-check-circle' },
+        { stage: 'Survey Ordered', date: '2024-01-18', status: 'action_required', icon: 'fas fa-search' },
+        { stage: 'Mortgage Application', date: '2024-01-25', status: 'pending', icon: 'fas fa-university' },
+        { stage: 'Legal Review', date: '2024-02-10', status: 'pending', icon: 'fas fa-gavel' },
+        { stage: 'Contract Exchange', date: '2024-02-25', status: 'pending', icon: 'fas fa-file-signature' },
+        { stage: 'Completion', date: '2024-03-15', status: 'pending', icon: 'fas fa-key' }
+      ],
+      documents: [
+        { id: 11, name: 'Purchase Agreement', type: 'contract', status: 'verified', uploadDate: '2024-01-13' },
+        { id: 12, name: 'Property Survey', type: 'survey', status: 'action_required', uploadDate: null },
+        { id: 13, name: 'Insurance Documents', type: 'insurance', status: 'pending', uploadDate: null },
+        { id: 14, name: 'Service Charge Details', type: 'financial', status: 'verified', uploadDate: '2024-01-16' }
+      ]
+    },
+    {
+      id: 'PX-2024-004',
+      title: 'Riverside Gardens, No. 12',
+      address: '12 Riverside Gardens, Chester CH1 3BF',
+      type: 'Townhouse',
+      developer: 'North Wales Developments',
+      buyerId: 'buyer004',
+      buyerName: 'Emily Rodriguez',
+      price: 445000,
+      status: 'completion_ready',
+      progress: 95,
+      stage: 'Ready for Completion',
+      images: [
+        'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300',
+        'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=300'
+      ],
+      details: {
+        bedrooms: 4,
+        bathrooms: 3,
+        sqft: 1850,
+        parking: 2,
+        garden: true,
+        completion: '2024-08-30'
+      },
+      blockchain: {
+        contractAddress: '0xa2b5c8e1f4d7a0b3c6e9f2a5d8b1e4c7f0a3b6c9e2f5d8a1b4e7c0f3a6b9c2f5',
+        transactionHash: '0x1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b',
+        blockNumber: 18245123,
+        gasUsed: 298000,
+        verified: true
+      },
+      timeline: [
+        { stage: 'Offer Accepted', date: '2023-12-05', status: 'completed', icon: 'fas fa-handshake' },
+        { stage: 'Initial Verification', date: '2023-12-07', status: 'completed', icon: 'fas fa-check-circle' },
+        { stage: 'Survey Ordered', date: '2023-12-12', status: 'completed', icon: 'fas fa-search' },
+        { stage: 'Mortgage Application', date: '2023-12-15', status: 'completed', icon: 'fas fa-university' },
+        { stage: 'Legal Review', date: '2024-01-05', status: 'completed', icon: 'fas fa-gavel' },
+        { stage: 'Contract Exchange', date: '2024-01-20', status: 'completed', icon: 'fas fa-file-signature' },
+        { stage: 'Completion', date: '2024-02-28', status: 'ready', icon: 'fas fa-key' }
+      ],
+      documents: [
+        { id: 15, name: 'Purchase Agreement', type: 'contract', status: 'verified', uploadDate: '2023-12-06' },
+        { id: 16, name: 'Property Survey', type: 'survey', status: 'verified', uploadDate: '2023-12-14' },
+        { id: 17, name: 'Mortgage Offer', type: 'financial', status: 'verified', uploadDate: '2023-12-18' },
+        { id: 18, name: 'Building Regulations Certificate', type: 'legal', status: 'verified', uploadDate: '2023-12-10' },
+        { id: 19, name: 'Energy Performance Certificate', type: 'certificate', status: 'verified', uploadDate: '2023-12-08' },
+        { id: 20, name: 'Local Authority Search', type: 'search', status: 'verified', uploadDate: '2024-01-03' },
+        { id: 21, name: 'Title Deeds', type: 'legal', status: 'verified', uploadDate: '2024-01-18' },
+        { id: 22, name: 'Final Inspection Report', type: 'inspection', status: 'verified', uploadDate: '2024-02-20' }
+      ]
+    },
+    {
+      id: 'PX-2024-005',
+      title: 'Victoria Court, Apartment 8B',
+      address: '8B Victoria Court, Birmingham B1 2HY',
+      type: 'Apartment',
+      developer: 'North Wales Developments',
+      buyerId: 'jamesbrown',
+      buyerName: 'James Brown',
+      price: 285000,
+      status: 'mortgage_approved',
+      progress: 75,
+      stage: 'Exchange Pending',
+      images: [
+        'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=300',
+        'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300'
+      ],
+      details: {
+        bedrooms: 2,
+        bathrooms: 2,
         balcony: true,
         completion: '2024-10-15'
       },
@@ -297,66 +394,117 @@ const PortalData = {
     {
       id: 2,
       title: 'Action Required',
-      message: 'Local Authority Search document is required to proceed with Unit 301.',
+      message: 'Local Authority Search document is required to proceed with Harbor View Plaza Unit 1205.',
       type: 'warning',
-      time: '1 hour ago',
+      time: '15 minutes ago',
       read: false,
       icon: 'fas fa-exclamation-triangle'
     },
     {
       id: 3,
-      title: 'Transaction Update',
-      message: 'Riverside Apartments Unit 301 has progressed to Legal Review stage.',
-      type: 'info',
-      time: '3 hours ago',
-      read: true,
-      icon: 'fas fa-info-circle'
+      title: 'Blockchain Verification Complete',
+      message: 'Riverside Gardens No. 12 has been successfully recorded on the blockchain.',
+      type: 'success',
+      time: '1 hour ago',
+      read: false,
+      icon: 'fas fa-cube'
     },
     {
       id: 4,
+      title: 'Transaction Progress',
+      message: 'Victoria Court Apartment 8B has progressed to Exchange Pending stage.',
+      type: 'info',
+      time: '2 hours ago',
+      read: true,
+      icon: 'fas fa-arrow-right'
+    },
+    {
+      id: 5,
+      title: 'Survey Completed',
+      message: 'Property survey for Riverside Apartments Unit 301 has been completed successfully.',
+      type: 'success',
+      time: '3 hours ago',
+      read: true,
+      icon: 'fas fa-clipboard-check'
+    },
+    {
+      id: 6,
       title: 'New Message',
       message: 'You have a new message from your solicitor regarding contract terms.',
       type: 'info',
-      time: '1 day ago',
+      time: '5 hours ago',
       read: true,
       icon: 'fas fa-envelope'
     },
     {
-      id: 5,
-      title: 'System Update',
-      message: 'PropXchain portal has been updated with enhanced blockchain verification.',
+      id: 7,
+      title: 'Completion Scheduled',
+      message: 'Completion date confirmed for Riverside Gardens - 28th February 2024.',
       type: 'info',
+      time: '1 day ago',
+      read: true,
+      icon: 'fas fa-calendar-check'
+    },
+    {
+      id: 8,
+      title: 'Document Upload',
+      message: 'Michael Chen has uploaded new insurance documents.',
+      type: 'info',
+      time: '1 day ago',
+      read: true,
+      icon: 'fas fa-file-upload'
+    },
+    {
+      id: 9,
+      title: 'Payment Confirmed',
+      message: 'Deposit payment of £28,500 has been confirmed and secured.',
+      type: 'success',
       time: '2 days ago',
       read: true,
-      icon: 'fas fa-cog'
+      icon: 'fas fa-pound-sign'
+    },
+    {
+      id: 10,
+      title: 'System Update',
+      message: 'PropXchain portal has been updated with enhanced security features.',
+      type: 'info',
+      time: '3 days ago',
+      read: true,
+      icon: 'fas fa-shield-alt'
     }
   ],
 
   // Analytics data
   analytics: {
     transactionMetrics: {
-      totalTransactions: 156,
-      activeTransactions: 4,
-      completedTransactions: 142,
-      averageCompletionTime: 23, // days
-      totalValue: 48500000, // £48.5M
-      monthlyGrowth: 12.5
+      totalTransactions: 284,
+      activeTransactions: 12,
+      completedTransactions: 249,
+      averageCompletionTime: 18, // days (improved from traditional 75-90 days)
+      totalValue: 89750000, // £89.75M
+      monthlyGrowth: 18.7,
+      costSavings: 48, // percentage cost reduction
+      timeSavings: 76 // percentage time reduction
     },
     
     documentStats: {
-      totalDocuments: 342,
-      verifiedDocuments: 289,
-      pendingDocuments: 31,
-      actionRequired: 22,
-      verificationRate: 84.5
+      totalDocuments: 1247,
+      verifiedDocuments: 1098,
+      pendingDocuments: 87,
+      actionRequired: 62,
+      verificationRate: 88.1,
+      blockchainVerified: 1034
     },
     
     recentActivity: [
-      { type: 'document_verified', message: 'Survey document verified for PX-2024-001', time: '5 minutes ago' },
-      { type: 'stage_progression', message: 'PX-2024-004 moved to Planning Approval', time: '1 hour ago' },
-      { type: 'new_transaction', message: 'New transaction started: PX-2024-005', time: '2 hours ago' },
-      { type: 'document_uploaded', message: 'Mortgage offer uploaded for PX-2024-002', time: '4 hours ago' },
-      { type: 'blockchain_update', message: 'Smart contract deployed for PX-2024-001', time: '6 hours ago' }
+      { type: 'blockchain_verified', message: 'Harbor View Plaza Unit 1205 verified on blockchain', time: '3 minutes ago', icon: 'fas fa-cube' },
+      { type: 'document_verified', message: 'Energy Performance Certificate verified for PX-2024-004', time: '12 minutes ago', icon: 'fas fa-check-circle' },
+      { type: 'stage_progression', message: 'Victoria Court 8B moved to Exchange Pending', time: '25 minutes ago', icon: 'fas fa-arrow-right' },
+      { type: 'completion_ready', message: 'Riverside Gardens No. 12 ready for completion', time: '1 hour ago', icon: 'fas fa-key' },
+      { type: 'new_transaction', message: 'New buyer registered: Sarah Mitchell', time: '2 hours ago', icon: 'fas fa-user-plus' },
+      { type: 'document_uploaded', message: 'Insurance documents uploaded for PX-2024-003', time: '3 hours ago', icon: 'fas fa-file-upload' },
+      { type: 'payment_confirmed', message: 'Deposit confirmed for Victoria Court Apartment', time: '4 hours ago', icon: 'fas fa-pound-sign' },
+      { type: 'smart_contract', message: 'Smart contract deployed for PX-2024-004', time: '5 hours ago', icon: 'fas fa-file-contract' }
     ],
     
     chartData: {

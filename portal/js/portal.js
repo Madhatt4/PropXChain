@@ -66,10 +66,6 @@ class PropXchainPortal {
   checkExistingSession() {
     console.log('Checking existing session...');
     
-    // Clear any potentially corrupted sessions for debugging
-    localStorage.removeItem('propx_user');
-    localStorage.removeItem('propx_login_time');
-    
     const username = localStorage.getItem('propx_user');
     const loginTime = localStorage.getItem('propx_login_time');
     const sessionDuration = 30 * 60 * 1000; // 30 minutes
