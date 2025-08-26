@@ -191,12 +191,22 @@ class PropXchainPortal {
       case 'dashboard':
         title = 'Dashboard';
         content = this.currentUser.role === 'developer' ? 
-          Pages.developerDashboard() : Pages.buyerDashboard();
+          this.showDeveloperDashboard() : this.showBuyerDashboard();
+        break;
+      
+      case 'property-details':
+        title = 'Property Details';
+        content = this.showPropertyDetails();
+        break;
+      
+      case 'timeline':
+        title = 'Transaction Timeline';
+        content = this.showTransactionTimeline();
         break;
       
       case 'analytics':
         title = 'Analytics';
-        content = Pages.analytics();
+        content = this.showAnalyticsPage();
         break;
       
       case 'properties':
@@ -525,8 +535,310 @@ class PropXchainPortal {
     document.getElementById('password').value = '';
   }
 
-  // Utility methods
-  viewProperty(propertyId) {
+  // Dashboard implementations
+  showDeveloperDashboard() {
+    const properties = PortalData.properties;
+    const analytics = PortalData.analytics;
+    
+    return `
+      <div class="dashboard-content">
+        <!-- Statistics Cards -->
+        <div class="grid grid-cols-4 mb-6">
+          ${Components.createStatCard({
+            icon: 'fas fa-building',
+            label: 'Active Properties',
+            value: properties.length,
+            color: 'blue',
+            change: 12.5
+          })}
+          ${Components.createStatCard({
+            icon: 'fas fa-exchange-alt',
+            label: 'Pending Transactions',
+            value: analytics.transactionMetrics.activeTransactions,
+            color: 'orange',
+            change: -5.2
+          })}
+          ${Components.createStatCard({
+            icon: 'fas fa-check-circle',
+            label: 'Completed This Month',
+            value: analytics.transactionMetrics.completedTransactions,
+            color: 'green',
+            change: 8.3
+          })}
+          ${Components.createStatCard({
+            icon: 'fas fa-pound-sign',
+            label: 'Total Portfolio Value',
+            value: DataHelpers.formatCurrency(analytics.transactionMetrics.totalValue),
+            color: 'purple'
+          })}
+        </div>
+
+        <!-- Property Grid -->
+        <div class="card mb-6">
+          <div class="card-header">
+            <h3 class="card-title">Active Properties</h3>
+            <button class="btn btn-primary">
+              <i class="fas fa-plus"></i> Add Property
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="grid grid-cols-2">
+              ${properties.map(property => Components.createPropertyCard(property)).join('')}
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Recent Activity</h3>
+          </div>
+          <div class="card-body">
+            ${analytics.recentActivity.map(activity => `
+              <div class="activity-item">
+                <div class="activity-content">
+                  <span class="activity-message">${activity.message}</span>
+                  <span class="activity-time">${activity.time}</span>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  showBuyerDashboard() {
+    const userProperty = PortalData.properties.find(p => p.buyerId === this.currentUser.username);
+    
+    if (!userProperty) {
+      return `
+        <div class="empty-state">
+          <i class="fas fa-home"></i>
+          <h2>No Property Found</h2>
+          <p>No property has been assigned to your account yet.</p>
+        </div>
+      `;
+    }
+
+    return `
+      <div class="dashboard-content">
+        <!-- Property Overview -->
+        <div class="card mb-6">
+          <div class="card-body">
+            <div class="property-overview">
+              <div class="property-image">
+                <img src="${userProperty.images[0]}" alt="${userProperty.title}">
+              </div>
+              <div class="property-info">
+                <h2>${userProperty.title}</h2>
+                <p class="property-address">${userProperty.address}</p>
+                <p class="property-price">${DataHelpers.formatCurrency(userProperty.price)}</p>
+                <div class="progress-container">
+                  <div class="progress-label">${userProperty.stage} - ${userProperty.progress}% Complete</div>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: ${userProperty.progress}%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="card mb-6">
+          <div class="card-header">
+            <h3 class="card-title">Transaction Progress</h3>
+          </div>
+          <div class="card-body">
+            <div class="timeline">
+              ${userProperty.timeline.map(step => `
+                <div class="timeline-item ${step.status}">
+                  <div class="timeline-icon">
+                    <i class="${step.icon}"></i>
+                  </div>
+                  <div class="timeline-content">
+                    <h4>${step.stage}</h4>
+                    <span class="timeline-date">${DataHelpers.formatDate(step.date)}</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+
+        <!-- Documents Summary -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Documents Status</h3>
+          </div>
+          <div class="card-body">
+            <div class="documents-summary">
+              ${userProperty.documents.map(doc => `
+                <div class="document-item">
+                  <div class="document-icon">
+                    <i class="fas fa-file"></i>
+                  </div>
+                  <div class="document-info">
+                    <span class="document-name">${doc.name}</span>
+                    <span class="document-status status-badge ${doc.status}">${doc.status.replace('_', ' ')}</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  showPropertyDetails() {
+    const userProperty = PortalData.properties.find(p => p.buyerId === this.currentUser.username);
+    
+    if (!userProperty) {
+      return `
+        <div class="empty-state">
+          <i class="fas fa-home"></i>
+          <h2>No Property Found</h2>
+          <p>No property has been assigned to your account yet.</p>
+        </div>
+      `;
+    }
+
+    return `
+      <div class="property-details">
+        <div class="property-header">
+          <div class="property-images">
+            ${userProperty.images.map(img => `<img src="${img}" alt="${userProperty.title}">`).join('')}
+          </div>
+          <div class="property-basic-info">
+            <h1>${userProperty.title}</h1>
+            <p class="address">${userProperty.address}</p>
+            <p class="price">${DataHelpers.formatCurrency(userProperty.price)}</p>
+          </div>
+        </div>
+
+        <div class="property-specifications">
+          <h3>Property Details</h3>
+          <div class="specs-grid">
+            <div class="spec-item">
+              <i class="fas fa-bed"></i>
+              <span>${userProperty.details.bedrooms} Bedrooms</span>
+            </div>
+            <div class="spec-item">
+              <i class="fas fa-bath"></i>
+              <span>${userProperty.details.bathrooms} Bathrooms</span>
+            </div>
+            <div class="spec-item">
+              <i class="fas fa-ruler-combined"></i>
+              <span>${userProperty.details.sqft} sq ft</span>
+            </div>
+            <div class="spec-item">
+              <i class="fas fa-car"></i>
+              <span>${userProperty.details.parking} Parking</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="blockchain-info">
+          <h3>Blockchain Information</h3>
+          <div class="blockchain-details">
+            <p><strong>Contract Address:</strong> ${userProperty.blockchain.contractAddress}</p>
+            <p><strong>Verification Status:</strong> 
+              <span class="status-badge ${userProperty.blockchain.verified ? 'success' : 'warning'}">
+                ${userProperty.blockchain.verified ? 'Verified' : 'Pending Verification'}
+              </span>
+            </p>
+            ${userProperty.blockchain.transactionHash ? `
+              <p><strong>Transaction Hash:</strong> ${userProperty.blockchain.transactionHash}</p>
+              <p><strong>Block Number:</strong> ${userProperty.blockchain.blockNumber}</p>
+            ` : ''}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  showTransactionTimeline() {
+    const userProperty = PortalData.properties.find(p => p.buyerId === this.currentUser.username);
+    
+    if (!userProperty) {
+      return `
+        <div class="empty-state">
+          <i class="fas fa-clock"></i>
+          <h2>No Timeline Available</h2>
+          <p>No property transaction timeline found.</p>
+        </div>
+      `;
+    }
+
+    return `
+      <div class="timeline-page">
+        <div class="timeline-header">
+          <h2>${userProperty.title}</h2>
+          <p>Transaction progress: ${userProperty.progress}% complete</p>
+        </div>
+        
+        <div class="timeline-detailed">
+          ${userProperty.timeline.map((step, index) => `
+            <div class="timeline-step ${step.status}">
+              <div class="step-number">${index + 1}</div>
+              <div class="step-content">
+                <h3>${step.stage}</h3>
+                <p class="step-date">${DataHelpers.formatDate(step.date)}</p>
+                <div class="step-status">
+                  <i class="${step.icon}"></i>
+                  <span>${step.status.replace('_', ' ').toUpperCase()}</span>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  showAnalyticsPage() {
+    const analytics = PortalData.analytics;
+    
+    return `
+      <div class="analytics-page">
+        <div class="analytics-summary">
+          <div class="grid grid-cols-3">
+            ${Components.createStatCard({
+              icon: 'fas fa-chart-line',
+              label: 'Total Transactions',
+              value: analytics.transactionMetrics.totalTransactions,
+              color: 'blue'
+            })}
+            ${Components.createStatCard({
+              icon: 'fas fa-clock',
+              label: 'Avg. Completion Time',
+              value: analytics.transactionMetrics.averageCompletionTime + ' days',
+              color: 'green'
+            })}
+            ${Components.createStatCard({
+              icon: 'fas fa-percentage',
+              label: 'Document Verification Rate',
+              value: analytics.documentStats.verificationRate.toFixed(1) + '%',
+              color: 'purple'
+            })}
+          </div>
+        </div>
+
+        <div class="analytics-charts">
+          <div class="card">
+            <div class="card-header">
+              <h3>Performance Overview</h3>
+            </div>
+            <div class="card-body">
+              <p>Detailed analytics and charts would be displayed here using Chart.js integration.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
     this.showPage('property-details');
     // In a real app, this would load the specific property
     setTimeout(() => {
