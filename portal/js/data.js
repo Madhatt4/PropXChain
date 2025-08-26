@@ -74,13 +74,138 @@ const PortalData = {
         { stage: 'Completion', date: '2024-03-01', status: 'pending', icon: 'fas fa-key' }
       ],
       documents: [
-        { id: 1, name: 'Purchase Agreement', type: 'contract', status: 'verified', uploadDate: '2024-01-16' },
-        { id: 2, name: 'Property Survey', type: 'survey', status: 'verified', uploadDate: '2024-01-23' },
-        { id: 3, name: 'Mortgage Offer', type: 'financial', status: 'verified', uploadDate: '2024-01-26' },
-        { id: 4, name: 'Building Regulations Certificate', type: 'legal', status: 'verified', uploadDate: '2024-01-20' },
-        { id: 5, name: 'Energy Performance Certificate', type: 'certificate', status: 'verified', uploadDate: '2024-01-19' },
-        { id: 6, name: 'Local Authority Search', type: 'search', status: 'pending', uploadDate: null },
-        { id: 7, name: 'Title Deeds', type: 'legal', status: 'under_review', uploadDate: '2024-02-01' }
+        { 
+          id: 1, 
+          name: 'Purchase Agreement', 
+          type: 'contract', 
+          status: 'verified', 
+          uploadDate: '2024-01-16',
+          fileSize: '2.4 MB',
+          description: 'Legal purchase agreement between buyer and seller',
+          verifiedBy: 'Emma Wilson',
+          blockchainHash: '0x1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b'
+        },
+        { 
+          id: 2, 
+          name: 'Property Survey Report', 
+          type: 'survey', 
+          status: 'verified', 
+          uploadDate: '2024-01-23',
+          fileSize: '8.7 MB',
+          description: 'Full structural survey report by certified surveyor',
+          verifiedBy: 'PropXchain System',
+          blockchainHash: '0x2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c'
+        },
+        { 
+          id: 3, 
+          name: 'Mortgage Offer Letter', 
+          type: 'financial', 
+          status: 'verified', 
+          uploadDate: '2024-01-26',
+          fileSize: '1.2 MB',
+          description: 'Official mortgage offer from Nationwide Building Society',
+          verifiedBy: 'Financial Verification System',
+          blockchainHash: '0x3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d'
+        },
+        { 
+          id: 4, 
+          name: 'Building Regulations Certificate', 
+          type: 'legal', 
+          status: 'verified', 
+          uploadDate: '2024-01-20',
+          fileSize: '856 KB',
+          description: 'Building regulations compliance certificate',
+          verifiedBy: 'Local Authority System',
+          blockchainHash: '0x4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e'
+        },
+        { 
+          id: 5, 
+          name: 'Energy Performance Certificate', 
+          type: 'certificate', 
+          status: 'verified', 
+          uploadDate: '2024-01-19',
+          fileSize: '1.1 MB',
+          description: 'EPC Rating: B (85/100) - Valid until January 2034',
+          verifiedBy: 'Energy Assessment System',
+          blockchainHash: '0x5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f'
+        },
+        { 
+          id: 6, 
+          name: 'Local Authority Search', 
+          type: 'search', 
+          status: 'pending', 
+          uploadDate: null,
+          fileSize: null,
+          description: 'Comprehensive local authority search pending',
+          verifiedBy: null,
+          blockchainHash: null
+        },
+        { 
+          id: 7, 
+          name: 'Title Deeds', 
+          type: 'legal', 
+          status: 'under_review', 
+          uploadDate: '2024-02-01',
+          fileSize: '3.2 MB',
+          description: 'Official property title deeds and ownership documents',
+          verifiedBy: null,
+          blockchainHash: null
+        },
+        { 
+          id: 8, 
+          name: 'Home Insurance Policy', 
+          type: 'insurance', 
+          status: 'verified', 
+          uploadDate: '2024-01-28',
+          fileSize: '1.8 MB',
+          description: 'Comprehensive home insurance policy - Aviva',
+          verifiedBy: 'Insurance Verification System',
+          blockchainHash: '0x6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a'
+        },
+        { 
+          id: 9, 
+          name: 'Flood Risk Assessment', 
+          type: 'environmental', 
+          status: 'verified', 
+          uploadDate: '2024-01-21',
+          fileSize: '2.1 MB',
+          description: 'Environmental flood risk assessment report',
+          verifiedBy: 'Environmental Agency',
+          blockchainHash: '0x7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b'
+        },
+        { 
+          id: 10, 
+          name: 'Property Valuation Report', 
+          type: 'valuation', 
+          status: 'verified', 
+          uploadDate: '2024-01-24',
+          fileSize: '4.3 MB',
+          description: 'Professional property valuation: £485,000',
+          verifiedBy: 'RICS Qualified Valuer',
+          blockchainHash: '0x8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c'
+        },
+        { 
+          id: 11, 
+          name: 'Gas Safety Certificate', 
+          type: 'safety', 
+          status: 'verified', 
+          uploadDate: '2024-01-17',
+          fileSize: '567 KB',
+          description: 'Gas safety inspection certificate - Valid 12 months',
+          verifiedBy: 'Gas Safe Register',
+          blockchainHash: '0x9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d'
+        },
+        { 
+          id: 12, 
+          name: 'Electrical Installation Certificate', 
+          type: 'safety', 
+          status: 'action_required', 
+          uploadDate: null,
+          fileSize: null,
+          description: 'Electrical safety certificate required for completion',
+          verifiedBy: null,
+          blockchainHash: null
+        }
       ]
     },
     {
@@ -313,6 +438,150 @@ const PortalData = {
         { id: 15, name: 'Planning Permission', type: 'planning', status: 'verified', uploadDate: '2024-01-07' },
         { id: 16, name: 'Land Survey', type: 'survey', status: 'verified', uploadDate: '2024-01-13' },
         { id: 17, name: 'Environmental Report', type: 'environmental', status: 'verified', uploadDate: '2024-01-15' }
+      ]
+    },
+    {
+      id: 'PX-2024-006',
+      title: 'Waterfront Towers, Penthouse Suite',
+      address: 'Waterfront Towers, 25 Marina Boulevard, Portsmouth PO1 3HX',
+      type: 'Penthouse',
+      developer: 'North Wales Developments',
+      buyerId: 'buyer006',
+      buyerName: 'Alexandra Thompson',
+      price: 950000,
+      status: 'blockchain_verified',
+      progress: 95,
+      stage: 'Completion Ready',
+      images: [
+        'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=300',
+        'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=300',
+        'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=300'
+      ],
+      details: {
+        bedrooms: 4,
+        bathrooms: 4,
+        sqft: 3200,
+        parking: 3,
+        terrace: true,
+        marina: true,
+        completion: '2024-09-15'
+      },
+      blockchain: {
+        contractAddress: '0xb3c6d9e2f5a8b1c4e7f0a3b6c9d2e5f8a1b4c7e0f3a6b9c2e5d8a1b4e7c0f3a6',
+        transactionHash: '0x2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c',
+        blockNumber: 18256789,
+        gasUsed: 456000,
+        verified: true
+      },
+      timeline: [
+        { stage: 'Offer Accepted', date: '2023-11-20', status: 'completed', icon: 'fas fa-handshake' },
+        { stage: 'Initial Verification', date: '2023-11-22', status: 'completed', icon: 'fas fa-check-circle' },
+        { stage: 'Survey Ordered', date: '2023-11-28', status: 'completed', icon: 'fas fa-search' },
+        { stage: 'Mortgage Application', date: '2023-12-05', status: 'completed', icon: 'fas fa-university' },
+        { stage: 'Legal Review', date: '2023-12-20', status: 'completed', icon: 'fas fa-gavel' },
+        { stage: 'Contract Exchange', date: '2024-01-15', status: 'completed', icon: 'fas fa-file-signature' },
+        { stage: 'Completion', date: '2024-02-28', status: 'ready', icon: 'fas fa-key' }
+      ],
+      documents: [
+        { id: 50, name: 'Purchase Agreement', type: 'contract', status: 'verified', uploadDate: '2023-11-21', fileSize: '3.1 MB', description: 'Premium property purchase agreement' },
+        { id: 51, name: 'Marine Survey Report', type: 'survey', status: 'verified', uploadDate: '2023-11-30', fileSize: '12.4 MB', description: 'Comprehensive marine environment survey' },
+        { id: 52, name: 'Luxury Property Valuation', type: 'valuation', status: 'verified', uploadDate: '2023-12-02', fileSize: '5.8 MB', description: 'Premium property valuation: £950,000' },
+        { id: 53, name: 'Marina Access Agreement', type: 'legal', status: 'verified', uploadDate: '2023-12-10', fileSize: '2.1 MB', description: 'Private marina access rights agreement' }
+      ]
+    },
+    {
+      id: 'PX-2024-007',
+      title: 'Garden Square Development, House 23',
+      address: '23 Garden Square, Cambridge CB2 1QR',
+      type: 'House',
+      developer: 'North Wales Developments',
+      buyerId: 'buyer007',
+      buyerName: 'Dr. Robert Wilson',
+      price: 625000,
+      status: 'survey_stage',
+      progress: 35,
+      stage: 'Survey & Valuation',
+      images: [
+        'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=300',
+        'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=300'
+      ],
+      details: {
+        bedrooms: 4,
+        bathrooms: 3,
+        sqft: 2100,
+        parking: 2,
+        garden: true,
+        study: true,
+        completion: '2024-11-20'
+      },
+      blockchain: {
+        contractAddress: null,
+        transactionHash: null,
+        blockNumber: null,
+        gasUsed: null,
+        verified: false
+      },
+      timeline: [
+        { stage: 'Offer Accepted', date: '2024-01-28', status: 'completed', icon: 'fas fa-handshake' },
+        { stage: 'Initial Verification', date: '2024-01-30', status: 'completed', icon: 'fas fa-check-circle' },
+        { stage: 'Survey Ordered', date: '2024-02-05', status: 'in_progress', icon: 'fas fa-search' },
+        { stage: 'Mortgage Application', date: '2024-02-15', status: 'pending', icon: 'fas fa-university' },
+        { stage: 'Legal Review', date: '2024-03-01', status: 'pending', icon: 'fas fa-gavel' },
+        { stage: 'Contract Exchange', date: '2024-03-20', status: 'pending', icon: 'fas fa-file-signature' },
+        { stage: 'Completion', date: '2024-04-10', status: 'pending', icon: 'fas fa-key' }
+      ],
+      documents: [
+        { id: 60, name: 'Purchase Agreement', type: 'contract', status: 'verified', uploadDate: '2024-01-29', fileSize: '2.8 MB', description: 'Family home purchase agreement' },
+        { id: 61, name: 'Structural Survey Report', type: 'survey', status: 'under_review', uploadDate: '2024-02-06', fileSize: '9.2 MB', description: 'Detailed structural survey in progress' },
+        { id: 62, name: 'Mortgage Pre-approval', type: 'financial', status: 'verified', uploadDate: '2024-01-25', fileSize: '1.4 MB', description: 'Mortgage pre-approval: £500,000' }
+      ]
+    },
+    {
+      id: 'PX-2024-008',
+      title: 'City Heights, Apartment 1402',
+      address: '1402 City Heights, 88 High Street, Edinburgh EH1 1TH',
+      type: 'Apartment',
+      developer: 'North Wales Developments',
+      buyerId: 'buyer008',
+      buyerName: 'Jennifer MacLeod',
+      price: 395000,
+      status: 'mortgage_stage',
+      progress: 55,
+      stage: 'Mortgage Processing',
+      images: [
+        'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=300',
+        'https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?w=300'
+      ],
+      details: {
+        bedrooms: 3,
+        bathrooms: 2,
+        sqft: 1400,
+        parking: 1,
+        balcony: true,
+        cityView: true,
+        completion: '2024-10-30'
+      },
+      blockchain: {
+        contractAddress: '0xc4d7e0f3a6b9c2e5d8a1b4c7e0f3a6b9c2e5d8a1b4c7e0f3a6b9c2e5d8a1b4c7',
+        transactionHash: null,
+        blockNumber: null,
+        gasUsed: null,
+        verified: false
+      },
+      timeline: [
+        { stage: 'Offer Accepted', date: '2024-01-10', status: 'completed', icon: 'fas fa-handshake' },
+        { stage: 'Initial Verification', date: '2024-01-12', status: 'completed', icon: 'fas fa-check-circle' },
+        { stage: 'Survey Ordered', date: '2024-01-18', status: 'completed', icon: 'fas fa-search' },
+        { stage: 'Mortgage Application', date: '2024-01-25', status: 'in_progress', icon: 'fas fa-university' },
+        { stage: 'Legal Review', date: '2024-02-20', status: 'pending', icon: 'fas fa-gavel' },
+        { stage: 'Contract Exchange', date: '2024-03-10', status: 'pending', icon: 'fas fa-file-signature' },
+        { stage: 'Completion', date: '2024-04-05', status: 'pending', icon: 'fas fa-key' }
+      ],
+      documents: [
+        { id: 70, name: 'Purchase Agreement', type: 'contract', status: 'verified', uploadDate: '2024-01-11', fileSize: '2.3 MB', description: 'Urban apartment purchase agreement' },
+        { id: 71, name: 'Property Survey Report', type: 'survey', status: 'verified', uploadDate: '2024-01-20', fileSize: '6.8 MB', description: 'High-rise apartment survey report' },
+        { id: 72, name: 'Mortgage Application', type: 'financial', status: 'under_review', uploadDate: '2024-01-26', fileSize: '3.2 MB', description: 'First-time buyer mortgage application' },
+        { id: 73, name: 'Service Charge Statement', type: 'financial', status: 'verified', uploadDate: '2024-01-15', fileSize: '892 KB', description: 'Annual service charge: £2,400' }
       ]
     }
   ],
@@ -589,6 +858,10 @@ const PortalData = {
     identity: { label: 'Identity Verification', required: true, icon: 'fas fa-id-card' },
     planning: { label: 'Planning Documents', required: false, icon: 'fas fa-map' },
     environmental: { label: 'Environmental Reports', required: false, icon: 'fas fa-leaf' }
+  }
+      currency: 'GBP',
+      dateFormat: 'DD/MM/YYYY'
+    }
   }
 };
 
