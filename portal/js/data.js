@@ -858,7 +858,11 @@ const PortalData = {
     identity: { label: 'Identity Verification', required: true, icon: 'fas fa-id-card' },
     planning: { label: 'Planning Documents', required: false, icon: 'fas fa-map' },
     environmental: { label: 'Environmental Reports', required: false, icon: 'fas fa-leaf' }
-  }
+    },
+    preferences: {
+      theme: 'light',
+      language: 'en-GB',
+      timezone: 'Europe/London',
       currency: 'GBP',
       dateFormat: 'DD/MM/YYYY'
     }
