@@ -1,4 +1,10 @@
 // PropXchain Portal Main Application
+
+// Debug: Check if PortalData and DataHelpers are loaded
+console.log('Portal.js loading...');
+console.log('PortalData available:', typeof PortalData !== 'undefined');
+console.log('DataHelpers available:', typeof DataHelpers !== 'undefined');
+
 class PropXchainPortal {
   constructor() {
     console.log('PropXchainPortal constructor called');
