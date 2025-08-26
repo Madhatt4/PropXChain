@@ -839,10 +839,13 @@ class PropXchainPortal {
       </div>
     `;
   }
+
+  // Utility methods  
+  viewProperty(propertyId) {
     this.showPage('property-details');
     // In a real app, this would load the specific property
     setTimeout(() => {
-      document.getElementById('pageContent').innerHTML = Pages.propertyDetails(propertyId);
+      document.getElementById('pageContent').innerHTML = this.showPropertyDetails();
     }, 100);
   }
 
