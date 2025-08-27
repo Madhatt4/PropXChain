@@ -840,6 +840,155 @@ class PropXchainPortal {
     `;
   }
 
+  showBlockchainPage() {
+    const smartContracts = PortalData.smartContracts || [];
+    const properties = PortalData.properties;
+    
+    return `
+      <div class="blockchain-page">
+        <!-- Blockchain Overview -->
+        <div class="grid grid-cols-3 mb-6">
+          ${Components.createStatCard({
+            icon: 'fas fa-cube',
+            label: 'Smart Contracts',
+            value: smartContracts.length,
+            color: 'blue'
+          })}
+          ${Components.createStatCard({
+            icon: 'fas fa-link',
+            label: 'Blockchain Transactions',
+            value: properties.filter(p => p.blockchain.verified).length,
+            color: 'green'
+          })}
+          ${Components.createStatCard({
+            icon: 'fas fa-shield-check',
+            label: 'Verified Properties',
+            value: properties.filter(p => p.blockchain.verified).length,
+            color: 'purple'
+          })}
+        </div>
+
+        <!-- Smart Contracts -->
+        <div class="card mb-6">
+          <div class="card-header">
+            <h3 class="card-title">Active Smart Contracts</h3>
+          </div>
+          <div class="card-body">
+            ${smartContracts.length > 0 ? `
+              <div class="contracts-list">
+                ${smartContracts.map(contract => `
+                  <div class="contract-item">
+                    <div class="contract-header">
+                      <h4>${contract.id}</h4>
+                      <span class="status-badge ${contract.status}">${contract.status}</span>
+                    </div>
+                    <div class="contract-details">
+                      <p><strong>Contract Address:</strong> <code>${contract.contractAddress}</code></p>
+                      <p><strong>Property:</strong> ${properties.find(p => p.id === contract.propertyId)?.title || 'Unknown'}</p>
+                      <p><strong>Deployed:</strong> ${DataHelpers.formatDate(contract.deployedAt)}</p>
+                      <p><strong>Type:</strong> ${contract.type}</p>
+                    </div>
+                    <div class="contract-functions">
+                      <h5>Available Functions:</h5>
+                      <div class="function-tags">
+                        ${contract.functions.map(func => `<span class="function-tag">${func}</span>`).join('')}
+                      </div>
+                    </div>
+                    <div class="contract-events">
+                      <h5>Recent Events:</h5>
+                      ${contract.events.slice(-3).map(event => `
+                        <div class="event-item">
+                          <span class="event-name">${event.event}</span>
+                          <span class="event-time">${DataHelpers.formatDate(event.timestamp)}</span>
+                          <span class="event-block">Block #${event.blockNumber}</span>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            ` : `
+              <div class="empty-state">
+                <i class="fas fa-file-contract"></i>
+                <h3>No Smart Contracts</h3>
+                <p>Smart contracts will appear here once properties are tokenized on the blockchain.</p>
+              </div>
+            `}
+          </div>
+        </div>
+
+        <!-- Blockchain Transactions -->
+        <div class="card mb-6">
+          <div class="card-header">
+            <h3 class="card-title">Blockchain Transactions</h3>
+          </div>
+          <div class="card-body">
+            <div class="transactions-table">
+              <div class="table-header">
+                <div>Property</div>
+                <div>Transaction Hash</div>
+                <div>Block Number</div>
+                <div>Status</div>
+                <div>Gas Used</div>
+              </div>
+              ${properties.filter(p => p.blockchain.transactionHash).map(property => `
+                <div class="table-row">
+                  <div>${property.title}</div>
+                  <div><code>${property.blockchain.transactionHash.substring(0, 16)}...</code></div>
+                  <div>${property.blockchain.blockNumber}</div>
+                  <div><span class="status-badge ${property.blockchain.verified ? 'success' : 'warning'}">${property.blockchain.verified ? 'Confirmed' : 'Pending'}</span></div>
+                  <div>${property.blockchain.gasUsed ? property.blockchain.gasUsed.toLocaleString() : 'N/A'}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+
+        <!-- Property Verification Status -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Property Verification Status</h3>
+          </div>
+          <div class="card-body">
+            <div class="verification-grid">
+              ${properties.map(property => `
+                <div class="verification-card">
+                  <div class="verification-header">
+                    <h4>${property.title}</h4>
+                    <span class="status-badge ${property.blockchain.verified ? 'success' : 'warning'}">
+                      ${property.blockchain.verified ? 'Verified' : 'Pending'}
+                    </span>
+                  </div>
+                  <div class="verification-details">
+                    ${property.blockchain.contractAddress ? `
+                      <p><strong>Contract:</strong> <code>${property.blockchain.contractAddress.substring(0, 20)}...</code></p>
+                    ` : '<p><strong>Contract:</strong> Not deployed</p>'}
+                    <p><strong>Value:</strong> ${DataHelpers.formatCurrency(property.price)}</p>
+                    <p><strong>Progress:</strong> ${property.progress}%</p>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  showPropertiesPage() {
+    const properties = this.currentUser.role === 'developer' ? 
+      PortalData.properties : 
+      PortalData.properties.filter(p => p.buyerId === this.currentUser.username);
+      
+    return `
+      <div class="properties-page">
+        <div class="properties-grid">
+          ${properties.map(property => Components.createPropertyCard(property)).join('')}
+        </div>
+      </div>
+    `;
+  }
+
   // Utility methods  
   viewProperty(propertyId) {
     this.showPage('property-details');
