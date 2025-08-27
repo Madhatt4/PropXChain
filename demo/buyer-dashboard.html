@@ -475,6 +475,9 @@
     <main class="content">
       <h1 class="dashboard-title">Buyer Dashboard</h1>
       
+      <!-- Blocker Alert Section -->
+      <div id="blocker-alerts"></div>
+      
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-icon blue">
@@ -601,6 +604,11 @@
     </main>
   </div>
   
+  <!-- Include blocker system -->
+  <link rel="stylesheet" href="../portal/css/blockers.css">
+  <script src="../portal/js/data.js"></script>
+  <script src="../portal/js/blocker-system.js"></script>
+  
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const logoutButton = document.getElementById('logoutButton');
@@ -608,7 +616,42 @@
       logoutButton.addEventListener('click', function() {
         window.location.href = 'index.html';
       });
+      
+      // Initialize blocker system for buyer dashboard
+      initializeBuyerBlockers();
     });
+    
+    function initializeBuyerBlockers() {
+      // Simulate current user as buyer
+      const currentUser = { role: 'buyer', username: 'jamesbrown' };
+      
+      // Find user's property - in this demo we'll use the first property that belongs to jamesbrown
+      const userProperty = PortalData.properties.find(p => p.buyerId === currentUser.username);
+      
+      if (userProperty) {
+        // Detect blockers for this property
+        const blockers = TransactionBlockers.detectTransactionBlockers(userProperty);
+        
+        // Generate and display blocker alert
+        const alertHtml = TransactionBlockers.generateBlockerAlert(blockers, 'buyer');
+        document.getElementById('blocker-alerts').innerHTML = alertHtml;
+        
+        console.log('Detected blockers for buyer:', blockers);
+      } else {
+        // No property found - show success message
+        document.getElementById('blocker-alerts').innerHTML = `
+          <div class="blocker-alert success">
+            <div class="alert-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="alert-content">
+              <h3>No Active Transactions</h3>
+              <p>You don't have any active property transactions at the moment.</p>
+            </div>
+          </div>
+        `;
+      }
+    }
   </script>
 </body>
 </html>

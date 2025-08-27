@@ -566,6 +566,11 @@
     </main>
   </div>
   
+  <!-- Include blocker system -->
+  <link rel="stylesheet" href="../portal/css/blockers.css">
+  <script src="../portal/js/data.js"></script>
+  <script src="../portal/js/blocker-system.js"></script>
+  
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const logoutButton = document.getElementById('logoutButton');
@@ -573,7 +578,107 @@
       logoutButton.addEventListener('click', function() {
         window.location.href = 'index.html';
       });
+      
+      // Initialize timeline with blocker integration
+      enhanceTimelineWithBlockers();
     });
+
+    function enhanceTimelineWithBlockers() {
+      // Get transaction ID from URL or default to first property
+      const urlParams = new URLSearchParams(window.location.search);
+      const transactionId = urlParams.get('id') || 'PX-2024-001';
+      
+      const transaction = PortalData.properties.find(p => p.id === transactionId);
+      if (!transaction) return;
+      
+      // Detect blockers for this transaction
+      const blockers = TransactionBlockers.detectTransactionBlockers(transaction);
+      
+      // Find all timeline items and enhance them with blocker information
+      const timelineItems = document.querySelectorAll('.timeline-item');
+      
+      timelineItems.forEach((item, index) => {
+        const titleElement = item.querySelector('.timeline-title');
+        if (!titleElement) return;
+        
+        const stepTitle = titleElement.textContent;
+        
+        // Check if this step has blockers
+        const stepBlockers = blockers.filter(blocker => 
+          blocker.category === 'timeline' && 
+          blocker.title.toLowerCase().includes(stepTitle.toLowerCase())
+        );
+        
+        if (stepBlockers.length > 0) {
+          const blocker = stepBlockers[0];
+          const isUserAction = TransactionBlockers.isUserResponsible(blocker, 'buyer'); // Assume buyer view
+          
+          // Add blocked class to the timeline item
+          item.classList.add('blocked');
+          
+          // Add blocker alert to the timeline item
+          const blockerAlert = document.createElement('div');
+          blockerAlert.className = 'timeline-blocker-alert';
+          blockerAlert.innerHTML = `
+            <i class="fas fa-exclamation-triangle blocker-icon"></i>
+            <span class="blocker-text">
+              ${isUserAction ? 'Action Required: ' : 'Waiting for: '}
+              ${blocker.responsibleParty} - ${blocker.actionRequired}
+            </span>
+            ${isUserAction ? `
+              <div style="margin-top: 10px;">
+                <button class="btn-primary" onclick="handleTimelineBlockerAction('${blocker.id}', '${blocker.actionRequired}')">
+                  <i class="fas fa-arrow-right"></i> ${blocker.actionRequired}
+                </button>
+              </div>
+            ` : ''}
+          `;
+          
+          // Insert the blocker alert after the description
+          const description = item.querySelector('.timeline-description');
+          if (description) {
+            description.parentNode.insertBefore(blockerAlert, description.nextSibling);
+          }
+        }
+      });
+      
+      // Add overall transaction blocker summary at the top
+      addTransactionBlockerSummary(transaction, blockers);
+    }
+
+    function addTransactionBlockerSummary(transaction, blockers) {
+      const userBlockers = blockers.filter(b => TransactionBlockers.isUserResponsible(b, 'buyer'));
+      
+      if (blockers.length > 0) {
+        const summary = document.createElement('div');
+        summary.id = 'transaction-blocker-summary';
+        summary.innerHTML = TransactionBlockers.generateBlockerAlert(blockers, 'buyer');
+        
+        // Insert after the main title
+        const mainElement = document.querySelector('main.content');
+        const titleElement = document.querySelector('.page-title');
+        if (mainElement && titleElement) {
+          titleElement.parentNode.insertBefore(summary, titleElement.nextSibling);
+        }
+      }
+    }
+
+    function handleTimelineBlockerAction(blockerId, actionType) {
+      // Handle different blocker actions
+      switch(actionType) {
+        case 'Upload document':
+          window.location.href = 'document-verification.html';
+          break;
+        case 'Complete buyer profile':
+          alert('Demo: This would show profile completion form');
+          break;
+        case 'Arrange property survey':
+          alert('Demo: This would show survey booking interface');
+          break;
+        default:
+          alert(`Demo: Handle action - ${actionType}`);
+      }
+    }
   </script>
 </body>
 </html>

@@ -56,23 +56,25 @@ const PortalData = {
         verified: true
       },
       timeline: [
-        { stage: 'Offer Accepted', date: '2024-01-15', status: 'completed', icon: 'fas fa-handshake' },
-        { stage: 'Initial Verification', date: '2024-01-18', status: 'completed', icon: 'fas fa-check-circle' },
-        { stage: 'Survey Ordered', date: '2024-01-22', status: 'completed', icon: 'fas fa-search' },
-        { stage: 'Mortgage Application', date: '2024-01-25', status: 'completed', icon: 'fas fa-university' },
-        { stage: 'Legal Review', date: '2024-02-01', status: 'in_progress', icon: 'fas fa-gavel' },
-        { stage: 'Contract Exchange', date: '2024-02-15', status: 'pending', icon: 'fas fa-file-signature' },
-        { stage: 'Completion', date: '2024-03-01', status: 'pending', icon: 'fas fa-key' }
+        { stage: 'Offer Accepted', date: '2024-01-15', status: 'completed', icon: 'fas fa-handshake', responsibleParty: 'developer' },
+        { stage: 'Initial Verification', date: '2024-01-18', status: 'completed', icon: 'fas fa-check-circle', responsibleParty: 'system' },
+        { stage: 'Survey Ordered', date: '2024-01-22', status: 'completed', icon: 'fas fa-search', responsibleParty: 'buyer' },
+        { stage: 'Mortgage Application', date: '2024-01-25', status: 'completed', icon: 'fas fa-university', responsibleParty: 'mortgage_provider' },
+        { stage: 'Legal Review', date: '2024-02-01', status: 'in_progress', icon: 'fas fa-gavel', responsibleParty: 'solicitor' },
+        { stage: 'Contract Exchange', date: '2024-02-15', status: 'pending', icon: 'fas fa-file-signature', responsibleParty: 'solicitor' },
+        { stage: 'Completion', date: '2024-03-01', status: 'pending', icon: 'fas fa-key', responsibleParty: 'buyer' }
       ],
       documents: [
-        { id: 1, name: 'Purchase Agreement', type: 'contract', status: 'verified', uploadDate: '2024-01-16', fileSize: '2.4 MB' },
-        { id: 2, name: 'Property Survey Report', type: 'survey', status: 'verified', uploadDate: '2024-01-23', fileSize: '8.7 MB' },
-        { id: 3, name: 'Mortgage Offer Letter', type: 'financial', status: 'verified', uploadDate: '2024-01-26', fileSize: '1.2 MB' },
-        { id: 4, name: 'Building Regulations Certificate', type: 'legal', status: 'verified', uploadDate: '2024-01-20', fileSize: '856 KB' },
-        { id: 5, name: 'Energy Performance Certificate', type: 'certificate', status: 'verified', uploadDate: '2024-01-19', fileSize: '1.1 MB' },
-        { id: 6, name: 'Local Authority Search', type: 'search', status: 'pending', uploadDate: null, fileSize: null },
-        { id: 7, name: 'Title Deeds', type: 'legal', status: 'under_review', uploadDate: '2024-02-01', fileSize: '3.2 MB' }
-      ]
+        { id: 1, name: 'Purchase Agreement', type: 'contract', status: 'verified', uploadDate: '2024-01-16', fileSize: '2.4 MB', dueDate: '2024-01-20', requiredBy: 'buyer' },
+        { id: 2, name: 'Property Survey Report', type: 'survey', status: 'verified', uploadDate: '2024-01-23', fileSize: '8.7 MB', dueDate: '2024-01-25', requiredBy: 'buyer' },
+        { id: 3, name: 'Mortgage Offer Letter', type: 'financial', status: 'verified', uploadDate: '2024-01-26', fileSize: '1.2 MB', dueDate: '2024-01-30', requiredBy: 'buyer' },
+        { id: 4, name: 'Building Regulations Certificate', type: 'legal', status: 'verified', uploadDate: '2024-01-20', fileSize: '856 KB', dueDate: '2024-01-25', requiredBy: 'developer' },
+        { id: 5, name: 'Energy Performance Certificate', type: 'certificate', status: 'verified', uploadDate: '2024-01-19', fileSize: '1.1 MB', dueDate: '2024-01-22', requiredBy: 'developer' },
+        { id: 6, name: 'Local Authority Search', type: 'search', status: 'action_required', uploadDate: null, fileSize: null, dueDate: '2024-02-05', requiredBy: 'buyer' },
+        { id: 7, name: 'Title Deeds', type: 'legal', status: 'under_review', uploadDate: '2024-02-01', fileSize: '3.2 MB', dueDate: '2024-02-10', requiredBy: 'solicitor' }
+      ],
+      createdDate: '2024-01-15',
+      lastUpdated: '2024-02-01'
     },
     {
       id: 'PX-2024-002',
@@ -150,19 +152,21 @@ const PortalData = {
         verified: false
       },
       timeline: [
-        { stage: 'Offer Accepted', date: '2024-01-12', status: 'completed', icon: 'fas fa-handshake' },
-        { stage: 'Initial Verification', date: '2024-01-15', status: 'completed', icon: 'fas fa-check-circle' },
-        { stage: 'Survey Ordered', date: '2024-01-18', status: 'action_required', icon: 'fas fa-search' },
-        { stage: 'Mortgage Application', date: '2024-01-25', status: 'pending', icon: 'fas fa-university' },
-        { stage: 'Legal Review', date: '2024-02-10', status: 'pending', icon: 'fas fa-gavel' },
-        { stage: 'Contract Exchange', date: '2024-02-25', status: 'pending', icon: 'fas fa-file-signature' },
-        { stage: 'Completion', date: '2024-03-15', status: 'pending', icon: 'fas fa-key' }
+        { stage: 'Offer Accepted', date: '2024-01-12', status: 'completed', icon: 'fas fa-handshake', responsibleParty: 'developer' },
+        { stage: 'Initial Verification', date: '2024-01-15', status: 'completed', icon: 'fas fa-check-circle', responsibleParty: 'system' },
+        { stage: 'Survey Ordered', date: '2024-01-18', status: 'action_required', icon: 'fas fa-search', responsibleParty: 'buyer' },
+        { stage: 'Mortgage Application', date: '2024-01-25', status: 'pending', icon: 'fas fa-university', responsibleParty: 'mortgage_provider' },
+        { stage: 'Legal Review', date: '2024-02-10', status: 'pending', icon: 'fas fa-gavel', responsibleParty: 'solicitor' },
+        { stage: 'Contract Exchange', date: '2024-02-25', status: 'pending', icon: 'fas fa-file-signature', responsibleParty: 'solicitor' },
+        { stage: 'Completion', date: '2024-03-15', status: 'pending', icon: 'fas fa-key', responsibleParty: 'buyer' }
       ],
       documents: [
-        { id: 11, name: 'Purchase Agreement', type: 'contract', status: 'verified', uploadDate: '2024-01-13', fileSize: '3.1 MB' },
-        { id: 12, name: 'Property Survey', type: 'survey', status: 'action_required', uploadDate: null, fileSize: null },
-        { id: 13, name: 'Insurance Documents', type: 'insurance', status: 'pending', uploadDate: null, fileSize: null }
-      ]
+        { id: 11, name: 'Purchase Agreement', type: 'contract', status: 'verified', uploadDate: '2024-01-13', fileSize: '3.1 MB', dueDate: '2024-01-15', requiredBy: 'buyer' },
+        { id: 12, name: 'Property Survey', type: 'survey', status: 'action_required', uploadDate: null, fileSize: null, dueDate: '2024-01-20', requiredBy: 'buyer' },
+        { id: 13, name: 'Insurance Documents', type: 'insurance', status: 'action_required', uploadDate: null, fileSize: null, dueDate: '2024-01-25', requiredBy: 'buyer' }
+      ],
+      createdDate: '2024-01-12',
+      lastUpdated: '2024-01-18'
     },
     {
       id: 'PX-2024-004',
@@ -478,5 +482,105 @@ const DataHelpers = {
     const now = new Date();
     const diffTime = Math.abs(now - date);
     return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  },
+
+  // Get current blocker for a property transaction
+  getCurrentBlocker(property) {
+    // First, check timeline for current stage
+    const currentStage = property.timeline.find(stage => 
+      stage.status === 'in_progress' || stage.status === 'action_required'
+    );
+
+    if (currentStage) {
+      const stageName = currentStage.stage.toLowerCase();
+      if (stageName.includes('survey')) {
+        return { 
+          party: 'buyer', 
+          action: 'Schedule the property survey',
+          type: 'timeline',
+          stage: currentStage.stage
+        };
+      } else if (stageName.includes('mortgage')) {
+        return { 
+          party: 'buyer', 
+          action: 'Submit mortgage application documents',
+          type: 'timeline',
+          stage: currentStage.stage
+        };
+      } else if (stageName.includes('legal')) {
+        return { 
+          party: 'solicitor', 
+          action: 'Complete legal document review',
+          type: 'timeline',
+          stage: currentStage.stage
+        };
+      } else if (stageName.includes('contract')) {
+        return { 
+          party: 'developer', 
+          action: 'Prepare contract for exchange',
+          type: 'timeline',
+          stage: currentStage.stage
+        };
+      } else if (stageName.includes('completion')) {
+        return { 
+          party: 'developer', 
+          action: 'Schedule completion date',
+          type: 'timeline',
+          stage: currentStage.stage
+        };
+      }
+    }
+
+    // Check documents for action required
+    const pendingDocuments = property.documents.filter(doc => 
+      doc.status === 'action_required' || doc.status === 'pending'
+    );
+
+    if (pendingDocuments.length > 0) {
+      const document = pendingDocuments[0];
+      let party = 'buyer';
+      let action = `Upload ${document.name}`;
+
+      if (document.type === 'legal' || document.type === 'search') {
+        party = 'solicitor';
+        action = `Process ${document.name}`;
+      }
+
+      return {
+        party,
+        action,
+        type: 'document',
+        document: document.name
+      };
+    }
+
+    // Default: no blocker
+    return {
+      party: 'none',
+      action: 'Transaction progressing normally',
+      type: 'none'
+    };
+  },
+
+  // Get blocker icon based on party
+  getBlockerIcon(party) {
+    const icons = {
+      'buyer': 'fas fa-user',
+      'developer': 'fas fa-building',
+      'solicitor': 'fas fa-gavel',
+      'none': 'fas fa-check-circle'
+    };
+    return icons[party] || 'fas fa-question-circle';
+  },
+
+  // Get blocker color based on party
+  getBlockerColor(party) {
+    const colors = {
+      'buyer': 'warning',
+      'developer': 'info',
+      'solicitor': 'primary',
+      'none': 'success'
+    };
+    return colors[party] || 'info';
   }
 };

@@ -1,0 +1,509 @@
+/* Transaction Blocker Feature Styles */
+
+/* Blocker Alert Component */
+.blocker-alert {
+  display: flex;
+  align-items: flex-start;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid;
+}
+
+.blocker-alert.success {
+  background-color: #f0f9ff;
+  border-color: #10b981;
+  color: #059669;
+}
+
+.blocker-alert.warning {
+  background-color: #fef3c7;
+  border-color: #f59e0b;
+  color: #d97706;
+}
+
+.blocker-alert.critical {
+  background-color: #fee2e2;
+  border-color: #ef4444;
+  color: #dc2626;
+}
+
+.blocker-alert .alert-icon {
+  margin-right: 12px;
+  font-size: 24px;
+}
+
+.blocker-alert .alert-content h3 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.blocker-alert .alert-content p {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+}
+.btn-view-blockers {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-view-blockers:hover {
+  background-color: #2563eb;
+}
+
+/* Blocker List */
+.blocker-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.no-blockers {
+  text-align: center;
+  padding: 40px;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Blocker Card */
+.blocker-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #e5e7eb;
+  transition: all 0.2s;
+}
+
+.blocker-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.blocker-card.user-action {
+  border-left-color: #3b82f6;
+  background-color: #fafbff;
+}
+.blocker-card.urgent {
+  border-left-color: #ef4444;
+  background-color: #fffafa;
+}
+
+.blocker-card.overdue {
+  border-left-color: #f59e0b;
+  background-color: #fffbf0;
+}
+
+.blocker-card.delayed {
+  border-left-color: #8b5cf6;
+  background-color: #faf7ff;
+}
+
+.blocker-card.normal {
+  border-left-color: #10b981;
+}
+
+/* Blocker Header */
+.blocker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.blocker-priority {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.priority-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.priority-badge.critical {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.priority-badge.high {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.priority-badge.medium {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+.priority-badge.low {
+  background-color: #f0f9ff;
+  color: #0891b2;
+}
+
+.days-blocked {
+  font-size: 12px;
+  color: #6b7280;
+  background-color: #f3f4f6;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.blocker-category {
+  font-size: 12px;
+  color: #6b7280;
+  text-transform: capitalize;
+  background-color: #f9fafb;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+/* Blocker Content */
+.blocker-content {
+  margin-bottom: 16px;
+}
+
+.blocker-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: #111827;
+}
+
+.blocker-description {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0 0 12px 0;
+  line-height: 1.5;
+}
+
+.blocker-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.blocker-details strong {
+  color: #374151;
+}
+
+.responsible-party,
+.action-required {
+  padding: 4px 0;
+}
+
+/* Blocker Actions */
+.blocker-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  padding-top: 16px;
+  border-top: 1px solid #f3f4f6;
+}
+.blocker-actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.blocker-actions .btn-primary {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.blocker-actions .btn-primary:hover {
+  background-color: #2563eb;
+}
+
+.blocker-actions .btn-secondary {
+  background-color: #6b7280;
+  color: white;
+}
+
+.blocker-actions .btn-secondary:hover {
+  background-color: #4b5563;
+}
+
+.blocker-actions .btn-info {
+  background-color: #0891b2;
+  color: white;
+}
+
+.blocker-actions .btn-info:hover {
+  background-color: #0e7490;
+}
+/* Blocker Widget for Dashboard */
+.blocker-widget {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.widget-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.widget-count {
+  background-color: #ef4444;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.blocker-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.summary-stat {
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+.summary-stat.critical {
+  background-color: #fee2e2;
+  border-color: #fecaca;
+}
+
+.summary-stat.user-action {
+  background-color: #dbeafe;
+  border-color: #bfdbfe;
+}
+
+.summary-stat.total {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.stat-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #6b7280;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.urgent-actions {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.urgent-actions h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+.urgent-actions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px 0;
+}
+
+.urgent-actions li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  cursor: pointer;
+  border-bottom: 1px solid #f3f4f6;
+  transition: all 0.2s;
+}
+
+.urgent-actions li:hover {
+  background-color: #f9fafb;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 4px;
+}
+
+.urgent-actions li:last-child {
+  border-bottom: none;
+}
+
+.action-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.property-ref {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.btn-view-all {
+  background-color: #f3f4f6;
+  color: #374151;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+.btn-view-all:hover {
+  background-color: #e5e7eb;
+}
+/* Timeline Integration Styles */
+.timeline-item.blocked {
+  border-left-color: #ef4444;
+  background-color: #fffafa;
+}
+
+.timeline-item.blocked .timeline-icon {
+  background-color: #ef4444;
+}
+
+.timeline-blocker-alert {
+  background-color: #fee2e2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  padding: 12px;
+  margin-top: 12px;
+}
+
+.timeline-blocker-alert .blocker-icon {
+  color: #dc2626;
+  margin-right: 8px;
+}
+
+.timeline-blocker-alert .blocker-text {
+  font-size: 14px;
+  color: #dc2626;
+  font-weight: 500;
+}
+
+/* Transaction Table Blocker Column */
+.blocker-summary-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.blocker-count {
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.blocker-count.critical {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.blocker-count.normal {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.user-action-indicator {
+  font-size: 11px;
+  color: #3b82f6;
+  font-weight: 500;
+}
+
+.no-blockers {
+  color: #10b981;
+  font-size: 12px;
+  font-weight: 500;
+}
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .blocker-summary {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .blocker-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .blocker-actions {
+    flex-direction: column;
+  }
+  
+  .urgent-actions li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+/* Animation for blocker alerts */
+@keyframes slideInAlert {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.blocker-alert {
+  animation: slideInAlert 0.3s ease-out;
+}
+
+/* Pulse animation for critical blockers */
+@keyframes pulseRed {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+  }
+}
+
+.blocker-card.urgent {
+  animation: pulseRed 2s infinite;
+}
