@@ -194,7 +194,7 @@ body {
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  overflow: visible;
   position: fixed;
   top: 0;
   left: 0;
@@ -215,7 +215,6 @@ body {
   background: white;
   border-bottom: 1px solid var(--gray-200);
   box-shadow: var(--shadow-sm);
-}
 }
 
 .nav-left {
@@ -505,7 +504,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-}
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--gray-200);
 }
@@ -1099,77 +1097,6 @@ body {
 .status-badge.pending {
   background: rgba(245, 158, 11, 0.1);
   color: var(--warning);
-}
-.stat-card {
-  background: white;
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--gray-200);
-  position: relative;
-  overflow: hidden;
-}
-
-.stat-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--primary);
-}
-
-.stat-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
-.stat-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
-  color: white;
-}
-
-.stat-icon.blue { background: var(--primary); }
-.stat-icon.green { background: var(--success); }
-.stat-icon.orange { background: var(--warning); }
-.stat-icon.red { background: var(--error); }
-
-.stat-value {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--gray-900);
-  line-height: 1;
-}
-
-.stat-label {
-  font-size: 0.875rem;
-  color: var(--gray-600);
-  margin-top: 0.25rem;
-}
-
-.stat-change {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  font-size: 0.8125rem;
-  margin-top: 0.5rem;
-}
-
-.stat-change.positive {
-  color: var(--success);
-}
-
-.stat-change.negative {
-  color: var(--error);
 }
 
 /* Tables */
