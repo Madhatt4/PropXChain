@@ -249,6 +249,11 @@ class PropXchainPortal {
     document.getElementById('pageActions').innerHTML = actions;
     document.getElementById('pageContent').innerHTML = content;
     
+    // Initialize blockers if on dashboard
+    if (pageId === 'dashboard') {
+      setTimeout(() => this.initializeBlockers(), 100);
+    }
+    
     // Initialize charts if needed
     setTimeout(() => this.initializeCharts(), 100);
   }
@@ -493,6 +498,34 @@ class PropXchainPortal {
     }
   }
 
+  initializeBlockers() {
+    if (typeof TransactionBlockers === 'undefined') {
+      console.error('TransactionBlockers not loaded');
+      return;
+    }
+
+    if (this.currentUser.role === 'developer') {
+      // Initialize developer blocker widget
+      const widgetContainer = document.getElementById('blocker-widget-container');
+      if (widgetContainer) {
+        const allTransactions = PortalData.properties;
+        const widgetHtml = TransactionBlockers.generateBlockerWidget(allTransactions, 'developer');
+        widgetContainer.innerHTML = widgetHtml;
+      }
+    } else if (this.currentUser.role === 'buyer') {
+      // Initialize buyer blocker alerts
+      const alertContainer = document.getElementById('buyer-blocker-alerts');
+      if (alertContainer) {
+        const userProperty = PortalData.properties.find(p => p.buyerId === this.currentUser.username);
+        if (userProperty) {
+          const blockers = TransactionBlockers.detectTransactionBlockers(userProperty);
+          const alertHtml = TransactionBlockers.generateBlockerAlert(blockers, 'buyer');
+          alertContainer.innerHTML = alertHtml;
+        }
+      }
+    }
+  }
+
   loadDashboard() {
     this.showPage('dashboard');
   }
@@ -573,6 +606,9 @@ class PropXchainPortal {
           })}
         </div>
 
+        <!-- Transaction Blockers Widget -->
+        <div id="blocker-widget-container"></div>
+
         <!-- Property Grid -->
         <div class="card mb-6">
           <div class="card-header">
@@ -644,6 +680,9 @@ class PropXchainPortal {
             </div>
           </div>
         </div>
+
+        <!-- Blocker Alerts -->
+        <div id="buyer-blocker-alerts"></div>
 
         <!-- Timeline -->
         <div class="card mb-6">
