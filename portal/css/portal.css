@@ -197,7 +197,11 @@ body {
   grid-template-rows: var(--topnav-height) 1fr;
   grid-template-columns: var(--sidebar-width) 1fr;
   height: 100vh;
+  width: 100vw;
   overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 /* Top Navigation */
@@ -397,6 +401,8 @@ body {
   color: white;
   overflow-y: auto;
   border-right: 1px solid var(--gray-200);
+  width: var(--sidebar-width);
+  position: relative;
 }
 
 .sidebar-header {
@@ -470,7 +476,9 @@ body {
   padding: 2rem;
   background: #f8fafc;
   height: calc(100vh - var(--topnav-height));
-  min-height: 0; /* Important for grid scrolling */
+  min-height: 0;
+  width: 100%;
+  position: relative;
 }
 
 .page-header {
