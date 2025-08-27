@@ -473,6 +473,7 @@ body {
 .main-content {
   grid-area: main;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 2rem;
   background: #f8fafc;
   height: calc(100vh - var(--topnav-height));
@@ -712,6 +713,7 @@ body {
   grid-template-columns: 250px 1fr;
   gap: 2rem;
   align-items: start;
+  margin-bottom: 2rem;
 }
 
 .property-overview .property-image img {
@@ -737,6 +739,143 @@ body {
   font-weight: 700;
   color: var(--primary);
   margin-bottom: 1.5rem;
+}
+
+/* Timeline Styles */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: var(--radius);
+  background: white;
+  border: 1px solid var(--gray-200);
+}
+
+.timeline-item.completed {
+  border-color: var(--success);
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.timeline-item.in_progress {
+  border-color: var(--primary);
+  background: rgba(0, 102, 204, 0.05);
+}
+
+.timeline-item.pending {
+  border-color: var(--gray-300);
+  background: var(--gray-50);
+}
+
+.timeline-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: white;
+}
+
+.timeline-item.completed .timeline-icon {
+  background: var(--success);
+}
+
+.timeline-item.in_progress .timeline-icon {
+  background: var(--primary);
+}
+
+.timeline-item.pending .timeline-icon {
+  background: var(--gray-400);
+}
+
+.timeline-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.timeline-date {
+  font-size: 0.875rem;
+  color: var(--gray-600);
+}
+
+/* Documents Summary */
+.documents-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.document-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+}
+
+.document-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+}
+
+.document-info {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.document-name {
+  font-weight: 500;
+}
+
+.document-status.verified {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.document-status.pending {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.document-status.under_review {
+  background: rgba(139, 92, 246, 0.1);
+  color: #8b5cf6;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .progress-container {
