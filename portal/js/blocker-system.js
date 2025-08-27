@@ -45,14 +45,17 @@ class TransactionBlockerSystem {
     if (transaction.documents) {
       transaction.documents.forEach(doc => {
         if (doc.status === 'action_required') {
+          const responsibleParty = this.getDocumentResponsibleParty(doc.requiredBy);
+          const blockerType = this.getResponsiblePartyTypeFromString(doc.requiredBy);
+          
           blockers.push({
             id: `doc_${doc.id}`,
-            type: this.blockerTypes.BUYER_ACTION,
+            type: blockerType,
             priority: this.blockerPriorities.HIGH,
             title: `Missing Document: ${doc.name}`,
-            description: `The ${doc.name} document is required to proceed`,
-            responsibleParty: 'Buyer',
-            actionRequired: 'Upload document',
+            description: `The ${doc.name} document is required to proceed with the transaction`,
+            responsibleParty: responsibleParty,
+            actionRequired: this.getDocumentAction(doc.requiredBy, doc.name),
             daysBlocked: this.calculateDaysBlocked(doc.dueDate),
             category: 'documentation'
           });
@@ -73,6 +76,49 @@ class TransactionBlockerSystem {
     }
     
     return blockers;
+  }
+
+  getDocumentResponsibleParty(requiredBy) {
+    const partyMappings = {
+      'buyer': 'Buyer',
+      'developer': 'Developer/Seller',
+      'solicitor': 'Solicitor',
+      'system': 'System'
+    };
+    return partyMappings[requiredBy] || 'Unknown';
+  }
+
+  getResponsiblePartyTypeFromString(requiredBy) {
+    const typeMappings = {
+      'buyer': this.blockerTypes.BUYER_ACTION,
+      'developer': this.blockerTypes.DEVELOPER_ACTION,
+      'solicitor': this.blockerTypes.SOLICITOR_ACTION,
+      'system': this.blockerTypes.SYSTEM_PROCESSING
+    };
+    return typeMappings[requiredBy] || this.blockerTypes.EXTERNAL_AUTHORITY;
+  }
+
+  getDocumentAction(requiredBy, documentName) {
+    if (requiredBy === 'buyer') {
+      if (documentName.toLowerCase().includes('proof of funds')) {
+        return 'Upload proof of funds';
+      } else if (documentName.toLowerCase().includes('verification')) {
+        return 'Complete identity verification';
+      } else if (documentName.toLowerCase().includes('mortgage')) {
+        return 'Upload mortgage documentation';
+      }
+      return 'Upload document';
+    } else if (requiredBy === 'developer') {
+      if (documentName.toLowerCase().includes('search')) {
+        return 'Provide property searches';
+      } else if (documentName.toLowerCase().includes('title')) {
+        return 'Provide title documentation';
+      } else if (documentName.toLowerCase().includes('certificate')) {
+        return 'Upload property certificate';
+      }
+      return 'Provide documentation';
+    }
+    return 'Complete required action';
   }
 
   checkTimelineBlockers(transaction) {
@@ -150,15 +196,15 @@ class TransactionBlockerSystem {
 
   mapTimelineStepToBlocker(step, transaction) {
     const stepMappings = {
-      'Survey Ordered': {
+      'Searches Ordered': {
+        type: this.blockerTypes.DEVELOPER_ACTION,
+        party: 'Developer/Seller',
+        action: 'Provide property searches'
+      },
+      'Buyer Verification': {
         type: this.blockerTypes.BUYER_ACTION,
         party: 'Buyer',
-        action: 'Arrange property survey'
-      },
-      'Mortgage Application': {
-        type: this.blockerTypes.MORTGAGE_PROVIDER,
-        party: 'Mortgage Provider',
-        action: 'Process mortgage application'
+        action: 'Complete verification and proof of funds'
       },
       'Legal Review': {
         type: this.blockerTypes.SOLICITOR_ACTION,
@@ -431,8 +477,8 @@ class TransactionBlockerSystem {
 
   getResponsibleParty(stage) {
     const partyMappings = {
-      'Survey Ordered': 'Buyer',
-      'Mortgage Application': 'Mortgage Provider', 
+      'Searches Ordered': 'Developer/Seller',
+      'Buyer Verification': 'Buyer',
       'Legal Review': 'Solicitor',
       'Contract Exchange': 'Solicitor',
       'Completion': 'Buyer'
@@ -442,8 +488,8 @@ class TransactionBlockerSystem {
 
   getResponsiblePartyType(stage) {
     const typeMappings = {
-      'Survey Ordered': this.blockerTypes.BUYER_ACTION,
-      'Mortgage Application': this.blockerTypes.MORTGAGE_PROVIDER,
+      'Searches Ordered': this.blockerTypes.DEVELOPER_ACTION,
+      'Buyer Verification': this.blockerTypes.BUYER_ACTION,
       'Legal Review': this.blockerTypes.SOLICITOR_ACTION,
       'Contract Exchange': this.blockerTypes.SOLICITOR_ACTION,
       'Completion': this.blockerTypes.BUYER_ACTION

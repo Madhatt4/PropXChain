@@ -58,20 +58,22 @@ const PortalData = {
       timeline: [
         { stage: 'Offer Accepted', date: '2024-01-15', status: 'completed', icon: 'fas fa-handshake', responsibleParty: 'developer' },
         { stage: 'Initial Verification', date: '2024-01-18', status: 'completed', icon: 'fas fa-check-circle', responsibleParty: 'system' },
-        { stage: 'Survey Ordered', date: '2024-01-22', status: 'completed', icon: 'fas fa-search', responsibleParty: 'buyer' },
-        { stage: 'Mortgage Application', date: '2024-01-25', status: 'completed', icon: 'fas fa-university', responsibleParty: 'mortgage_provider' },
+        { stage: 'Searches Ordered', date: '2024-01-22', status: 'completed', icon: 'fas fa-search', responsibleParty: 'developer' },
+        { stage: 'Buyer Verification', date: '2024-01-25', status: 'completed', icon: 'fas fa-user-check', responsibleParty: 'buyer' },
         { stage: 'Legal Review', date: '2024-02-01', status: 'in_progress', icon: 'fas fa-gavel', responsibleParty: 'solicitor' },
         { stage: 'Contract Exchange', date: '2024-02-15', status: 'pending', icon: 'fas fa-file-signature', responsibleParty: 'solicitor' },
         { stage: 'Completion', date: '2024-03-01', status: 'pending', icon: 'fas fa-key', responsibleParty: 'buyer' }
       ],
       documents: [
         { id: 1, name: 'Purchase Agreement', type: 'contract', status: 'verified', uploadDate: '2024-01-16', fileSize: '2.4 MB', dueDate: '2024-01-20', requiredBy: 'buyer' },
-        { id: 2, name: 'Property Survey Report', type: 'survey', status: 'verified', uploadDate: '2024-01-23', fileSize: '8.7 MB', dueDate: '2024-01-25', requiredBy: 'buyer' },
+        { id: 2, name: 'Proof of Funds', type: 'financial', status: 'verified', uploadDate: '2024-01-23', fileSize: '1.2 MB', dueDate: '2024-01-25', requiredBy: 'buyer' },
         { id: 3, name: 'Mortgage Offer Letter', type: 'financial', status: 'verified', uploadDate: '2024-01-26', fileSize: '1.2 MB', dueDate: '2024-01-30', requiredBy: 'buyer' },
         { id: 4, name: 'Building Regulations Certificate', type: 'legal', status: 'verified', uploadDate: '2024-01-20', fileSize: '856 KB', dueDate: '2024-01-25', requiredBy: 'developer' },
         { id: 5, name: 'Energy Performance Certificate', type: 'certificate', status: 'verified', uploadDate: '2024-01-19', fileSize: '1.1 MB', dueDate: '2024-01-22', requiredBy: 'developer' },
-        { id: 6, name: 'Local Authority Search', type: 'search', status: 'action_required', uploadDate: null, fileSize: null, dueDate: '2024-02-05', requiredBy: 'buyer' },
-        { id: 7, name: 'Title Deeds', type: 'legal', status: 'under_review', uploadDate: '2024-02-01', fileSize: '3.2 MB', dueDate: '2024-02-10', requiredBy: 'solicitor' }
+        { id: 6, name: 'Local Authority Search', type: 'search', status: 'action_required', uploadDate: null, fileSize: null, dueDate: '2024-02-05', requiredBy: 'developer' },
+        { id: 7, name: 'Title Deeds', type: 'legal', status: 'under_review', uploadDate: '2024-02-01', fileSize: '3.2 MB', dueDate: '2024-02-10', requiredBy: 'developer' },
+        { id: 8, name: 'Property Information Form', type: 'legal', status: 'verified', uploadDate: '2024-01-18', fileSize: '2.8 MB', dueDate: '2024-01-25', requiredBy: 'developer' },
+        { id: 9, name: 'Buyer Identity Verification', type: 'verification', status: 'verified', uploadDate: '2024-01-17', fileSize: '1.5 MB', dueDate: '2024-01-20', requiredBy: 'buyer' }
       ],
       createdDate: '2024-01-15',
       lastUpdated: '2024-02-01'
@@ -154,16 +156,18 @@ const PortalData = {
       timeline: [
         { stage: 'Offer Accepted', date: '2024-01-12', status: 'completed', icon: 'fas fa-handshake', responsibleParty: 'developer' },
         { stage: 'Initial Verification', date: '2024-01-15', status: 'completed', icon: 'fas fa-check-circle', responsibleParty: 'system' },
-        { stage: 'Survey Ordered', date: '2024-01-18', status: 'action_required', icon: 'fas fa-search', responsibleParty: 'buyer' },
-        { stage: 'Mortgage Application', date: '2024-01-25', status: 'pending', icon: 'fas fa-university', responsibleParty: 'mortgage_provider' },
+        { stage: 'Searches Ordered', date: '2024-01-18', status: 'action_required', icon: 'fas fa-search', responsibleParty: 'developer' },
+        { stage: 'Buyer Verification', date: '2024-01-25', status: 'pending', icon: 'fas fa-user-check', responsibleParty: 'buyer' },
         { stage: 'Legal Review', date: '2024-02-10', status: 'pending', icon: 'fas fa-gavel', responsibleParty: 'solicitor' },
         { stage: 'Contract Exchange', date: '2024-02-25', status: 'pending', icon: 'fas fa-file-signature', responsibleParty: 'solicitor' },
         { stage: 'Completion', date: '2024-03-15', status: 'pending', icon: 'fas fa-key', responsibleParty: 'buyer' }
       ],
       documents: [
         { id: 11, name: 'Purchase Agreement', type: 'contract', status: 'verified', uploadDate: '2024-01-13', fileSize: '3.1 MB', dueDate: '2024-01-15', requiredBy: 'buyer' },
-        { id: 12, name: 'Property Survey', type: 'survey', status: 'action_required', uploadDate: null, fileSize: null, dueDate: '2024-01-20', requiredBy: 'buyer' },
-        { id: 13, name: 'Insurance Documents', type: 'insurance', status: 'action_required', uploadDate: null, fileSize: null, dueDate: '2024-01-25', requiredBy: 'buyer' }
+        { id: 12, name: 'Local Authority Search', type: 'search', status: 'action_required', uploadDate: null, fileSize: null, dueDate: '2024-01-20', requiredBy: 'developer' },
+        { id: 13, name: 'Title Deeds', type: 'legal', status: 'action_required', uploadDate: null, fileSize: null, dueDate: '2024-01-25', requiredBy: 'developer' },
+        { id: 14, name: 'Property Information Form', type: 'legal', status: 'action_required', uploadDate: null, fileSize: null, dueDate: '2024-01-22', requiredBy: 'developer' },
+        { id: 15, name: 'Buyer Identity Verification', type: 'verification', status: 'pending', uploadDate: null, fileSize: null, dueDate: '2024-01-30', requiredBy: 'buyer' }
       ],
       createdDate: '2024-01-12',
       lastUpdated: '2024-01-18'
