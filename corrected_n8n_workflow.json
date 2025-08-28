@@ -1,0 +1,298 @@
+{
+  "name": "PropXChain LinkedIn Automation - Fixed",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "value": 24
+            }
+          ]
+        }
+      },
+      "id": "schedule_trigger",
+      "name": "Daily Check",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "command": "dir \"C:\\Users\\Admin\\Desktop\\Propxchain\\linkedin-content\\*.md\" /B /O:D",
+        "options": {}
+      },
+      "id": "list_files",
+      "name": "List Content Files",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "operation": "splitOutItems",
+        "fieldToSplitOut": "stdout",
+        "options": {
+          "destinationFieldName": "filename"
+        }
+      },
+      "id": "split_files",
+      "name": "Split File List",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "command": "=type \"C:\\Users\\Admin\\Desktop\\Propxchain\\linkedin-content\\{{ $json.filename.trim() }}\"",
+        "options": {}
+      },
+      "id": "read_file",
+      "name": "Read File Content",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "command": "=forfiles /p \"C:\\Users\\Admin\\Desktop\\Propxchain\\linkedin-content\" /m \"{{ $json.filename.trim() }}\" /c \"cmd /c echo @fdate @ftime\"",
+        "options": {}
+      },
+      "id": "check_file_date",
+      "name": "Check File Date",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "condition_1",
+              "leftValue": "={{ $json.stdout }}",
+              "rightValue": "={{ $now.minus({hours: 24}).toFormat('MM/dd/yyyy') }}",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "check_recent_changes",
+      "name": "Check Recent Changes",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1340, 200]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract key information from PropXChain files for LinkedIn\nconst content = $input.all()[0].json.stdout; // File content from read command\nconst fileName = $input.all()[0].json.filename;\n\n// PropXChain specific content processing\nlet postContent = '';\n\nif (content && content.length > 50) {\n  // Extract meaningful content for LinkedIn\n  const lines = content.split('\\n').filter(line => line.trim());\n  \n  // Look for key sections with emojis and achievements\n  const highlights = lines.filter(line => \n    line.includes('✅') || \n    line.includes('🚀') || \n    line.includes('🏆') ||\n    line.includes('📈') ||\n    line.includes('🎯') ||\n    line.includes('💰') ||\n    line.startsWith('##') ||\n    line.toLowerCase().includes('milestone') ||\n    line.toLowerCase().includes('achievement') ||\n    line.toLowerCase().includes('update')\n  );\n  \n  if (highlights.length > 0) {\n    // Create engaging LinkedIn post\n    const title = highlights.find(h => h.startsWith('##')) || '🚀 PropXChain Update!';\n    const keyPoints = highlights.filter(h => h.includes('✅')).slice(0, 3);\n    const hashtags = '#PropTech #Blockchain #RealEstate #Innovation #PropertyTech #DigitalTransformation #PropXChain';\n    \n    postContent = `${title.replace('##', '🚀').replace('#', '')}\\n\\n${keyPoints.join('\\n')}\\n\\n🔗 Transforming UK property transactions: 12-16 weeks → 3-4 weeks\\n💰 48% cost reduction achieved\\n🏠 Starting with new builds in North Wales\\n\\n${hashtags}`;\n  } else {\n    // Extract first meaningful content\n    const meaningfulLines = lines.filter(line => \n      line.length > 20 && \n      !line.startsWith('#') && \n      !line.startsWith('//') &&\n      line.trim() !== ''\n    ).slice(0, 2);\n    \n    postContent = `🏠 PropXChain Progress Update!\\n\\n🚀 Revolutionizing UK property transactions with blockchain technology\\n\\n${meaningfulLines.join('\\n')}\\n\\n✅ Reducing completion times from 12-16 weeks to 3-4 weeks\\n💰 Cutting direct costs by 48%\\n🎯 Starting with new builds in North Wales\\n\\n#PropTech #Blockchain #RealEstate #Innovation #PropXChain`;\n  }\n} else {\n  // Default content if file reading fails\n  postContent = `🚀 PropXChain Development Update!\\n\\n🏠 Building the future of property transactions with blockchain technology\\n\\n✅ Comprehensive seller information packs\\n✅ Smart contract automation\\n✅ AI-assisted document analysis\\n✅ Real-time transaction dashboard\\n\\n🎯 Reducing transaction times: 12-16 weeks → 3-4 weeks\\n💰 Cost reduction: 48% savings\\n\\n#PropTech #Blockchain #RealEstate #Innovation #PropertyTech #PropXChain`;\n}\n\nreturn [{\n  postText: postContent,\n  fileName: fileName || 'unknown',\n  contentLength: content ? content.length : 0,\n  timestamp: new Date().toISOString()\n}];"
+      },
+      "id": "process_content",
+      "name": "Process Content for LinkedIn",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1560, 200]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "condition_1",
+              "leftValue": "={{ $json.postText }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "isNotEmpty"
+              }
+            },
+            {
+              "id": "condition_2",
+              "leftValue": "={{ $json.postText.length }}",
+              "rightValue": 100,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "validate_content",
+      "name": "Validate Content",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1780, 200]
+    },
+    {
+      "parameters": {
+        "resource": "share",
+        "operation": "create",
+        "text": "={{ $json.postText }}",
+        "additionalFields": {
+          "visibility": "PUBLIC"
+        }
+      },
+      "id": "post_to_linkedin",
+      "name": "Post to LinkedIn",
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [2000, 200],
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "YOUR_LINKEDIN_CREDENTIALS",
+          "name": "LinkedIn OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "propxchain-notification",
+        "options": {}
+      },
+      "id": "success_webhook",
+      "name": "Success Notification",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [2220, 200]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Log successful posting\nconst postData = $input.first().json;\n\nconsole.log(`✅ Successfully posted to LinkedIn at ${new Date().toISOString()}`);\nconsole.log(`Post text: ${postData.postText.substring(0, 100)}...`);\nconsole.log(`File source: ${postData.fileName}`);\n\nreturn [{\n  success: true,\n  timestamp: new Date().toISOString(),\n  message: `Posted to LinkedIn: ${postData.fileName}`,\n  postPreview: postData.postText.substring(0, 100) + '...'\n}];"
+      },
+      "id": "log_success",
+      "name": "Log Success",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2000, 400]
+    }
+  ],
+  "connections": {
+    "Daily Check": {
+      "main": [
+        [
+          {
+            "node": "List Content Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Content Files": {
+      "main": [
+        [
+          {
+            "node": "Split File List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split File List": {
+      "main": [
+        [
+          {
+            "node": "Read File Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read File Content": {
+      "main": [
+        [
+          {
+            "node": "Check File Date",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check File Date": {
+      "main": [
+        [
+          {
+            "node": "Check Recent Changes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Recent Changes": {
+      "main": [
+        [
+          {
+            "node": "Process Content for LinkedIn",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Content for LinkedIn": {
+      "main": [
+        [
+          {
+            "node": "Validate Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Content": {
+      "main": [
+        [
+          {
+            "node": "Post to LinkedIn",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post to LinkedIn": {
+      "main": [
+        [
+          {
+            "node": "Log Success",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Success Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

@@ -287,7 +287,7 @@ class TransactionBlockerSystem {
             `${userBlockers.length} item${userBlockers.length > 1 ? 's' : ''} require your attention.` :
             'Waiting for other parties to complete their actions.'
           }</p>
-          <button class="btn-view-blockers" onclick="TransactionBlockers.showBlockerDetails()">
+          <button class="btn-view-blockers" onclick="window.TransactionBlockers.showBlockerDetails()">
             View All Blockers
           </button>
         </div>
@@ -511,50 +511,226 @@ window.TransactionBlockers = {
 
   // Show blocker details modal
   showBlockerDetails: (transactionId) => {
-    const transaction = PortalData.properties.find(p => p.id === transactionId);
-    if (!transaction) return;
+    // If no transactionId provided, find the current user's transaction
+    let transaction;
+    if (transactionId) {
+      transaction = PortalData.properties.find(p => p.id === transactionId);
+    } else {
+      // Find the buyer's property or first property
+      const currentUser = window.Portal?.currentUser;
+      if (currentUser?.role === 'buyer') {
+        transaction = PortalData.properties.find(p => p.buyerId === currentUser.username);
+      } else {
+        transaction = PortalData.properties[0]; // Fallback to first property
+      }
+    }
+    
+    if (!transaction) {
+      alert('No transaction found to display blockers for.');
+      return;
+    }
     
     const blockers = TransactionBlockers.detectTransactionBlockers(transaction);
-    const userType = Portal.currentUser?.role || 'buyer';
+    const userType = window.Portal?.currentUser?.role || 'buyer';
     
-    const modalContent = `
-      <div class="blocker-modal">
-        <h2>Transaction Blockers - ${transaction.title}</h2>
-        ${TransactionBlockers.generateBlockerList(blockers, userType)}
+    // Create modal HTML
+    const modalHtml = `
+      <div class="blocker-modal-overlay" onclick="window.TransactionBlockers.closeBlockerModal()">
+        <div class="blocker-modal-container" onclick="event.stopPropagation()">
+          <div class="blocker-modal-header">
+            <h2>Transaction Blockers</h2>
+            <button class="blocker-modal-close" onclick="window.TransactionBlockers.closeBlockerModal()">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="blocker-modal-content">
+            <div class="transaction-info">
+              <h3>${transaction.title}</h3>
+              <p>${transaction.address}</p>
+              <p>Transaction ID: ${transaction.id}</p>
+            </div>
+            ${TransactionBlockers.generateBlockerAlert(blockers, userType)}
+            ${TransactionBlockers.generateBlockerList(blockers, userType)}
+          </div>
+          <div class="blocker-modal-footer">
+            <button class="btn-secondary" onclick="window.TransactionBlockers.refreshBlockers('${transaction.id}')">
+              <i class="fas fa-sync"></i> Refresh Status
+            </button>
+            <button class="btn-primary" onclick="window.TransactionBlockers.closeBlockerModal()">
+              Close
+            </button>
+          </div>
+        </div>
       </div>
     `;
     
-    // Show modal (implement based on your modal system)
-    Portal.showModal('Transaction Blockers', modalContent);
+    // Add modal to DOM
+    const existingModal = document.getElementById('blocker-modal');
+    if (existingModal) {
+      existingModal.remove();
+    }
+    
+    const modalElement = document.createElement('div');
+    modalElement.id = 'blocker-modal';
+    modalElement.innerHTML = modalHtml;
+    document.body.appendChild(modalElement);
+    
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+  },
+
+  closeBlockerModal: () => {
+    const modal = document.getElementById('blocker-modal');
+    if (modal) {
+      modal.remove();
+    }
+    document.body.style.overflow = '';
+  },
+
+  refreshBlockers: (transactionId) => {
+    console.log('Refreshing blockers for:', transactionId);
+    // Simulate refresh delay
+    setTimeout(() => {
+      window.TransactionBlockers.showBlockerDetails(transactionId);
+    }, 500);
   },
 
   // Handle specific blocker actions
   handleDocumentUpload: (blockerId) => {
     console.log('Handle document upload for blocker:', blockerId);
-    // Redirect to document upload page
-    window.location.href = 'document-verification.html';
+    // Show document upload demo
+    const demoHtml = `
+      <div class="demo-modal-overlay" onclick="this.remove()">
+        <div class="demo-modal-container" onclick="event.stopPropagation()">
+          <div class="demo-modal-header">
+            <h3>Document Upload Demo</h3>
+            <button onclick="this.closest('.demo-modal-overlay').remove()">×</button>
+          </div>
+          <div class="demo-modal-content">
+            <p>🔒 <strong>Secure Document Upload</strong></p>
+            <p>In the full system, this would open a secure document upload interface where you can:</p>
+            <ul>
+              <li>Upload required documents (PDF, JPG, PNG)</li>
+              <li>Documents are encrypted and stored on blockchain</li>
+              <li>Automatic verification and approval workflow</li>
+              <li>Real-time status updates</li>
+            </ul>
+            <div class="demo-file-upload">
+              <div class="upload-zone">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Drag & drop files here or click to browse</p>
+                <input type="file" multiple accept=".pdf,.jpg,.png" style="display: none;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    this.showDemoModal(demoHtml);
   },
 
   handleProfileUpdate: (blockerId) => {
     console.log('Handle profile update for blocker:', blockerId);
-    // Show profile update form
+    const demoHtml = `
+      <div class="demo-modal-overlay" onclick="this.remove()">
+        <div class="demo-modal-container" onclick="event.stopPropagation()">
+          <div class="demo-modal-header">
+            <h3>Profile Completion Demo</h3>
+            <button onclick="this.closest('.demo-modal-overlay').remove()">×</button>
+          </div>
+          <div class="demo-modal-content">
+            <p>👤 <strong>Identity Verification & Proof of Funds</strong></p>
+            <p>Complete your buyer profile to proceed:</p>
+            <div class="demo-form">
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" value="James Brown" disabled>
+              </div>
+              <div class="form-group">
+                <label>Proof of Funds Amount</label>
+                <input type="text" placeholder="£485,000" class="demo-input">
+              </div>
+              <div class="form-group">
+                <label>Bank Statement</label>
+                <div class="file-upload-demo">📄 Upload bank statement (last 3 months)</div>
+              </div>
+              <div class="form-group">
+                <label>ID Document</label>
+                <div class="file-upload-demo">🆔 Upload passport or driving license</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    this.showDemoModal(demoHtml);
   },
 
   handleSurveyBooking: (blockerId) => {
     console.log('Handle survey booking for blocker:', blockerId);
-    // Show survey booking interface
+    alert('Demo: Survey booking interface would open here');
   },
 
   showHelp: (blockerId) => {
     console.log('Show help for blocker:', blockerId);
-    // Show contextual help
+    const demoHtml = `
+      <div class="demo-modal-overlay" onclick="this.remove()">
+        <div class="demo-modal-container" onclick="event.stopPropagation()">
+          <div class="demo-modal-header">
+            <h3>Help & Support</h3>
+            <button onclick="this.closest('.demo-modal-overlay').remove()">×</button>
+          </div>
+          <div class="demo-modal-content">
+            <h4>❓ Need Help?</h4>
+            <p>Our support team is here to help you resolve any transaction blockers:</p>
+            <div class="help-options">
+              <div class="help-option">
+                <i class="fas fa-phone"></i>
+                <div>
+                  <strong>Phone Support</strong>
+                  <p>Call us at 0800 123 4567</p>
+                </div>
+              </div>
+              <div class="help-option">
+                <i class="fas fa-envelope"></i>
+                <div>
+                  <strong>Email Support</strong>
+                  <p>support@propxchain.com</p>
+                </div>
+              </div>
+              <div class="help-option">
+                <i class="fas fa-comments"></i>
+                <div>
+                  <strong>Live Chat</strong>
+                  <p>Available 9am-6pm weekdays</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    this.showDemoModal(demoHtml);
+  },
+
+  showDemoModal: (htmlContent) => {
+    const modalElement = document.createElement('div');
+    modalElement.innerHTML = htmlContent;
+    document.body.appendChild(modalElement);
   },
 
   goToTransaction: (transactionId) => {
-    window.location.href = `transaction-timeline.html?id=${transactionId}`;
+    console.log('Navigate to transaction:', transactionId);
+    // Simulate navigation
+    if (window.Portal && window.Portal.showPage) {
+      window.Portal.showPage('timeline');
+    }
   },
 
   showAllBlockers: () => {
-    window.location.href = 'transaction-tracker.html?view=blockers';
+    console.log('Show all blockers page');
+    if (window.Portal && window.Portal.showPage) {
+      window.Portal.showPage('transactions');
+    }
   }
 };

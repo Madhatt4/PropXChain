@@ -507,3 +507,373 @@
 .blocker-card.urgent {
   animation: pulseRed 2s infinite;
 }
+/* Blocker Modal Styles */
+.blocker-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+.blocker-modal-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  animation: slideInUp 0.3s ease;
+}
+
+.blocker-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.blocker-modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.blocker-modal-close {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  color: #6b7280;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.blocker-modal-close:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.blocker-modal-content {
+  padding: 24px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.transaction-info {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: #f0f9ff;
+  border-radius: 8px;
+  border-left: 4px solid #3b82f6;
+}
+
+.transaction-info h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.2rem;
+  color: #1e40af;
+}
+
+.transaction-info p {
+  margin: 4px 0;
+  color: #1e40af;
+  font-size: 0.9rem;
+}
+
+.blocker-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 20px 24px;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.blocker-modal-footer .btn-secondary {
+  background: #6b7280;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.blocker-modal-footer .btn-secondary:hover {
+  background: #4b5563;
+}
+
+.blocker-modal-footer .btn-primary {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.blocker-modal-footer .btn-primary:hover {
+  background: #2563eb;
+}
+
+/* Demo Modal Styles */
+.demo-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2001;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+.demo-modal-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+}
+
+.demo-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f0f9ff;
+}
+
+.demo-modal-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #1e40af;
+}
+
+.demo-modal-header button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  color: #6b7280;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.demo-modal-header button:hover {
+  background: #dbeafe;
+}
+
+.demo-modal-content {
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.demo-modal-content h4 {
+  margin: 0 0 16px 0;
+  color: #111827;
+  font-size: 1.1rem;
+}
+
+.demo-modal-content ul {
+  margin: 16px 0;
+  padding-left: 20px;
+}
+
+.demo-modal-content li {
+  margin: 8px 0;
+  color: #4b5563;
+}
+
+.demo-file-upload {
+  margin: 20px 0;
+}
+
+.upload-zone {
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.upload-zone:hover {
+  border-color: #3b82f6;
+  background: #f0f9ff;
+}
+
+.upload-zone i {
+  font-size: 3rem;
+  color: #9ca3af;
+  margin-bottom: 16px;
+}
+
+.upload-zone p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.demo-form {
+  margin: 20px 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.form-group input:disabled {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.demo-input {
+  border-color: #3b82f6 !important;
+  background: #f0f9ff !important;
+}
+
+.file-upload-demo {
+  padding: 12px;
+  background: #f3f4f6;
+  border: 1px dashed #9ca3af;
+  border-radius: 6px;
+  text-align: center;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.file-upload-demo:hover {
+  background: #e5e7eb;
+  border-color: #6b7280;
+}
+
+.help-options {
+  margin: 20px 0;
+}
+
+.help-option {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.help-option i {
+  width: 40px;
+  height: 40px;
+  background: #3b82f6;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.help-option strong {
+  display: block;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.help-option p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile responsive modal */
+@media (max-width: 768px) {
+  .blocker-modal-overlay,
+  .demo-modal-overlay {
+    padding: 10px;
+  }
+  
+  .blocker-modal-container,
+  .demo-modal-container {
+    max-height: 95vh;
+  }
+  
+  .blocker-modal-header,
+  .demo-modal-header {
+    padding: 16px 20px;
+  }
+  
+  .blocker-modal-content,
+  .demo-modal-content {
+    padding: 20px;
+    max-height: 70vh;
+  }
+  
+  .blocker-modal-footer {
+    padding: 16px 20px;
+    flex-direction: column;
+  }
+  
+  .blocker-modal-footer .btn-secondary,
+  .blocker-modal-footer .btn-primary {
+    width: 100%;
+    margin: 4px 0;
+  }
+}

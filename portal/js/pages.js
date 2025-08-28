@@ -103,6 +103,22 @@ const Pages = {
                   key: 'price', 
                   label: 'Value',
                   render: (value) => DataHelpers.formatCurrency(value)
+                },
+                {
+                  key: 'stage',
+                  label: 'Current Blocker',
+                  render: (value, row) => {
+                    const blocker = DataHelpers.getCurrentBlocker(row);
+                    const icon = DataHelpers.getBlockerIcon(blocker.party);
+                    const color = DataHelpers.getBlockerColor(blocker.party);
+                    
+                    return blocker.type === 'none' ? 
+                      `<span class="status-badge success">No blockers</span>` :
+                      `<div class="blocker-indicator ${color}">
+                         <i class="${icon}"></i>
+                         <span>${blocker.party}</span>
+                       </div>`;
+                  }
                 }
               ],
               [
@@ -126,31 +142,16 @@ const Pages = {
           
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Document Status Overview</h3>
+              <h3 class="card-title">Process Transparency</h3>
             </div>
             <div class="card-body">
-              <div class="document-stats">
-                <div class="stat-item">
-                  <span class="stat-number">${PortalData.analytics.documentStats.verifiedDocuments}</span>
-                  <span class="stat-label">Verified Documents</span>
-                  <div class="stat-bar">
-                    <div class="stat-bar-fill success" style="width: 85%"></div>
+              <div class="transparency-stats">
+                ${properties.filter(p => p.progress < 100).map(property => `
+                  <div class="transparency-item">
+                    <h4>${property.title}</h4>
+                    ${Components.createBlockerCard(property)}
                   </div>
-                </div>
-                <div class="stat-item">
-                  <span class="stat-number">${PortalData.analytics.documentStats.pendingDocuments}</span>
-                  <span class="stat-label">Pending Review</span>
-                  <div class="stat-bar">
-                    <div class="stat-bar-fill warning" style="width: 35%"></div>
-                  </div>
-                </div>
-                <div class="stat-item">
-                  <span class="stat-number">${PortalData.analytics.documentStats.actionRequired}</span>
-                  <span class="stat-label">Action Required</span>
-                  <div class="stat-bar">
-                    <div class="stat-bar-fill error" style="width: 25%"></div>
-                  </div>
-                </div>
+                `).join('')}
               </div>
             </div>
           </div>
@@ -243,32 +244,10 @@ const Pages = {
           })}
         </div>
 
-        <!-- Current Stage & Timeline -->
+        <!-- Current Status & Blocker Information -->
         <div class="grid grid-cols-2 mb-6">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Current Stage</h3>
-            </div>
-            <div class="card-body">
-              <div class="current-stage">
-                <div class="stage-icon">
-                  <i class="fas fa-gavel"></i>
-                </div>
-                <div class="stage-info">
-                  <h3>${property.stage}</h3>
-                  <p>Your transaction is currently in the ${property.stage.toLowerCase()} phase. 
-                     We're working with your solicitor to review all legal documents.</p>
-                  <div class="stage-progress">
-                    <div class="progress-bar">
-                      <div class="progress-fill" style="width: ${property.progress}%"></div>
-                    </div>
-                    <span>${property.progress}% Complete</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
+          ${Components.createBlockerCard(property)}
+          
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Quick Actions</h3>
@@ -408,7 +387,10 @@ const Pages = {
           </div>
         </div>
 
+        <!-- Process Transparency Section -->
         <div class="grid grid-cols-2 mb-6">
+          ${Components.createBlockerCard(property)}
+          
           <!-- Timeline -->
           <div class="card">
             <div class="card-header">
@@ -418,21 +400,23 @@ const Pages = {
               ${Components.createTimeline(property.timeline)}
             </div>
           </div>
-
-          <!-- Blockchain Information -->
-          ${Components.createBlockchainCard(property)}
         </div>
 
-        <!-- Documents -->
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Transaction Documents</h3>
-            <button class="btn btn-primary" onclick="Portal.showDocumentUpload('${property.id}')">
-              <i class="fas fa-plus"></i> Add Document
-            </button>
-          </div>
-          <div class="card-body">
-            ${Components.createDocumentList(property.documents)}
+        <div class="grid grid-cols-2 mb-6">
+          <!-- Blockchain Information -->
+          ${Components.createBlockchainCard(property)}
+
+          <!-- Documents -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Transaction Documents</h3>
+              <button class="btn btn-primary" onclick="Portal.showDocumentUpload('${property.id}')">
+                <i class="fas fa-plus"></i> Add Document
+              </button>
+            </div>
+            <div class="card-body">
+              ${Components.createDocumentList(property.documents)}
+            </div>
           </div>
         </div>
       </div>

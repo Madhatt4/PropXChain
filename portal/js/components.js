@@ -348,6 +348,61 @@ const Components = {
     `;
   },
 
+  // Create blocker information card for process transparency
+  createBlockerCard(property) {
+    const blocker = DataHelpers.getCurrentBlocker(property);
+    const icon = DataHelpers.getBlockerIcon(blocker.party);
+    const color = DataHelpers.getBlockerColor(blocker.party);
+    
+    return `
+      <div class="card blocker-card">
+        <div class="card-header">
+          <h3 class="card-title">
+            <i class="fas fa-exclamation-circle"></i>
+            Current Status
+          </h3>
+        </div>
+        <div class="card-body">
+          <div class="blocker-info ${color}">
+            <div class="blocker-icon">
+              <i class="${icon}"></i>
+            </div>
+            <div class="blocker-details">
+              <h4>${blocker.type === 'none' ? 'No Blockers' : 'Action Required'}</h4>
+              <p>${blocker.action}</p>
+              ${blocker.type !== 'none' ? `
+                <div class="blocker-responsible">
+                  <strong>Responsible Party:</strong>
+                  <span class="party-badge ${color}">${blocker.party}</span>
+                </div>
+              ` : ''}
+              ${blocker.document ? `
+                <div class="blocker-document">
+                  <strong>Document:</strong> ${blocker.document}
+                </div>
+              ` : ''}
+              ${blocker.stage ? `
+                <div class="blocker-stage">
+                  <strong>Stage:</strong> ${blocker.stage}
+                </div>
+              ` : ''}
+            </div>
+          </div>
+          ${blocker.type !== 'none' ? `
+            <div class="blocker-actions">
+              <button class="btn btn-primary" onclick="Portal.resolveBlocker('${property.id}')">
+                <i class="fas fa-check"></i> Mark as Resolved
+              </button>
+              <button class="btn btn-secondary" onclick="Portal.notifyParty('${blocker.party}', '${property.id}')">
+                <i class="fas fa-bell"></i> Notify ${blocker.party}
+              </button>
+            </div>
+          ` : ''}
+        </div>
+      </div>
+    `;
+  },
+
   // Get activity icon based on type
   getActivityIcon(type) {
     const icons = {

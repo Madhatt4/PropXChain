@@ -1,0 +1,85 @@
+Category,Field,Value,Notes
+Campaign Info,Project Title,PropXchain - Revolutionary Blockchain Property Platform,Main campaign title
+Campaign Info,Tagline,Reducing UK Property Transaction Times from 12-16 Weeks to 3-4 Weeks,Compelling hook
+Campaign Info,Category,Technology > Software,Kickstarter category
+Campaign Info,Subcategory,Business Software,More specific category
+Campaign Info,Location,"North Wales, UK",Project location
+Campaign Info,Duration,45 days,Campaign length
+Campaign Info,Goal Amount,£350000,Funding target in GBP
+Campaign Info,Currency,GBP,British Pounds
+
+Story,Problem Statement,UK property transactions take 12-16 weeks with 25-30% fall-through rates and high costs,The pain point
+Story,Solution Overview,Blockchain-based platform that streamlines property transactions reducing time by 75% and costs by 48%,Our solution
+Story,Market Size,£2.9 billion UK property transaction market with 1.2 million annual transactions,Market opportunity
+Story,Target Market,Property developers (B2B) starting with new builds in North Wales,Initial focus
+Story,Unique Value Prop,Only blockchain property platform designed for UK legal framework with developer-first approach,What makes us different
+Story,Technology,Blockchain verification + Smart contracts + AI document analysis + Real-time dashboard,Tech stack summary
+Story,Traction,Initial developer partnerships in discussion and MVP in development,Current progress
+Story,Team Experience,Property market expertise + Blockchain development + Legal compliance specialists,Team credentials
+
+Financial,Funding Goal,£350000,Primary funding target
+Financial,Stretch Goal 1,£500000,Full platform development
+Financial,Stretch Goal 2,£750000,Accelerated market expansion
+Financial,Use of Funds - Development,36%,£126000 - Platform development
+Financial,Use of Funds - Team,36%,£126000 - Team hiring and operations
+Financial,Use of Funds - Marketing,14%,£49000 - Business development and marketing
+Financial,Use of Funds - IP Protection,8%,£28000 - Patent applications and legal
+Financial,Use of Funds - Contingency,6%,£21000 - Risk mitigation
+Financial,Break Even Timeline,18 months,When we become profitable
+Financial,Year 1 Revenue Projection,£167500,Conservative first year
+Financial,Year 2 Revenue Projection,£1085000,Scale phase
+Financial,Year 3 Revenue Projection,£2675000,Growth phase
+
+Rewards,Early Bird Special,£25,Digital updates + Beta access + Name in credits
+Rewards,Supporter,£50,Above + PropXchain branded merchandise + Platform tour
+Rewards,Property Enthusiast,£100,Above + Detailed market research reports + Webinar access
+Rewards,Professional Package,£250,Above + Professional consultation session + Early platform access
+Rewards,Developer Preview,£500,Above + Developer partnership discussion + Beta testing access
+Rewards,Business Package,£1000,Above + Implementation consultation + Marketing co-opportunities
+Rewards,Enterprise Access,£2500,Above + Priority onboarding + Custom integration consultation
+Rewards,Founding Partner,£5000,Above + Revenue sharing agreement + Board advisory position eligibility
+Rewards,Strategic Alliance,£10000,Above + Joint venture opportunities + Exclusive territory discussions
+Rewards,Innovation Sponsor,£25000,Above + Logo placement + Press release inclusion + Speaking opportunities
+
+Timeline,Phase 1,Months 1-6,MVP Development + First Developer Partnership + Patent Application
+Timeline,Phase 2,Months 7-12,First Transactions + System Refinement + Second Developer Onboarding
+Timeline,Phase 3,Months 13-18,Regional Expansion + 8 Developer Partnerships + Break-even Achievement
+Timeline,Phase 4,Months 19-24,National Growth + 15+ Developers + Series A Preparation
+Timeline,Delivery Start,Month 3,Early backer rewards delivery begins
+Timeline,Beta Launch,Month 6,Platform beta testing with backers
+Timeline,Full Launch,Month 12,Commercial platform launch
+
+Marketing,Target Audience,Property developers + Legal professionals + PropTech enthusiasts + Early adopters,Primary audiences
+Marketing,Key Message 1,Reduce property transaction time from 12-16 weeks to 3-4 weeks,Speed benefit
+Marketing,Key Message 2,Cut direct transaction costs by 48% through automation and efficiency,Cost benefit
+Marketing,Key Message 3,Decrease fall-through rates from 25-30% to estimated 10%,Reliability benefit
+Marketing,Key Message 4,First blockchain platform designed specifically for UK property law,Innovation angle
+Marketing,Key Message 5,Starting with new builds to prove concept before expanding to resales,Strategic approach
+Marketing,Social Proof,Property industry expertise + Blockchain development team + Legal compliance focus,Credibility factors
+
+Risks,Technology Risk,Blockchain implementation complexity,Mitigated by experienced team and phased approach
+Risks,Market Risk,Developer adoption resistance,Mitigated by strong ROI demonstration and pilot programs
+Risks,Regulatory Risk,Changes to property transaction laws,Mitigated by adaptive design and legal partnerships
+Risks,Competition Risk,Incumbent response or new entrants,Mitigated by first-mover advantage and patent protection
+Risks,Operational Risk,Scaling challenges,Mitigated by cloud infrastructure and proven development processes
+
+Metrics,Current Developer Interest,5+ developers in active discussions,Pre-launch traction
+Metrics,Target Year 1,3 developer partnerships + 150 transactions,Conservative targets
+Metrics,Target Year 2,10 developer partnerships + 1200 transactions,Scale targets
+Metrics,Target Year 3,25 developer partnerships + 3000 transactions,Growth targets
+Metrics,Market Impact Year 3,£20M+ in transaction value processed,Platform impact
+Metrics,Jobs Created,15-20 direct employees by Year 3,Employment impact
+Metrics,Cost Savings for Users,£48 average savings per £100 transaction cost,User benefit quantified
+
+Updates,Backer Communication,Weekly updates during development + Monthly progress reports + Quarterly financial summaries,Communication plan
+Updates,Demo Timeline,Month 2: Alpha demo + Month 4: Beta preview + Month 6: Full beta launch,Demo schedule
+Updates,Milestone Celebrations,Funding milestones + Development achievements + Partnership announcements,Celebration plan
+
+Legal,IP Strategy,Patent applications filed + Trademark protection + Open-source components identified,IP approach
+Legal,Compliance,GDPR compliant + UK property law aligned + Blockchain regulations considered,Legal considerations
+Legal,Business Structure,UK Limited Company + North Wales registration + Proper corporate governance,Business setup
+
+Vision,Short Term,Prove concept with North Wales developers and establish platform viability,6-12 month vision
+Vision,Medium Term,Regional expansion throughout Wales and Northwest England with 10+ developers,1-2 year vision
+Vision,Long Term,National presence + International expansion + Full property ecosystem platform,3-5 year vision
+Vision,Impact Statement,Revolutionize UK property transactions making them faster cheaper and more transparent for everyone,Mission statement

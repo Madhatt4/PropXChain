@@ -1,0 +1,20 @@
+# n8n Node Configuration Commands
+
+## 1. List Content Files Node:
+Command: dir "C:\Users\Admin\Desktop\Propxchain\linkedin-content\*.md" /B /O:D
+
+## 2. Read File Content Node:
+Command: type "C:\Users\Admin\Desktop\Propxchain\linkedin-content\{{ $json.filename.trim() }}"
+
+## 3. Check File Date Node:
+Command: forfiles /p "C:\Users\Admin\Desktop\Propxchain\linkedin-content" /m "{{ $json.filename.trim() }}" /c "cmd /c echo @fdate @ftime"
+
+## 4. LinkedIn OAuth2 Credentials:
+- Client ID: 78q04vo4x8wpzm
+- Client Secret: WPL_AP1.GTevCaldFHK4S8oa... (use full secret from LinkedIn)
+- Scopes: w_member_social,r_liteprofile,r_emailaddress
+
+## Testing Commands (to verify):
+You can test these commands in Command Prompt first:
+1. dir "C:\Users\Admin\Desktop\Propxchain\linkedin-content\*.md" /B
+2. type "C:\Users\Admin\Desktop\Propxchain\linkedin-content\weekly-updates.md"

@@ -61,6 +61,17 @@ class PropXchainPortal {
       if (!e.target.closest('.notification-panel') && !e.target.closest('#notificationsBtn')) {
         this.hideNotifications();
       }
+      if (!e.target.closest('.sidebar') && !e.target.closest('.mobile-menu-btn')) {
+        this.closeMobileSidebar();
+      }
+    });
+
+    // Setup mobile navigation
+    this.setupMobileNavigation();
+    
+    // Window resize handler
+    window.addEventListener('resize', () => {
+      this.handleWindowResize();
     });
 
     // Search functionality
@@ -204,6 +215,11 @@ class PropXchainPortal {
         content = this.showTransactionTimeline();
         break;
       
+      case 'transactions':
+        title = 'All Transactions';
+        content = this.showTransactionsPage();
+        break;
+      
       case 'analytics':
         title = 'Analytics';
         content = this.showAnalyticsPage();
@@ -264,6 +280,112 @@ class PropXchainPortal {
     return `
       <div class="properties-grid">
         ${properties.map(property => Components.createPropertyCard(property)).join('')}
+      </div>
+    `;
+  }
+
+  showTransactionsPage() {
+    const properties = PortalData.properties;
+    
+    return `
+      <div class="transactions-overview">
+        <div class="transactions-stats">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-list"></i>
+            </div>
+            <div class="stat-info">
+              <h3>${properties.length}</h3>
+              <p>Total Transactions</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="stat-info">
+              <h3>3</h3>
+              <p>Active Blockers</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="stat-info">
+              <h3>78%</h3>
+              <p>Avg. Progress</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="transactions-table">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Status</th>
+                <th>Blockers</th>
+                <th>Progress</th>
+                <th>Buyer</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${properties.map(property => {
+                const blockers = TransactionBlockers.detectTransactionBlockers(property);
+                const criticalBlockers = blockers.filter(b => b.priority === 'critical');
+                
+                return `
+                  <tr>
+                    <td>
+                      <div class="property-info">
+                        <img src="${property.images[0]}" alt="Property" class="property-image-sm">
+                        <div>
+                          <div class="property-title">${property.title}</div>
+                          <div class="property-address">${property.address}</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span class="status-badge ${property.status}">${property.status.replace('_', ' ')}</span>
+                    </td>
+                    <td>
+                      ${blockers.length > 0 ? `
+                        <span class="blocker-badge ${criticalBlockers.length > 0 ? 'critical' : 'normal'}">
+                          ${blockers.length} blocker${blockers.length > 1 ? 's' : ''}
+                        </span>
+                      ` : `
+                        <span class="no-blockers">
+                          <i class="fas fa-check"></i> Clear
+                        </span>
+                      `}
+                    </td>
+                    <td>
+                      <div class="progress-container">
+                        <div class="progress-bar">
+                          <div class="progress-fill" style="width: ${property.progress}%"></div>
+                        </div>
+                        <span class="progress-text">${property.progress}%</span>
+                      </div>
+                    </td>
+                    <td>${property.buyerName}</td>
+                    <td>
+                      <div class="action-buttons">
+                        <button class="btn-sm btn-secondary" onclick="window.TransactionBlockers.showBlockerDetails('${property.id}')">
+                          <i class="fas fa-exclamation-triangle"></i> Blockers
+                        </button>
+                        <button class="btn-sm btn-primary" onclick="Portal.showPage('timeline')">
+                          <i class="fas fa-timeline"></i> Timeline
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                `;
+              }).join('')}
+            </tbody>
+          </table>
+        </div>
       </div>
     `;
   }
@@ -1125,6 +1247,101 @@ class PropXchainPortal {
   exportData(type) {
     // Simulate data export
     this.showToast(`${type} data exported to CSV`, 'success');
+  }
+
+  // Mobile Navigation Methods
+  setupMobileNavigation() {
+    // Create mobile navigation elements if they don't exist
+    this.createMobileElements();
+    
+    // Bind mobile menu events
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileOverlay = document.querySelector('.mobile-overlay');
+    
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.toggleMobileSidebar();
+      });
+    }
+    
+    if (mobileOverlay) {
+      mobileOverlay.addEventListener('click', () => {
+        this.closeMobileSidebar();
+      });
+    }
+  }
+
+  createMobileElements() {
+    // Add mobile menu button to top nav if it doesn't exist
+    const topNav = document.querySelector('.top-nav');
+    if (topNav && !document.querySelector('.mobile-menu-btn')) {
+      const mobileMenuBtn = document.createElement('button');
+      mobileMenuBtn.className = 'mobile-menu-btn';
+      mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      mobileMenuBtn.setAttribute('aria-label', 'Toggle menu');
+      topNav.insertBefore(mobileMenuBtn, topNav.firstChild);
+    }
+    
+    // Add mobile overlay if it doesn't exist
+    if (!document.querySelector('.mobile-overlay')) {
+      const overlay = document.createElement('div');
+      overlay.className = 'mobile-overlay';
+      document.body.appendChild(overlay);
+    }
+  }
+
+  toggleMobileSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.querySelector('.mobile-overlay');
+    
+    if (sidebar && overlay) {
+      const isOpen = sidebar.classList.contains('mobile-open');
+      
+      if (isOpen) {
+        this.closeMobileSidebar();
+      } else {
+        this.openMobileSidebar();
+      }
+    }
+  }
+
+  openMobileSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.querySelector('.mobile-overlay');
+    
+    if (sidebar && overlay) {
+      sidebar.classList.add('mobile-open');
+      overlay.classList.add('show');
+      document.body.style.overflow = 'hidden'; // Prevent background scroll
+    }
+  }
+
+  closeMobileSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.querySelector('.mobile-overlay');
+    
+    if (sidebar && overlay) {
+      sidebar.classList.remove('mobile-open');
+      overlay.classList.remove('show');
+      document.body.style.overflow = ''; // Restore scroll
+    }
+  }
+
+  handleWindowResize() {
+    // Close mobile sidebar on desktop resize
+    if (window.innerWidth > 768) {
+      this.closeMobileSidebar();
+    }
+    
+    // Update charts on resize
+    if (this.charts) {
+      Object.values(this.charts).forEach(chart => {
+        if (chart && typeof chart.resize === 'function') {
+          setTimeout(() => chart.resize(), 100);
+        }
+      });
+    }
   }
 }
 
